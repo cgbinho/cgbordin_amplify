@@ -1,20 +1,50 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-cgbordinamplify-dev-74323-authRole",
-      "UnauthRoleArn": "arn:aws:iam::376796953788:role/amplify-cgbordinamplify-dev-74323-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::376796953788:role/amplify-cgbordinamplify-dev-74323-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-cgbordinamplify-dev-74323-deployment",
-      "UnauthRoleName": "amplify-cgbordinamplify-dev-74323-unauthRole",
-      "StackName": "amplify-cgbordinamplify-dev-74323",
-      "StackId": "arn:aws:cloudformation:us-east-1:376796953788:stack/amplify-cgbordinamplify-dev-74323/d7ddd710-d40f-11eb-8b82-0e6115325dc3",
-      "AmplifyAppId": "d1d3kij2rsvd1p"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cgbordinamplify-dev-74323-authRole",
+            "UnauthRoleArn": "arn:aws:iam::376796953788:role/amplify-cgbordinamplify-dev-74323-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::376796953788:role/amplify-cgbordinamplify-dev-74323-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-cgbordinamplify-dev-74323-deployment",
+            "UnauthRoleName": "amplify-cgbordinamplify-dev-74323-unauthRole",
+            "StackName": "amplify-cgbordinamplify-dev-74323",
+            "StackId": "arn:aws:cloudformation:us-east-1:376796953788:stack/amplify-cgbordinamplify-dev-74323/d7ddd710-d40f-11eb-8b82-0e6115325dc3",
+            "AmplifyAppId": "d1d3kij2rsvd1p"
+        },
+        "categories": {
+            "auth": {
+                "cgbordinamplify8e931149": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d1d3kij2rsvd1p",
+                    "type": "cicd"
+                }
+            }
+        }
     },
-    "categories": {
-      "auth": {
-        "cgbordinamplify8e931149": {}
-      }
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cgbordinamplify-prod-81659-authRole",
+            "UnauthRoleArn": "arn:aws:iam::376796953788:role/amplify-cgbordinamplify-prod-81659-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::376796953788:role/amplify-cgbordinamplify-prod-81659-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-cgbordinamplify-prod-81659-deployment",
+            "UnauthRoleName": "amplify-cgbordinamplify-prod-81659-unauthRole",
+            "StackName": "amplify-cgbordinamplify-prod-81659",
+            "StackId": "arn:aws:cloudformation:us-east-1:376796953788:stack/amplify-cgbordinamplify-prod-81659/88d97840-d414-11eb-ae63-0a9bf4500c63",
+            "AmplifyAppId": "d1d3kij2rsvd1p"
+        },
+        "categories": {
+            "auth": {
+                "cgbordinamplify8e931149": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d1d3kij2rsvd1p",
+                    "type": "cicd"
+                }
+            }
+        }
     }
-  }
 }
