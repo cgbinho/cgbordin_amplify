@@ -11,3 +11,16 @@ type Todo
   name: String!
   description: String
 }
+
+type Product @model
+  @auth(rules: [
+    { allow: public, operations: [read] },
+    { allow: groups, groups: ["Admin"] }
+  ]) {
+  id: ID!
+  categories: [String]!
+  price: Float!
+  name: String!
+  image: String!
+  description: String!
+}

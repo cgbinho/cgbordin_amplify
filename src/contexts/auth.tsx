@@ -48,8 +48,17 @@ export const AuthProvider: React.FC = ({ children }) => {
     // get current user:
     Auth.currentAuthenticatedUser()
       .then((userData) => {
-        console.log('has user');
-        const user = formatUser(userData);
+        const {
+          signInUserSession: {
+            idToken: { payload },
+          },
+        } = userData;
+        // check if user isAdmin:
+        const isAdmin =
+          payload['cognito:groups'] &&
+          payload['cognito:groups'].includes('Admin');
+
+        const user = formatUser({ isAdmin, ...userData });
         setData({ user });
       })
       .catch(() => {
