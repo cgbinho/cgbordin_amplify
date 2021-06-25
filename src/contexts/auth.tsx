@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import Amplify, { Auth, withSSRContext } from 'aws-amplify';
 // import cookie from 'js-cookie';
 import awsExports from '../aws-exports';
-import { formatUser } from '../helpers/user';
+import { formatUser } from '../helpers/users';
 Amplify.configure({ ...awsExports, ssr: true });
 
 interface AuthContextData {

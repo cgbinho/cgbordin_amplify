@@ -2,7 +2,7 @@ import { Amplify } from 'aws-amplify';
 import { useRouter } from 'next/router';
 import awsExports from '../aws-exports';
 import { useAuth } from '../contexts/auth';
-import { getCurrentAuthenticatedUser } from '../helpers/getCurrentAuthenticatedUser';
+import { getCurrentAuthenticatedUser } from '../helpers/users';
 
 Amplify.configure({ ...awsExports, ssr: true });
 

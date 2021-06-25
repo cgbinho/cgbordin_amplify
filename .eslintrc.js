@@ -27,6 +27,8 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/display-name': ['off', { ignoreTranspilerName: 'false' }],
+    camelcase: 'off',
+    '@next/next/no-img-element': 'off',
     'prettier/prettier': [
       'error',
       {

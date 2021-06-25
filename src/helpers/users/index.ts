@@ -1,5 +1,10 @@
 import { Amplify, withSSRContext } from 'aws-amplify';
-import { formatUser } from './user';
+
+export const formatUser = (userData: any) => {
+  const { isAdmin } = userData;
+  const { sub, ...user } = userData.attributes;
+  return { id: sub, isAdmin, ...user };
+};
 
 export const getCurrentAuthenticatedUser = async (req) => {
   const { Auth } = withSSRContext({ req });

@@ -125,6 +125,12 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
               <button type="button" onClick={() => router.push('/protected')}>
                 Protected
               </button>
+              <button type="button" onClick={() => router.push('/checkout')}>
+                Checkout
+              </button>
+              <button type="button" onClick={() => router.push('/products')}>
+                Products
+              </button>
             </form>
             {/* </AmplifyAuthenticator> */}
           </div>
