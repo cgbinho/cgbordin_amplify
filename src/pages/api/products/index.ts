@@ -40,37 +40,3 @@ export default async function handler(
     res.status(405).end('Method Not Allowed');
   }
 }
-
-/* 
-Product object:
-{
-  "id": "prod_JjTaFqUt1CAIWN",
-  "object": "product",
-  "active": true,
-  "created": 1624572158,
-  "description": "Aepzera v0.1.0 - Adobe After Effects Extension. ",
-  "images": [
-    "https://files.stripe.com/links/MDB8YWNjdF8xSjR0NktDNnpkaEJTd1UzfGZsX3Rlc3RfbU9tRGJHdDhGYWc3ZjA0dG1MNzFkVXBW00flHjZB1d"
-  ],
-  "livemode": false,
-  "metadata": {},
-  "name": "Aepzera",
-  "package_dimensions": null,
-  "shippable": null,
-  "statement_descriptor": "cgbordin-aepzera",
-  "tax_code": null,
-  "unit_label": "extension",
-  "updated": 1624572158,
-  "url": null
-}
-*/
-
-// Format we need:
-/* 
-  "name": "Aepzera",
-    "description": "Aepzera v0.1.0 - Adobe After Effects Extension.",
-    "sku": "prod_JjTaFqUt1CAIWN",
-    "price": 6900,
-    "image": "https://files.stripe.com/links/MDB8YWNjdF8xSjR0NktDNnpkaEJTd1UzfGZsX3Rlc3RfbU9tRGJHdDhGYWc3ZjA0dG1MNzFkVXBW00flHjZB1d",
-    "currency": "BRL"
-*/
