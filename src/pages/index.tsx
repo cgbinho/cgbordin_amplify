@@ -13,6 +13,7 @@ import awsExports from '../aws-exports';
 import { useAuth } from '../contexts/auth';
 import { createTodo } from '../graphql/mutations';
 import { listTodos } from '../graphql/queries';
+import { generateProductCode } from '../helpers/products';
 import styles from '../styles/Home.module.css';
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -63,6 +64,11 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
     console.log('signOut');
     return await signOut();
   };
+
+  function handleCreateToken() {
+    const code = generateProductCode();
+    console.log(code);
+  }
 
   return (
     <div className={styles.container}>
@@ -130,6 +136,9 @@ export default function Home({ todos = [] }: { todos: Todo[] }) {
               </button>
               <button type="button" onClick={() => router.push('/products')}>
                 Products
+              </button>
+              <button type="button" onClick={handleCreateToken}>
+                Create Aepzera Token
               </button>
             </form>
             {/* </AmplifyAuthenticator> */}

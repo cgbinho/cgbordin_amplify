@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { buffer } from 'micro';
 import Cors from 'micro-cors';
 import Stripe from 'stripe';
+import { generateProductCode } from '../../../helpers/products';
+import { sendMail } from '../../../helpers/email';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -28,6 +30,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     let event: Stripe.Event;
 
+    // stripe construct event:
     try {
       event = stripe.webhooks.constructEvent(
         buf.toString(),
@@ -56,10 +59,20 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     } else if (event.type === 'charge.succeeded') {
       const charge = event.data.object as Stripe.Charge;
       console.log(`💵 Charge id: ${charge.id}`);
-      // Deliver the goods to customer:
+      // console.log(JSON.stringify(charge, null, 2));
+      const { name, email } = charge.billing_details;
+      console.log({ name, email });
       // Create an Aepzera key
+      const code = await generateProductCode();
+      console.log(code);
       // Save token in db ( user has many products, Aepzera Product with key ).
-      // send customer an email with aepzera key.
+
+      // Deliver the goods to customer:
+      const [data, err] = await sendMail({ name, email, code });
+      // if error delivering email:
+      if (err) {
+        console.log(err.message);
+      }
     } else {
       console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
     }
