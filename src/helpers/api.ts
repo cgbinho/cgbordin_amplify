@@ -1,4 +1,4 @@
-export const appUrl = process.env.APP_URL;
+// export const appUrl = process.env.APP_URL;
 
 export async function fetchGetJSON(url: string) {
   try {

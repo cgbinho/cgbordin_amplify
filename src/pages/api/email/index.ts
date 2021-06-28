@@ -32,8 +32,8 @@ export default async function handler(
 // const ses = new aws.SES({
 //   apiVersion: '2010-12-01',
 //   region: 'us-east-1',
-//   accessKeyId: process.env.AWS_SES_SMTP_USER,
-//   secretAccessKey: process.env.AWS_SES_SMTP_PASSWORD,
+//   accessKeyId: process.env.AMAZON_SES_SMTP_USER,
+//   secretAccessKey: process.env.AMAZON_SES_SMTP_PASSWORD,
 // });
 
 // const transporter = nodemailer.createTransport({

@@ -1,35 +1,46 @@
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import PrintObject from '../../components/PrintObject';
 
 import { fetchGetJSON } from '../../helpers/api';
 import useSWR from 'swr';
+import {
+  getStripeSession,
+  useStripeSession,
+} from '../../hooks/useStripeSession';
+import Stripe from 'stripe';
 
-const ResultPage: NextPage = () => {
-  const router = useRouter();
+interface PropsData {
+  session: any;
+}
 
-  // Fetch CheckoutSession from static page via
-  // https://nextjs.org/docs/basic-features/data-fetching#static-generation
-  const { data, error } = useSWR(
-    router.query.session_id
-      ? `/api/checkout_session/${router.query.session_id}`
-      : null,
-    fetchGetJSON
-  );
-
-  if (error) return <div>failed to load</div>;
-
+const ResultPage: NextPage<PropsData> = ({ session }: PropsData) => {
   return (
     <div>
       <div className="page-container">
         <h1>Checkout Payment Result</h1>
-        <h2>Status: {data?.payment_intent?.status ?? 'loading...'}</h2>
-        <h3>CheckoutSession response:</h3>
-        <PrintObject content={data ?? 'loading...'} />
+        {!session && <div>No checkout information.</div>}
+        {session && <PrintObject content={session ?? 'loading...'} />}
       </div>
     </div>
   );
 };
 
 export default ResultPage;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const session_id = query?.session_id;
+
+  if (!session_id) {
+    return { props: { session_id: null } };
+  }
+
+  const data = await getStripeSession(session_id);
+
+  return {
+    props: {
+      session: data,
+    },
+  };
+};

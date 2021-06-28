@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query';
-import { appUrl, fetchGetJSON } from '../helpers/api';
-import axios from 'axios';
+import axios from '../helpers/axios';
 
 interface IQuery {
   id?: string;

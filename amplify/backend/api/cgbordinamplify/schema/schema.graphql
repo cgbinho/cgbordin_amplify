@@ -12,15 +12,104 @@ type Todo
   description: String
 }
 
+# user has many orders, order has many orderItems, orderItems has a product.
+type User @model
+  @auth(
+    rules: [
+      { allow: owner },
+      { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  email: String!
+  password: String!
+  orders:[Order] @connection(name: "UserOrders")
+}
+
+# user order:
+type Order @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [create] },
+      { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  user: User @connection(name: "UserOrders")
+  items: [OrderItem] @connection(name: "SortedList", sortField: "createdAt")
+}
+
+# order item:
+type OrderItem @model
+ @auth(
+    rules: [
+      { allow: owner, operations: [create] },
+      { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  order: [Order] @connection(name: "OrderItems")
+  product: Product
+  code: String!
+}
+
+# cgbordin.com product:
 type Product @model
   @auth(rules: [
+    { allow: owner },
     { allow: public, operations: [read] },
     { allow: groups, groups: ["Admin"] }
   ]) {
   id: ID!
-  categories: [String]!
-  price: Float!
   name: String!
-  image: String!
-  description: String!
 }
+
+# cgbordin.com product list:
+type ProductsList @model
+  @auth(rules: [
+    { allow: owner },
+    { allow: public, operations: [read] },
+    { allow: groups, groups: ["Admin"] }
+  ]) {
+  id: ID!
+  createdAt: String!
+  products: [Product] @connection(name: "SortedList", sortField: "createdAt")
+}
+
+
+# type Channel @model
+#   @auth(
+#     rules: [
+#       {
+#         allow: groups
+#         groups: ["Admin"]
+#         operations: [create, update, delete, read]
+#    },
+#    { allow: private, operations: [read] }
+#     ]
+#   ) {
+#   id: ID!
+#   name: String!
+#   users: [String] @auth(rules: [{ allow: private }])
+#   messages: [Message] @connection(name: "channelMessages" keyField: "channelId" sortField: "createdAt")
+#     @auth(
+#       rules: [
+#         {
+#           allow: owner
+#           ownerField: "users"
+#           operations: [create, read]
+#         }
+#       ]
+#     )
+# }
+
+# type Message @model(queries: null) @key(
+#     name: "channelMessages"
+#     fields: ["channelId", "text"]
+#   ) {
+#   id: ID!
+#   text: String!
+#   createdAt: AWSDateTime!
+#   channelId: ID!
+#   channel: Channel @connection(name: "channelMessages" keyField: "channelId")
+# }
