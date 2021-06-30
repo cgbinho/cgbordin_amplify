@@ -8,7 +8,6 @@ import Button from '../Form/Button';
 const NavBar = () => {
   const { user } = useAuth();
   const email = user?.email;
-  console.log(user);
 
   return (
     <Container>
