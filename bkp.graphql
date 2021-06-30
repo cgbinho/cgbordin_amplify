@@ -1,0 +1,93 @@
+type Todo
+  @model
+  @auth(
+    rules: [
+      { allow: owner } # Allow the creator of a todo to perform Create, Update, Delete operations.
+      { allow: public, operations: [read] } # Allow public (guest users without an account) to Read todos.
+      { allow: private, operations: [read] } # Allow private (other signed in users) to Read todos.
+    ]
+  ) {
+  id: ID!
+  name: String!
+  description: String
+}
+
+
+# customer has many orders, order has many orderItems, orderItems has a product.
+type Customer @model
+  @auth(
+    rules: [
+      { allow: owner },
+      { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  email: String!
+  password: String!
+  orders:[Order] @connection(name:"CustomerOrders")
+}
+
+# Order:
+type Order @model
+  @key(name: "byCustomer", fields: ["customerID"])
+  @auth(
+    rules: [ 
+      { allow: owner, operations: [create] },
+      { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  customerID: ID
+  customer: Customer @connection(name: "CustomerOrders")
+  orderItems: [OrderItem] @connection(keyName: "byOrder", fields: ["id"])
+  amount: String
+}
+
+# order item:
+type OrderItem @model
+  @key(name: "byOrder", fields: [ "orderID", "productID", "code" ])
+  @auth(
+    rules: [
+      { allow: owner, operations: [create] },
+      { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  orderID: ID
+  productID: ID!
+  code: String!
+}
+
+# cgbordin.com product:
+type Product @model
+  @auth(rules: [
+    { allow: owner } # Allow the creator of a todo to perform Create, Update, Delete operations.
+    { allow: public, operations: [read] } # Allow public (guest users without an account) to Read todos.
+    { allow: private, operations: [read] } # Allow private (other signed in users) to Read todos.
+  ]) {
+  id: ID!
+  name: String!
+}
+
+
+
+
+
+# Order:
+type Order @model
+ @aws_iam
+#  @aws_cognito_user_pools
+  @auth(
+    rules: [ 
+      # { allow: owner, operations: [create] },
+      # { allow: groups, groups: ["Admin"] }
+      ]
+  ) {
+  id: ID!
+  userID: ID
+  userEmail: String
+  product: String
+  code: String
+  amount: Int
+  status: String
+}

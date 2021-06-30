@@ -4,6 +4,8 @@ import Cors from 'micro-cors';
 import Stripe from 'stripe';
 import { generateProductCode } from '../../../helpers/products';
 import { sendMail } from '../../../helpers/email';
+import { API } from 'aws-amplify';
+import { createOrder, updateOrder } from '../../../graphql/mutations';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -51,6 +53,23 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (event.type === 'payment_intent.succeeded') {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
+      // create Order:
+      const order = await API.graphql({
+        // authMode: GRAPHQL_AUTH_MODE.AWS_IAM,
+        query: createOrder,
+        variables: {
+          input: {
+            id: paymentIntent.customer,
+            userID: '12345',
+            userEmail: 'cgbordin@gmail.com',
+            amount: 10,
+            code: '1234',
+            product: 'Aepzera',
+            status: 'pending',
+          },
+        },
+      });
+      console.log(order);
     } else if (event.type === 'payment_intent.payment_failed') {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(
@@ -65,8 +84,22 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       // Create an Aepzera key
       const code = await generateProductCode();
       console.log(code);
-      // Save token in db ( user has many products, Aepzera Product with key ).
-
+      // Update Order Status:
+      const orderUpdated = await API.graphql({
+        // authMode: GRAPHQL_AUTH_MODE.AWS_IAM,
+        query: updateOrder,
+        variables: {
+          input: {
+            id: charge.customer,
+            userID: '12345',
+            userEmail: 'cgbordin@gmail.com',
+            amount: 10,
+            code: '1234',
+            product: 'Aepzera',
+            status: 'fulfilled',
+          },
+        },
+      });
       // Deliver the goods to customer:
       const [data, err] = await sendMail({ name, email, code });
       // if error delivering email:

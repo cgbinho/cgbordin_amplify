@@ -2,21 +2,29 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateOrderInput = {
   id?: string | null,
-  name: string,
-  description?: string | null,
+  userID?: string | null,
+  userEmail?: string | null,
+  product?: string | null,
+  code?: string | null,
+  amount?: number | null,
+  status?: string | null,
 };
 
-export type ModelTodoConditionInput = {
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+export type ModelOrderConditionInput = {
+  userID?: ModelIDInput | null,
+  userEmail?: ModelStringInput | null,
+  product?: ModelStringInput | null,
+  code?: ModelStringInput | null,
+  amount?: ModelIntInput | null,
+  status?: ModelStringInput | null,
+  and?: Array< ModelOrderConditionInput | null > | null,
+  or?: Array< ModelOrderConditionInput | null > | null,
+  not?: ModelOrderConditionInput | null,
 };
 
-export type ModelStringInput = {
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -56,93 +64,7 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
-  id: string,
-  name: string,
-  description?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  owner?: string | null,
-};
-
-export type UpdateTodoInput = {
-  id: string,
-  name?: string | null,
-  description?: string | null,
-};
-
-export type DeleteTodoInput = {
-  id: string,
-};
-
-export type CreateProductInput = {
-  id?: string | null,
-  categories: Array< string | null >,
-  price: number,
-  name: string,
-  image: string,
-  description: string,
-};
-
-export type ModelProductConditionInput = {
-  categories?: ModelStringInput | null,
-  price?: ModelFloatInput | null,
-  name?: ModelStringInput | null,
-  image?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelProductConditionInput | null > | null,
-  or?: Array< ModelProductConditionInput | null > | null,
-  not?: ModelProductConditionInput | null,
-};
-
-export type ModelFloatInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type Product = {
-  __typename: "Product",
-  id: string,
-  categories: Array< string | null >,
-  price: number,
-  name: string,
-  image: string,
-  description: string,
-  createdAt: string,
-  updatedAt: string,
-};
-
-export type UpdateProductInput = {
-  id: string,
-  categories?: Array< string | null > | null,
-  price?: number | null,
-  name?: string | null,
-  image?: string | null,
-  description?: string | null,
-};
-
-export type DeleteProductInput = {
-  id: string,
-};
-
-export type ModelTodoFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
-};
-
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -158,211 +80,161 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items?:  Array<Todo | null > | null,
-  nextToken?: string | null,
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
-export type ModelProductFilterInput = {
+export type Order = {
+  __typename: "Order",
+  id: string,
+  userID?: string | null,
+  userEmail?: string | null,
+  product?: string | null,
+  code?: string | null,
+  amount?: number | null,
+  status?: string | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateOrderInput = {
+  id: string,
+  userID?: string | null,
+  userEmail?: string | null,
+  product?: string | null,
+  code?: string | null,
+  amount?: number | null,
+  status?: string | null,
+};
+
+export type DeleteOrderInput = {
+  id: string,
+};
+
+export type ModelOrderFilterInput = {
   id?: ModelIDInput | null,
-  categories?: ModelStringInput | null,
-  price?: ModelFloatInput | null,
-  name?: ModelStringInput | null,
-  image?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelProductFilterInput | null > | null,
-  or?: Array< ModelProductFilterInput | null > | null,
-  not?: ModelProductFilterInput | null,
+  userID?: ModelIDInput | null,
+  userEmail?: ModelStringInput | null,
+  product?: ModelStringInput | null,
+  code?: ModelStringInput | null,
+  amount?: ModelIntInput | null,
+  status?: ModelStringInput | null,
+  and?: Array< ModelOrderFilterInput | null > | null,
+  or?: Array< ModelOrderFilterInput | null > | null,
+  not?: ModelOrderFilterInput | null,
 };
 
-export type ModelProductConnection = {
-  __typename: "ModelProductConnection",
-  items?:  Array<Product | null > | null,
+export type ModelOrderConnection = {
+  __typename: "ModelOrderConnection",
+  items?:  Array<Order | null > | null,
   nextToken?: string | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type CreateOrderMutationVariables = {
+  input: CreateOrderInput,
+  condition?: ModelOrderConditionInput | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type CreateOrderMutation = {
+  createOrder?:  {
+    __typename: "Order",
     id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
-  } | null,
-};
-
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
-};
-
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
-  } | null,
-};
-
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
-};
-
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
-  } | null,
-};
-
-export type CreateProductMutationVariables = {
-  input: CreateProductInput,
-  condition?: ModelProductConditionInput | null,
-};
-
-export type CreateProductMutation = {
-  createProduct?:  {
-    __typename: "Product",
-    id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateProductMutationVariables = {
-  input: UpdateProductInput,
-  condition?: ModelProductConditionInput | null,
+export type UpdateOrderMutationVariables = {
+  input: UpdateOrderInput,
+  condition?: ModelOrderConditionInput | null,
 };
 
-export type UpdateProductMutation = {
-  updateProduct?:  {
-    __typename: "Product",
+export type UpdateOrderMutation = {
+  updateOrder?:  {
+    __typename: "Order",
     id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteProductMutationVariables = {
-  input: DeleteProductInput,
-  condition?: ModelProductConditionInput | null,
+export type DeleteOrderMutationVariables = {
+  input: DeleteOrderInput,
+  condition?: ModelOrderConditionInput | null,
 };
 
-export type DeleteProductMutation = {
-  deleteProduct?:  {
-    __typename: "Product",
+export type DeleteOrderMutation = {
+  deleteOrder?:  {
+    __typename: "Order",
     id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetOrderQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetOrderQuery = {
+  getOrder?:  {
+    __typename: "Order",
     id: string,
-    name: string,
-    description?: string | null,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListOrdersQueryVariables = {
+  filter?: ModelOrderFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
+export type ListOrdersQuery = {
+  listOrders?:  {
+    __typename: "ModelOrderConnection",
     items?:  Array< {
-      __typename: "Todo",
+      __typename: "Order",
       id: string,
-      name: string,
-      description?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      owner?: string | null,
-    } | null > | null,
-    nextToken?: string | null,
-  } | null,
-};
-
-export type GetProductQueryVariables = {
-  id: string,
-};
-
-export type GetProductQuery = {
-  getProduct?:  {
-    __typename: "Product",
-    id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type ListProductsQueryVariables = {
-  filter?: ModelProductFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListProductsQuery = {
-  listProducts?:  {
-    __typename: "ModelProductConnection",
-    items?:  Array< {
-      __typename: "Product",
-      id: string,
-      categories: Array< string | null >,
-      price: number,
-      name: string,
-      image: string,
-      description: string,
+      userID?: string | null,
+      userEmail?: string | null,
+      product?: string | null,
+      code?: string | null,
+      amount?: number | null,
+      status?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -370,79 +242,46 @@ export type ListProductsQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+export type OnCreateOrderSubscription = {
+  onCreateOrder?:  {
+    __typename: "Order",
     id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
-    id: string,
-    name: string,
-    description?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnCreateProductSubscription = {
-  onCreateProduct?:  {
-    __typename: "Product",
-    id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateProductSubscription = {
-  onUpdateProduct?:  {
-    __typename: "Product",
+export type OnUpdateOrderSubscription = {
+  onUpdateOrder?:  {
+    __typename: "Order",
     id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteProductSubscription = {
-  onDeleteProduct?:  {
-    __typename: "Product",
+export type OnDeleteOrderSubscription = {
+  onDeleteOrder?:  {
+    __typename: "Order",
     id: string,
-    categories: Array< string | null >,
-    price: number,
-    name: string,
-    image: string,
-    description: string,
+    userID?: string | null,
+    userEmail?: string | null,
+    product?: string | null,
+    code?: string | null,
+    amount?: number | null,
+    status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,

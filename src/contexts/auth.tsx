@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import Amplify, { Auth, withSSRContext } from 'aws-amplify';
+import Amplify, { API, Auth, withSSRContext } from 'aws-amplify';
+import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api';
 // import cookie from 'js-cookie';
 import awsExports from '../aws-exports';
 import { formatUser } from '../helpers/users';
@@ -59,11 +60,11 @@ export const AuthProvider: React.FC = ({ children }) => {
           payload['cognito:groups'].includes('Admin');
 
         const user = formatUser({ isAdmin, ...userData });
-        setData({ user });
+        setData(user);
       })
       .catch(() => {
         console.log('not authenticated.');
-        setData({});
+        setData(null);
       });
   });
 
@@ -92,7 +93,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       const userData = await Auth.signIn(username, password);
       const user = formatUser(userData);
       // setCookie(user);
-      setData({ user });
+      setData(user);
     } catch (error) {
       console.log(error);
       setError('Error signing up user.');
@@ -131,12 +132,10 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   function resetPassword(email: string) {
     return null;
-    // return firebaseAuth.sendPasswordResetEmail(email);
   }
 
   async function updateProfile({ email, password }) {
     return null;
-    // get formData, to update whathever changed:
   }
 
   return (

@@ -2,97 +2,55 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createOrder = /* GraphQL */ `
+  mutation CreateOrder(
+    $input: CreateOrderInput!
+    $condition: ModelOrderConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createOrder(input: $input, condition: $condition) {
       id
-      name
-      description
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    updateTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    deleteTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const createProduct = /* GraphQL */ `
-  mutation CreateProduct(
-    $input: CreateProductInput!
-    $condition: ModelProductConditionInput
-  ) {
-    createProduct(input: $input, condition: $condition) {
-      id
-      categories
-      price
-      name
-      image
-      description
+      userID
+      userEmail
+      product
+      code
+      amount
+      status
       createdAt
       updatedAt
     }
   }
 `;
-export const updateProduct = /* GraphQL */ `
-  mutation UpdateProduct(
-    $input: UpdateProductInput!
-    $condition: ModelProductConditionInput
+export const updateOrder = /* GraphQL */ `
+  mutation UpdateOrder(
+    $input: UpdateOrderInput!
+    $condition: ModelOrderConditionInput
   ) {
-    updateProduct(input: $input, condition: $condition) {
+    updateOrder(input: $input, condition: $condition) {
       id
-      categories
-      price
-      name
-      image
-      description
+      userID
+      userEmail
+      product
+      code
+      amount
+      status
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteProduct = /* GraphQL */ `
-  mutation DeleteProduct(
-    $input: DeleteProductInput!
-    $condition: ModelProductConditionInput
+export const deleteOrder = /* GraphQL */ `
+  mutation DeleteOrder(
+    $input: DeleteOrderInput!
+    $condition: ModelOrderConditionInput
   ) {
-    deleteProduct(input: $input, condition: $condition) {
+    deleteOrder(input: $input, condition: $condition) {
       id
-      categories
-      price
-      name
-      image
-      description
+      userID
+      userEmail
+      product
+      code
+      amount
+      status
       createdAt
       updatedAt
     }

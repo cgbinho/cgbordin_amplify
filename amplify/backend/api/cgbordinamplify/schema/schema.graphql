@@ -1,115 +1,73 @@
-type Todo
-  @model
-  @auth(
-    rules: [
-      { allow: owner } # Allow the creator of a todo to perform Create, Update, Delete operations.
-      { allow: public, operations: [read] } # Allow public (guest users without an account) to Read todos.
-      { allow: private, operations: [read] } # Allow private (other signed in users) to Read todos.
-    ]
-  ) {
-  id: ID!
-  name: String!
-  description: String
-}
-
-# user has many orders, order has many orderItems, orderItems has a product.
-type User @model
-  @auth(
-    rules: [
-      { allow: owner },
-      { allow: groups, groups: ["Admin"] }
-      ]
-  ) {
-  id: ID!
-  email: String!
-  password: String!
-  orders:[Order] @connection(name: "UserOrders")
-}
-
-# user order:
-type Order @model
-  @auth(
-    rules: [
-      { allow: owner, operations: [create] },
-      { allow: groups, groups: ["Admin"] }
-      ]
-  ) {
-  id: ID!
-  user: User @connection(name: "UserOrders")
-  items: [OrderItem] @connection(name: "SortedList", sortField: "createdAt")
-}
-
-# order item:
-type OrderItem @model
- @auth(
-    rules: [
-      { allow: owner, operations: [create] },
-      { allow: groups, groups: ["Admin"] }
-      ]
-  ) {
-  id: ID!
-  order: [Order] @connection(name: "OrderItems")
-  product: Product
-  code: String!
-}
-
-# cgbordin.com product:
-type Product @model
-  @auth(rules: [
-    { allow: owner },
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin"] }
-  ]) {
-  id: ID!
-  name: String!
-}
-
-# cgbordin.com product list:
-type ProductsList @model
-  @auth(rules: [
-    { allow: owner },
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin"] }
-  ]) {
-  id: ID!
-  createdAt: String!
-  products: [Product] @connection(name: "SortedList", sortField: "createdAt")
-}
-
-
-# type Channel @model
+# type Todo
+#   @model
 #   @auth(
 #     rules: [
-#       {
-#         allow: groups
-#         groups: ["Admin"]
-#         operations: [create, update, delete, read]
-#    },
-#    { allow: private, operations: [read] }
+#       { allow: owner } # Allow the creator of a todo to perform Create, Update, Delete operations.
+#       { allow: public, operations: [read] } # Allow public (guest users without an account) to Read todos.
+#       { allow: private, operations: [read] } # Allow private (other signed in users) to Read todos.
 #     ]
 #   ) {
 #   id: ID!
 #   name: String!
-#   users: [String] @auth(rules: [{ allow: private }])
-#   messages: [Message] @connection(name: "channelMessages" keyField: "channelId" sortField: "createdAt")
-#     @auth(
-#       rules: [
-#         {
-#           allow: owner
-#           ownerField: "users"
-#           operations: [create, read]
-#         }
-#       ]
-#     )
+#   description: String
 # }
 
-# type Message @model(queries: null) @key(
-#     name: "channelMessages"
-#     fields: ["channelId", "text"]
+
+# customer has many orders, order has many orderItems, orderItems has a product.
+# type Customer @model
+#   @auth(
+#     rules: [
+#       { allow: owner },
+#       { allow: groups, groups: ["Admin"] }
+#       ]
 #   ) {
 #   id: ID!
-#   text: String!
-#   createdAt: AWSDateTime!
-#   channelId: ID!
-#   channel: Channel @connection(name: "channelMessages" keyField: "channelId")
+#   email: String!
+#   orders:[Order] @connection(name:"CustomerOrders")
+# }
+
+# Order:
+type Order @model
+ @aws_iamy
+#  @aws_cognito_user_pools
+  # @auth(
+  #   rules: [ 
+  #     { allow: owner },
+  #     # { allow: groups, groups: ["Admin"] }
+  #     ]
+  # )
+  {
+  id: ID!
+  userID: ID
+  userEmail: String
+  product: String
+  code: String
+  amount: Int
+  status: String
+}
+
+# # order item:
+# type OrderItem @model
+#   @key(name: "byOrder", fields: [ "orderID", "productID", "code" ])
+#   @auth(
+#     rules: [
+#       { allow: owner, operations: [create] },
+#       { allow: groups, groups: ["Admin"] }
+#       ]
+#   ) {
+#   id: ID!
+#   orderID: ID
+#   productID: ID!
+#   code: String!
+# }
+
+# cgbordin.com product:
+# type Product @model
+#   @auth(rules: [
+#     { allow: owner } # Allow the creator of a todo to perform Create, Update, Delete operations.
+#     { allow: public, operations: [read] } # Allow public (guest users without an account) to Read todos.
+#     { allow: private, operations: [read] } # Allow private (other signed in users) to Read todos.
+#   ]) {
+#   id: ID!
+#   name: String!
 # }
