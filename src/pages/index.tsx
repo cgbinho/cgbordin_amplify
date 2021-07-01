@@ -1,14 +1,22 @@
 import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api';
-import { Amplify, API, Auth, withSSRContext } from 'aws-amplify';
+import { Amplify, API } from 'aws-amplify';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import React, { useRef } from 'react';
 import awsExports from '../aws-exports';
+import Button from '../components/Form/Button';
+import Layout from '../components/Layout';
+import { AepzeraLogo } from '../components/Logos/aepzera_logo';
 import { useAuth } from '../contexts/auth';
 import { createOrder } from '../graphql/mutations';
 import { generateProductCode } from '../helpers/products';
-import Layout from '../components/Layout';
-import { useRef } from 'react';
+import { Container, ProjectsContainer } from '../styles/home';
+import { VideoPlyr } from '../components/VideoPlyr';
+import { VideoCard } from '../components/Projects/VideoCard';
+
+import { SiJavascript } from 'react-icons/si';
+import { AboutCard } from '../components/About/AboutCard';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -16,8 +24,6 @@ export default function Home({ todos = [] }) {
   const { user, isLoading, isError, signUp, signIn, signOut } = useAuth();
   const trabalhosRef = useRef(null);
   const router = useRouter();
-
-  console.log('user na page: ', user);
 
   async function handleCreateTodo(event) {
     event.preventDefault();
@@ -106,20 +112,81 @@ export default function Home({ todos = [] }) {
   return (
     <Layout>
       <Head>
-        <title>CGBORDIN.com - Cleber Galves Bordin</title>
+        <title>CGBORDIN - Cleber Galves Bordin</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
+      <Container>
+        <section className="content">
+          <AepzeraLogo />
+          <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
+            diam, nisi non senectus sagittis, tortor et euismod.
+          </p>
+          <Button primary width="40%" height="40px" padding="1.2rem 0rem">
+            Comprar
+          </Button>
+        </section>
+        <hr />
+        <section className="content">
+          <h3>Projetos</h3>
+          <ProjectsContainer>
+            <VideoCard
+              {...{
+                src: 'ysz5S6PUM-U',
+                title: 'Huawei',
+                description: 'Texto descritivo sobre o vídeo',
+              }}
+            />
+            <VideoCard
+              {...{
+                src: 'ysz5S6PUM-U',
+                title: 'Huawei',
+                description: 'Texto descritivo sobre o vídeo',
+              }}
+            />
+            <VideoCard
+              {...{
+                src: 'ysz5S6PUM-U',
+                title: 'Huawei',
+                description: 'Texto descritivo sobre o vídeo',
+              }}
+            />
+            <VideoCard
+              {...{
+                src: 'ysz5S6PUM-U',
+                title: 'Huawei',
+                description: 'Texto descritivo sobre o vídeo',
+              }}
+            />
+          </ProjectsContainer>
+        </section>
+        <hr />
+        <section className="content">
+          <h3>Sobre</h3>
+          <AboutCard
+            {...{
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
+              icon: SiJavascript,
+            }}
+          />
+          <AboutCard
+            {...{
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
+              icon: SiJavascript,
+            }}
+          />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
+            diam, nisi non senectus sagittis, tortor et euismod.
+          </p>
+          <p>cleber@cgbordin.com</p>
+        </section>
         <pre>{JSON.stringify(user, null, 2)}</pre>
         <pre>{JSON.stringify(isLoading, null, 2)}</pre>
         <pre>{JSON.stringify(isError, null, 2)}</pre>
         <button onClick={handleClick}>handleClick</button>
-        <section ref={trabalhosRef}>
-          <h1>Trabalhos</h1>
-          <p>Teste de texto</p>
-        </section>
-      </main>
+      </Container>
     </Layout>
   );
 }

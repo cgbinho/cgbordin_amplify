@@ -14,12 +14,11 @@ export const Container = styled.div`
 
 export const Content = styled.main`
   grid-area: main;
-  /* padding: var(--main-spacing); */
+  /* padding: 1rem; */
   overflow: auto;
 
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr minmax(0, 600px) 1fr;
+  grid-auto-flow: row;
 
   background-color: var(--gray-200);
 `;

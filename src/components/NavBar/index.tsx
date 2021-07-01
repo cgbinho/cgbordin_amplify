@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../../contexts/auth';
 import { Container, BurguerContainer, SignedContainer } from './styles';
-import Logo from '../Logo';
+import Logo from '../Logos';
 import Button from '../Form/Button';
+import HamburgerButton from './HamburguerButton';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { HamburguerMenu } from './HamburguerMenu';
 
 const NavBar = () => {
+  const [openBurguer, setOpenBurguer] = useState<boolean>(false);
   const { user } = useAuth();
   const email = user?.email;
   console.log(user);
+
+  const node = useRef<HTMLDivElement>(null);
+  useOnClickOutside(node, () => setOpenBurguer(false));
+
+  const close = () => setOpenBurguer(false);
 
   return (
     <Container>
@@ -18,11 +27,6 @@ const NavBar = () => {
           <li>
             <Link href="/">
               <a>Início</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/works">
-              <a>Trabalhos</a>
             </Link>
           </li>
           <li>
@@ -72,7 +76,8 @@ const NavBar = () => {
         </ul>
       </nav>
       <BurguerContainer>
-        <button>Burguer Menu</button>
+        <HamburgerButton {...{ openBurguer, setOpenBurguer }} />
+        <HamburguerMenu />
       </BurguerContainer>
     </Container>
   );
