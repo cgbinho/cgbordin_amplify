@@ -19,7 +19,7 @@ export default createGlobalStyle`
   --gray-400: hsl(0, 0%, 40%);
   --gray-600: hsl(0, 0%, 60%);
   --success_color: #00e676;
-  --fail_color: tomato;
+  --error_color: tomato;
 }
 
 * {
@@ -46,6 +46,7 @@ text-decoration: none;
 transition: all 0.3s ease 0s;
 color: var(--primary);
 font-weight: normal;
+cursor: pointer;
 
   &:hover {
     color: var(--scent-550);
@@ -55,5 +56,9 @@ font-weight: normal;
 li {
   list-style-type: none;
 }
- 
+
+.error_message {
+    color: var(--error_color);
+    padding-top: 0.2rem;
+  } 
 `;

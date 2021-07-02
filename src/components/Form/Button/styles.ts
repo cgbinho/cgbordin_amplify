@@ -17,8 +17,9 @@ export const Container = styled.button<IContainerProps>`
   padding: ${(props) => props.padding};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  color: ${(props) => (props.primary ? 'white' : `var(--scent-450)`)};
-  background: ${(props) => (props.primary ? `var(--scent-450)` : `#FFF1E9`)};
+  color: ${(props) => (props.primary ? 'white' : `var(--scent-250)`)};
+  background: ${(props) =>
+    props.primary ? `var(--scent-450)` : `hsl(200, 100%, 90%)`};
 
   border: none;
   border-radius: 0.4rem;
@@ -27,8 +28,8 @@ export const Container = styled.button<IContainerProps>`
 
   &:hover {
     background: ${(props) =>
-      props.primary ? `var(--scent-350)` : `var(--scent-550)`};
-    color: ${(props) => (props.primary ? 'white' : `var(--scent-550)`)};
+      props.primary ? `var(--scent-350)` : `var(--scent-650)`};
+    color: ${(props) => (props.primary ? 'white' : `var(--scent-250)`)};
   }
 
   &:active {

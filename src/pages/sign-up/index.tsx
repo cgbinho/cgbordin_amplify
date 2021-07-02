@@ -11,13 +11,13 @@ import Input from '../../components/Form/Input';
 import Layout from '../../components/Layout';
 import { useAuth } from '../../contexts/auth';
 import { getCurrentAuthenticatedUser } from '../../helpers/users';
-import { signInSchema } from '../../schemas';
+import { signUpSchema } from '../../schemas';
 import { Container } from '../../styles/home';
 import { ModalContainer } from '../../styles/modal';
 import { FormContainer } from '../../styles/form';
 
-const SignIn = () => {
-  const { user, isLoading, isError, signIn } = useAuth();
+const SignUp = () => {
+  const { user, isLoading, isError, signUp } = useAuth();
 
   const router = useRouter();
 
@@ -26,16 +26,17 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(signInSchema),
+    resolver: yupResolver(signUpSchema),
     defaultValues: {
       email: 'cgbordin@gmail.com',
       password: '123456789',
+      password_confirmation: '123456789',
     },
   });
 
   const onSubmit = handleSubmit(async ({ email, password }) => {
     try {
-      await signIn({ email, password });
+      await signUp({ email, password });
       router.push('/');
     } catch {}
   });
@@ -43,10 +44,10 @@ const SignIn = () => {
   return (
     <Layout>
       <Head>
-        <title>CGBORDIN.com - Entrar</title>
+        <title>CGBORDIN.com - Cadastrar</title>
       </Head>
       <Container>
-        <h1>Entrar</h1>
+        <h1>Cadastrar</h1>
         <form onSubmit={onSubmit} method="post">
           <FormContainer>
             <Input
@@ -67,9 +68,15 @@ const SignIn = () => {
               register={register}
               errors={errors?.password}
             />
-            <Link href="/forgot-password">
-              <a>Esqueci a senha</a>
-            </Link>
+            <Input
+              name="password_confirmation"
+              label="Confirm Password"
+              type="password"
+              placeholder="********"
+              icon={FiLock}
+              register={register}
+              errors={errors?.password_confirmation}
+            />
             <Button
               type="submit"
               primary
@@ -104,5 +111,4 @@ export async function getServerSideProps({ req, res }) {
   }
   return { props: { user } };
 }
-
-export default SignIn;
+export default SignUp;

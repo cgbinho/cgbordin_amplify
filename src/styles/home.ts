@@ -4,8 +4,9 @@ export const Container = styled.div`
   display: grid;
   grid-auto-flow: row;
   justify-content: center;
+  justify-items: center;
   align-items: flex-start;
-  padding-top: 1rem;
+  padding-top: 2rem;
 
   .content {
     display: grid;
@@ -22,11 +23,4 @@ export const Container = styled.div`
     height: 1px;
     background: var(--gray-400);
   }
-`;
-
-export const ProjectsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  width: 100%;
 `;

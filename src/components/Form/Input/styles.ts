@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.label`
   display: flex;
   flex-direction: column;
-  margin-top: 8px;
+  /* margin-top: 8px; */
 `;
 
 export const Content = styled.div`
@@ -18,14 +18,14 @@ export const InputContainer = styled.div`
 
   padding: 14px;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 4px;
 
-  border: 2px solid var(--gray-200);
+  border: 2px solid var(--gray-400);
   border-radius: 0.5rem;
 
   color: var(--primary);
   font-size: 14px;
-  background: transparent;
+  background: var(--gray-100);
   transition: border 0.2s;
 
   input {
@@ -36,7 +36,7 @@ export const InputContainer = styled.div`
     color: var(--primary);
 
     &::placeholder {
-      color: var(--dark_gray);
+      color: var(--gray-400);
     }
   }
 
@@ -44,7 +44,7 @@ export const InputContainer = styled.div`
   IF AN ELEMENT INSIDE THIS ELEMENT (input in this case) GETS FOCUS:
   */
   &:focus-within {
-    border: 2px solid var(--secondary);
+    border: 2px solid var(--scent-550);
   }
 
   svg {

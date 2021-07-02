@@ -11,12 +11,15 @@ import { AepzeraLogo } from '../components/Logos/aepzera_logo';
 import { useAuth } from '../contexts/auth';
 import { createOrder } from '../graphql/mutations';
 import { generateProductCode } from '../helpers/products';
-import { Container, ProjectsContainer } from '../styles/home';
+import { Container } from '../styles/home';
 import { VideoPlyr } from '../components/VideoPlyr';
 import { VideoCard } from '../components/Projects/VideoCard';
 
 import { SiJavascript } from 'react-icons/si';
 import { AboutCard } from '../components/About/AboutCard';
+import { AboutComponent } from '../components/About';
+import { ProjectsComponent } from '../components/Projects';
+import { AepzeraComponent } from '../components/Aepzera';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -116,72 +119,11 @@ export default function Home({ todos = [] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <section className="content">
-          <AepzeraLogo />
-          <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-            diam, nisi non senectus sagittis, tortor et euismod.
-          </p>
-          <Button primary width="40%" height="40px" padding="1.2rem 0rem">
-            Comprar
-          </Button>
-        </section>
+        <AepzeraComponent />
         <hr />
-        <section className="content">
-          <h3>Projetos</h3>
-          <ProjectsContainer>
-            <VideoCard
-              {...{
-                src: 'ysz5S6PUM-U',
-                title: 'Huawei',
-                description: 'Texto descritivo sobre o vídeo',
-              }}
-            />
-            <VideoCard
-              {...{
-                src: 'ysz5S6PUM-U',
-                title: 'Huawei',
-                description: 'Texto descritivo sobre o vídeo',
-              }}
-            />
-            <VideoCard
-              {...{
-                src: 'ysz5S6PUM-U',
-                title: 'Huawei',
-                description: 'Texto descritivo sobre o vídeo',
-              }}
-            />
-            <VideoCard
-              {...{
-                src: 'ysz5S6PUM-U',
-                title: 'Huawei',
-                description: 'Texto descritivo sobre o vídeo',
-              }}
-            />
-          </ProjectsContainer>
-        </section>
+        <ProjectsComponent />
         <hr />
-        <section className="content">
-          <h3>Sobre</h3>
-          <AboutCard
-            {...{
-              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
-              icon: SiJavascript,
-            }}
-          />
-          <AboutCard
-            {...{
-              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
-              icon: SiJavascript,
-            }}
-          />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-            diam, nisi non senectus sagittis, tortor et euismod.
-          </p>
-          <p>cleber@cgbordin.com</p>
-        </section>
+        <AboutComponent />
         <pre>{JSON.stringify(user, null, 2)}</pre>
         <pre>{JSON.stringify(isLoading, null, 2)}</pre>
         <pre>{JSON.stringify(isError, null, 2)}</pre>

@@ -5,7 +5,8 @@ import Stripe from 'stripe';
 import { generateProductCode } from '../../../helpers/products';
 import { sendMail } from '../../../helpers/email';
 import { API } from 'aws-amplify';
-import { createOrder, updateOrder } from '../../../graphql/mutations';
+// import { createOrder, updateOrder } from '../../../graphql/mutations';
+import { postOrder, updateOrder } from '../../../helpers/db';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -53,23 +54,24 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (event.type === 'payment_intent.succeeded') {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
+      console.log(`💰 PaymentIntent id: ${paymentIntent.id}`);
+      console.log(`💰 PAYMENTINTENT_id: ${paymentIntent.id}`);
       // create Order:
-      const order = await API.graphql({
-        // authMode: GRAPHQL_AUTH_MODE.AWS_IAM,
-        query: createOrder,
-        variables: {
-          input: {
-            id: paymentIntent.customer,
-            userID: '12345',
-            userEmail: 'cgbordin@gmail.com',
-            amount: 10,
-            code: '1234',
-            product: 'Aepzera',
-            status: 'pending',
-          },
-        },
+      const [dataIntent, errIntent] = await postOrder({
+        id: paymentIntent.id,
+        userID: paymentIntent.customer,
+        userEmail: 'cgbordin@gmail.com',
+        product: 'Aepzera',
+        code: null,
+        amount: paymentIntent.amount_received,
+        order_status: 'pending',
       });
-      console.log(order);
+
+      if (errIntent) {
+        res.status(500).json({ statusCode: 500, message: errIntent.message });
+        res.end();
+      }
+      console.log(dataIntent);
     } else if (event.type === 'payment_intent.payment_failed') {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log(
@@ -83,28 +85,28 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log({ name, email });
       // Create an Aepzera key
       const code = await generateProductCode();
-      console.log(code);
-      // Update Order Status:
-      const orderUpdated = await API.graphql({
-        // authMode: GRAPHQL_AUTH_MODE.AWS_IAM,
-        query: updateOrder,
-        variables: {
-          input: {
-            id: charge.customer,
-            userID: '12345',
-            userEmail: 'cgbordin@gmail.com',
-            amount: 10,
-            code: '1234',
-            product: 'Aepzera',
-            status: 'fulfilled',
-          },
-        },
+
+      console.log(`💰 PAYMENTINTENT_id: ${charge.payment_intent}`);
+
+      const [dataCharge, errCharge] = await updateOrder({
+        id: charge.payment_intent,
+        code,
+        order_status: 'paid',
       });
+
+      if (errCharge) {
+        res.status(500).json({ statusCode: 500, message: errCharge.message });
+        res.end();
+        return;
+      }
       // Deliver the goods to customer:
-      const [data, err] = await sendMail({ name, email, code });
+      const [dataEmail, errEmail] = await sendMail({ name, email, code });
       // if error delivering email:
-      if (err) {
-        console.log(err.message);
+      if (errEmail) {
+        console.log(errEmail.message);
+        res.status(500).json({ statusCode: 500, message: errEmail.message });
+        res.end();
+        return;
       }
     } else {
       console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);

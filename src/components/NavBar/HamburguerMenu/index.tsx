@@ -17,8 +17,8 @@ export function HamburguerMenu() {
   const close = () => setOpenBurguer(false);
 
   const handleSignOut = async () => {
-    signOut();
-    router.push('/sign-out');
+    await signOut();
+    router.push('/');
   };
 
   const MenuItem = ({ label, path }) => {
@@ -47,9 +47,7 @@ export function HamburguerMenu() {
   const LoggedMenu = () => {
     return (
       <>
-        <hr />
         <MenuItem {...{ label: 'Pedidos', path: '/orders' }} />
-        <hr />
         <StyledLink onClick={handleSignOut}>Sair</StyledLink>
       </>
     );
@@ -60,8 +58,9 @@ export function HamburguerMenu() {
       <StyledMenu open={openBurguer}>
         <MenuItem {...{ label: 'Início', path: '/' }} />
         {!user && <GuestMenu />}
-        <MenuItem {...{ label: 'Projetos', path: '/projects' }} />
         <MenuItem {...{ label: 'Sobre', path: '/about' }} />
+        <MenuItem {...{ label: 'Projetos', path: '/projects' }} />
+        <MenuItem {...{ label: 'Aepzera', path: '/aepzera' }} />
         {user && <LoggedMenu />}
       </StyledMenu>
       <HamburgerButton {...{ openBurguer, setOpenBurguer }} />

@@ -28,7 +28,7 @@
 
 # Order:
 type Order @model
- @aws_iamy
+#  @aws_iamy
 #  @aws_cognito_user_pools
   # @auth(
   #   rules: [ 
@@ -43,7 +43,7 @@ type Order @model
   product: String
   code: String
   amount: Int
-  status: String
+  order_status: String
 }
 
 # # order item:

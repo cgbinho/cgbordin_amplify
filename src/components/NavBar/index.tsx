@@ -7,10 +7,13 @@ import Button from '../Form/Button';
 import HamburgerButton from './HamburguerButton';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { HamburguerMenu } from './HamburguerMenu';
+import { useRouter } from 'next/router';
 
 const NavBar = () => {
+  const router = useRouter();
+
   const [openBurguer, setOpenBurguer] = useState<boolean>(false);
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const email = user?.email;
   console.log(user);
 
@@ -18,6 +21,11 @@ const NavBar = () => {
   useOnClickOutside(node, () => setOpenBurguer(false));
 
   const close = () => setOpenBurguer(false);
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.push('/');
+  };
 
   return (
     <Container>
@@ -30,13 +38,23 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/projects">
+              <a>Projetos</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/aepzera">
+              <a>Aepzera</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/about">
               <a>Sobre</a>
             </Link>
           </li>
+          <div className="vertical_line" />
           {!user ? (
             <>
-              <div className="vertical_line" />
               <li>
                 <Link href="/sign-in">
                   <a>Entrar</a>
@@ -59,14 +77,20 @@ const NavBar = () => {
             </>
           ) : (
             <SignedContainer>
-              <li>{email}</li>
+              <li>
+                <Link href="/orders">
+                  <a>Pedidos</a>
+                </Link>
+              </li>
+              <li>
+                <small>{email}</small>
+              </li>
               <li>
                 <Button
-                  primary
                   width="100%"
                   height="1rem"
                   padding="0.5rem 2rem"
-                  onClick={() => console.log('click!')}
+                  onClick={handleSignOut}
                 >
                   Sair
                 </Button>

@@ -11,7 +11,7 @@ export const getOrder = /* GraphQL */ `
       product
       code
       amount
-      status
+      order_status
       createdAt
       updatedAt
     }
@@ -31,7 +31,7 @@ export const listOrders = /* GraphQL */ `
         product
         code
         amount
-        status
+        order_status
         createdAt
         updatedAt
       }
