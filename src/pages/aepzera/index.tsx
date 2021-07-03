@@ -37,11 +37,6 @@ const Aepzera = () => {
     console.log(price);
     const stripe = await getStripe();
 
-    const session = await fetchPostJSON('/api/checkout_session', {
-      price_id: price.id,
-      customer_email: user.email,
-    });
-
     // const response = await fetch('/api/checkout_session', {
     //   method: 'POST',
     //   headers: {
@@ -55,11 +50,20 @@ const Aepzera = () => {
     // });
 
     // const session = await response.json();
+    const response = await fetchPostJSON('/api/checkout_session', {
+      price_id: price.id,
+      customer_email: user.email,
+    });
+    if (response.statusCode === 500) {
+      console.error(response.message);
+      return;
+    }
     // console.log({ session });
     // When the customer clicks on the button, redirect them to Checkout.
     const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
+      sessionId: response.id,
     });
+
     if (result.error) {
       console.log(result.error);
       // If `redirectToCheckout` fails due to a browser or network
