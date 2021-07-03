@@ -29,14 +29,13 @@ const ForgotPassword = () => {
     resolver: yupResolver(forgotPasswordSchema),
     defaultValues: {
       email: 'cgbordin@gmail.com',
-      password: '123456789',
     },
   });
 
   const onSubmit = handleSubmit(async ({ email }) => {
     try {
       await forgotPassword(email);
-      // router.push('/projects');
+      router.push('/reset-password');
     } catch {}
   });
 
