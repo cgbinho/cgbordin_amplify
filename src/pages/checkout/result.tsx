@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import PrintObject from '../../components/PrintObject';
 
 import { fetchGetJSON } from '../../helpers/api';
-import useSWR from 'swr';
 import {
   getStripeSession,
   useStripeSession,
