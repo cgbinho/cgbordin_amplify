@@ -18,7 +18,7 @@ export default async function handler(
       line_items: [{ price: price_id, quantity: 1 }],
       mode: 'payment',
       success_url: `${req.headers.origin}/checkout/result?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin}/checkout`,
+      cancel_url: `${req.headers.origin}/`,
     });
 
     res.status(200).json({ id: session.id });

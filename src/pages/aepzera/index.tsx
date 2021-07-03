@@ -16,6 +16,7 @@ import { ProjectsComponent } from '../../components/Projects';
 
 import { Container } from '../../styles/home';
 import Button from '../../components/Form/Button';
+import { fetchPostJSON } from '../../helpers/api';
 
 interface IPrice extends Stripe.Price {
   product: Stripe.Product;
@@ -35,19 +36,25 @@ const Aepzera = () => {
   const handleClick = async (price) => {
     console.log(price);
     const stripe = await getStripe();
-    const response = await fetch('/api/checkout_session', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        price_id: price.id,
-        customer_email: user.email,
-      }),
+
+    const session = await fetchPostJSON('/api/checkout_session', {
+      price_id: price.id,
+      customer_email: user.email,
     });
 
-    const session = await response.json();
+    // const response = await fetch('/api/checkout_session', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     price_id: price.id,
+    //     customer_email: user.email,
+    //   }),
+    // });
+
+    // const session = await response.json();
     // console.log({ session });
     // When the customer clicks on the button, redirect them to Checkout.
     const result = await stripe.redirectToCheckout({
