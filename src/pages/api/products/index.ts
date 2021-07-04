@@ -2,10 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { formatCheckoutItem } from '../../../helpers/stripe/stripe-helpers';
 
-const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
-  apiVersion: null,
-});
+// const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(
+  'sk_test_51J4t6KC6zdhBSwU3uG7fsz8Vpj7QXpWcOVvrmTo0hKHythifRKi2I9qmENo2F8ITQmM8fNZO7npwqTRWs97jzkrs00bzSYKIpv',
+  {
+    // https://github.com/stripe/stripe-node#configuration
+    apiVersion: null,
+  }
+);
 
 export default async function handler(
   req: NextApiRequest,
