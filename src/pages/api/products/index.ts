@@ -15,7 +15,7 @@ export default async function handler(
     try {
       console.log({ env: process.env.NODE_ENV });
       console.log({ pk: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY });
-      console.log({ sk: process.env.STRIPE_SECRET_KEY });
+      console.log({ sk: process.env.NEXT_STRIPE_SECRET_KEY });
       // const { data } = await stripe.products.list({
       //   limit: 3,
       // });
