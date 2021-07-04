@@ -94,7 +94,7 @@ const SignIn = () => {
 // We are getting the project with an authenticated user, serverside. Beautiful:
 export async function getServerSideProps({ req, res }) {
   const user = await getCurrentAuthenticatedUser(req);
-  if (!user) {
+  if (user) {
     return {
       redirect: {
         destination: '/',
