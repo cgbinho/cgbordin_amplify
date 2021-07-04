@@ -12,6 +12,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'GET') {
+    console.log('testing.');
     try {
       // const { data } = await stripe.products.list({
       //   limit: 3,
