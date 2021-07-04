@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { formatCheckoutItem } from '../../../helpers/stripe/stripe-helpers';
 
-const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY, {
+const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: null,
 });
