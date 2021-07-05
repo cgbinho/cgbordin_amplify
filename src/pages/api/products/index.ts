@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { formatCheckoutItem } from '../../../helpers/stripe/stripe-helpers';
 
-const stripe = new Stripe(process.env.NEXT_API_STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
+// https://github.com/stripe/stripe-node#configuration
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: null,
 });
 
@@ -12,12 +12,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'GET') {
-    console.log('testing.');
     try {
-      // const { data } = await stripe.products.list({
-      //   limit: 3,
-      // });
-
       const pricesData = await stripe.prices.list({
         active: true,
         limit: 10,
