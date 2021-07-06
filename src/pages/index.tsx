@@ -124,21 +124,6 @@ export default function Home({ todos = [] }) {
         <ProjectsComponent />
         <hr />
         <AboutComponent />
-
-        <pre>{JSON.stringify(process.env.NODE_ENV, null, 2)}</pre>
-        <pre>{JSON.stringify(process.env.STRIPE_SECRET_KEY, null, 2)}</pre>
-        <pre>{JSON.stringify(process.env.NEXT_STRIPE_SECRET_KEY, null, 2)}</pre>
-        <pre>
-          {JSON.stringify(
-            process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-            null,
-            2
-          )}
-        </pre>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
-        <pre>{JSON.stringify(isLoading, null, 2)}</pre>
-        <pre>{JSON.stringify(isError, null, 2)}</pre>
-        <button onClick={handleClick}>handleClick</button>
       </Container>
     </Layout>
   );

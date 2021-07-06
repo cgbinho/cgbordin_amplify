@@ -1,20 +1,33 @@
 import React from 'react';
-import Button from '../Form/Button';
+import { useRouter } from 'next/router';
+import { AepzeraCard } from '../../pages/aepzera/styles';
 import { AepzeraLogo } from '../Logos/aepzera_logo';
 import { VideoPlyr } from '../VideoPlyr';
+import Button from '../Form/Button';
 
 export function AepzeraComponent() {
+  const router = useRouter();
   return (
-    <section className="content">
-      <AepzeraLogo />
-      <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam,
-        nisi non senectus sagittis, tortor et euismod.
-      </p>
-      <Button primary width="40%" height="40px" padding="1.2rem 0rem">
-        Comprar
-      </Button>
-    </section>
+    <>
+      <AepzeraCard>
+        <AepzeraLogo />
+        <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
+        <aside>
+          <p>
+            Aepzera ajuda a manter sua pipeline de produção organizada no After
+            Effects e agiliza o seu workflow.
+          </p>
+          <Button
+            primary
+            width="100%"
+            height="1rem"
+            padding=".8rem 2rem"
+            onClick={() => router.push('/aepzera')}
+          >
+            Saiba mais
+          </Button>
+        </aside>
+      </AepzeraCard>
+    </>
   );
 }

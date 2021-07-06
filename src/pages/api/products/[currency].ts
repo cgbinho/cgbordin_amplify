@@ -11,16 +11,24 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const { currency } = req.query;
+
   if (req.method === 'GET') {
-    // get all currencies
+    // get selected currency ( 'brl' or 'usd'):
+    // const { currency } = req.query;
     try {
       const pricesData = await stripe.prices.list({
         active: true,
         limit: 10,
         expand: ['data.product'],
       });
+      // console.log(pricesData);
+      // get Brl item prices:
+      const pricesBrl = pricesData.data.filter(
+        (price) => price.currency === currency
+      );
       // format items to checkout:
-      const prices = pricesData.data.map((price) => formatCheckoutItem(price));
+      const prices = pricesBrl.map((price) => formatCheckoutItem(price));
 
       res.status(200).json(prices);
       // res.status(200).json(prices.data);

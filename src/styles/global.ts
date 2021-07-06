@@ -14,8 +14,12 @@ export default createGlobalStyle`
   --scent-350: hsl(200, 100%, 35%);
   --scent-250: hsl(200, 100%, 25%);
   --primary: hsl(0, 0%, 90%);
+  --gray-50: hsl(0, 0%, 5%);
   --gray-100: hsl(0, 0%, 10%);
+  --gray-150: hsl(0, 0%, 15%);
+  --gray-170: hsl(0, 0%, 17%);
   --gray-200: hsl(0, 0%, 20%);
+  --gray-300: hsl(0, 0%, 30%);
   --gray-400: hsl(0, 0%, 40%);
   --gray-600: hsl(0, 0%, 60%);
   --success_color: #00e676;
@@ -37,8 +41,14 @@ body {
   letter-spacing: 0.3px;
 }
 
+p {
+  letter-spacing: 1.1px;
+  line-height: 1.2;
+}
+
 h1,h2,h3,h4,h5,h6 {
   letter-spacing: 1.2px;
+  line-height: 2.5;
 }
 
 a {

@@ -17,12 +17,10 @@ const Projects = () => {
       <Head>
         <title>CGBORDIN - Cleber Galves Bordin - Projects</title>
       </Head>
-      <Container>
-        <ProjectsComponent />
-        <pre>{JSON.stringify(user, null, 2)}</pre>
-        <pre>{JSON.stringify(isLoading, null, 2)}</pre>
-        <pre>{JSON.stringify(isError, null, 2)}</pre>
-      </Container>
+      <ProjectsComponent />
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <pre>{JSON.stringify(isLoading, null, 2)}</pre>
+      <pre>{JSON.stringify(isError, null, 2)}</pre>
     </Layout>
   );
 };
