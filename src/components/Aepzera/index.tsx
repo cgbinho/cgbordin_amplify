@@ -7,16 +7,23 @@ import Button from '../Form/Button';
 
 export function AepzeraComponent() {
   const router = useRouter();
+
+  const { locale } = router;
+
+  const description =
+    locale !== 'en'
+      ? 'Aepzera ajuda a manter sua pipeline de produção organizada no After Effects e agiliza seu workflow.'
+      : 'Aepzera helps you to keep your After Effects pipeline organized while boosting your workflow.';
+
+  const learnMore = locale !== 'en' ? 'Saiba Mais' : 'Learn More';
+
   return (
     <>
       <AepzeraCard>
         <AepzeraLogo />
         <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
         <aside>
-          <p>
-            Aepzera ajuda a manter sua pipeline de produção organizada no After
-            Effects e agiliza o seu workflow.
-          </p>
+          <p>{description}</p>
           <Button
             primary
             width="100%"
@@ -24,7 +31,7 @@ export function AepzeraComponent() {
             padding=".8rem 2rem"
             onClick={() => router.push('/aepzera')}
           >
-            Saiba mais
+            {learnMore}
           </Button>
         </aside>
       </AepzeraCard>

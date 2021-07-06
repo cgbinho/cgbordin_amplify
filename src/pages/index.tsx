@@ -23,10 +23,12 @@ import { AepzeraComponent } from '../components/Aepzera';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
-export default function Home({ todos = [] }) {
+export default function Home({ text }) {
   const { user, isLoading, isError, signUp, signIn, signOut } = useAuth();
   const trabalhosRef = useRef(null);
   const router = useRouter();
+
+  console.log('text', text);
 
   async function handleCreateTodo(event) {
     event.preventDefault();
@@ -98,20 +100,6 @@ export default function Home({ todos = [] }) {
     console.log(code);
   }
 
-  function executeScroll(ref) {
-    try {
-      ref.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
-    } catch {}
-  }
-
-  const handleClick = () => {
-    executeScroll(trabalhosRef);
-  };
-
   return (
     <Layout>
       <Head>
@@ -129,21 +117,13 @@ export default function Home({ todos = [] }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  // const SSR = withSSRContext({ req });
+export async function getStaticProps({ locale }) {
+  // get the locale text for the selected language:
+  const text = (await import(`../locales/${locale}/home.js`)).default;
 
-  // const response = (await SSR.API.graphql({ query: listTodos })) as {
-  //   data: ListTodosQuery;
-  // };
-
-  // return {
-  //   props: {
-  //     todos: response.data.listTodos.items,
-  //   },
-  // };
   return {
     props: {
-      todos: 'test',
+      text,
     },
   };
-};
+}
