@@ -2298,6 +2298,13 @@
   resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.15.1.tgz#a3809ecc5aa8a03bd261a2f970d11cfdcbf11c4f"
   integrity sha512-yJiDGutlwu25iajCy51VRJeoH3UMs+s5qVIDGfmPUuFpZ+F6AJ9g9EFrsBNvHxAGBahQFMLlBdzlCVydhGp6tg==
 
+"@szhsin/react-menu@^1.10.1":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-1.10.1.tgz#a09e6ce5da819afa78973d994fb446e735a0b7c6"
+  integrity sha512-41SLi9/bbZjy4cMrDONRkXuZ4trJ/Eqvd/SXNMcus7J0ZoiNp3IEVJ0yXmrm9BhhzHc9XbuS4LGTN28NkXmBPg==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@types/cookie@^0.3.3":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.3.tgz#85bc74ba782fb7aa3a514d11767832b0e3bc6803"

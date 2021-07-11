@@ -16,6 +16,7 @@
     "@hookform/resolvers": "^2.6.0",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.15.1",
+    "@szhsin/react-menu": "^1.10.1",
     "aws-amplify": "^4.1.1",
     "aws-sdk": "^2.939.0",
     "axios": "^0.21.1",

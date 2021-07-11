@@ -9,6 +9,7 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { HamburguerMenu } from './HamburguerMenu';
 import { useRouter } from 'next/router';
 import { GoSignOut } from 'react-icons/go';
+import { Dropdown } from '../Form/Dropdown';
 
 const NavBar = () => {
   const router = useRouter();
@@ -83,6 +84,9 @@ const NavBar = () => {
             </>
           ) : (
             <SignedContainer>
+              <li>
+                <Dropdown />
+              </li>
               <li>
                 <Link href="/orders">
                   <a>Pedidos</a>
