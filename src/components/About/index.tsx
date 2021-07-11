@@ -1,6 +1,7 @@
 import React from 'react';
 import { AboutCard } from './AboutCard';
-import { SiJavascript } from 'react-icons/si';
+import { SiJavascript, SiReact, SiAdobeaftereffects } from 'react-icons/si';
+import { FaNodeJs } from 'react-icons/fa';
 
 export function AboutComponent() {
   return (
@@ -15,7 +16,19 @@ export function AboutComponent() {
       <AboutCard
         {...{
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
-          icon: SiJavascript,
+          icon: FaNodeJs,
+        }}
+      />
+      <AboutCard
+        {...{
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
+          icon: SiReact,
+        }}
+      />
+      <AboutCard
+        {...{
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',
+          icon: SiAdobeaftereffects,
         }}
       />
       <p>

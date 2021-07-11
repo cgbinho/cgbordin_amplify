@@ -8,6 +8,7 @@ import HamburgerButton from './HamburguerButton';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { HamburguerMenu } from './HamburguerMenu';
 import { useRouter } from 'next/router';
+import { GoSignOut } from 'react-icons/go';
 
 const NavBar = () => {
   const router = useRouter();
@@ -38,6 +39,11 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/articles">
+              <a>Artigos</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/projects">
               <a>Projetos</a>
             </Link>
@@ -52,7 +58,7 @@ const NavBar = () => {
               <a>Sobre</a>
             </Link>
           </li>
-          <div className="vertical_line" />
+          {/* <div className="vertical_line" /> */}
           {!user ? (
             <>
               <li>
@@ -82,18 +88,22 @@ const NavBar = () => {
                   <a>Pedidos</a>
                 </Link>
               </li>
+              <div className="vertical_line"></div>
               <li>
-                <small>{email}</small>
-              </li>
-              <li>
-                <Button
+                <small>
+                  <code>{email}</code>
+                </small>
+                <a onClick={handleSignOut}>
+                  <small>Sair</small>
+                </a>
+                {/* <Button
                   width="100%"
                   height="1rem"
-                  padding="0.5rem 2rem"
+                  padding="0.5rem 0.5rem"
                   onClick={handleSignOut}
                 >
-                  Sair
-                </Button>
+                  <GoSignOut size={16} />
+                </Button> */}
               </li>
             </SignedContainer>
           )}

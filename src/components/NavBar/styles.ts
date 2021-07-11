@@ -17,11 +17,19 @@ export const Container = styled.nav`
     grid-auto-flow: column;
     align-items: center;
     list-style: none;
-    gap: 2.5rem;
+    gap: 2rem;
 
     .vertical_line {
       border-left: 2px solid var(--gray-200);
       height: 28px;
+    }
+
+    li {
+      display: grid;
+      grid-template-rows: auto;
+      justify-items: center;
+      align-items: center;
+      gap: 0.2rem;
     }
 
     @media (max-width: 920px) {

@@ -59,6 +59,7 @@ export function HamburguerMenu() {
         <MenuItem {...{ label: 'Início', path: '/' }} />
         {!user && <GuestMenu />}
         <MenuItem {...{ label: 'Sobre', path: '/about' }} />
+        <MenuItem {...{ label: 'Artigos', path: '/articles' }} />
         <MenuItem {...{ label: 'Projetos', path: '/projects' }} />
         <MenuItem {...{ label: 'Aepzera', path: '/aepzera' }} />
         {user && <LoggedMenu />}

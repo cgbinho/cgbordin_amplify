@@ -28,8 +28,6 @@ export default function Home({ text }) {
   const trabalhosRef = useRef(null);
   const router = useRouter();
 
-  console.log('text', text);
-
   async function handleCreateTodo(event) {
     event.preventDefault();
 
