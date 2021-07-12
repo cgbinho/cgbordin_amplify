@@ -9,7 +9,7 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { HamburguerMenu } from './HamburguerMenu';
 import { useRouter } from 'next/router';
 import { GoSignOut } from 'react-icons/go';
-import { Dropdown } from '../Form/Dropdown';
+import { DropdownUserMenu } from '../Form/DropdownUserMenu';
 
 const NavBar = () => {
   const router = useRouter();
@@ -84,30 +84,9 @@ const NavBar = () => {
             </>
           ) : (
             <SignedContainer>
-              <li>
-                <Dropdown />
-              </li>
-              <li>
-                <Link href="/orders">
-                  <a>Pedidos</a>
-                </Link>
-              </li>
               <div className="vertical_line"></div>
               <li>
-                <small>
-                  <code>{email}</code>
-                </small>
-                <a onClick={handleSignOut}>
-                  <small>Sair</small>
-                </a>
-                {/* <Button
-                  width="100%"
-                  height="1rem"
-                  padding="0.5rem 0.5rem"
-                  onClick={handleSignOut}
-                >
-                  <GoSignOut size={16} />
-                </Button> */}
+                <DropdownUserMenu />
               </li>
             </SignedContainer>
           )}

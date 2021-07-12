@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const DropdownContainer = styled.div`
+  .dropdown_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
   .rc-menu-container--theme-dark .rc-menu {
     /* color: #cad1d8; */
     color: var(--primary);
