@@ -9,7 +9,6 @@ const articlesDirectory = join(process.cwd(), 'src', '_articles');
 
 export function getArticleSlugs() {
   const files = fs.readdirSync(articlesDirectory);
-  console.log({ files });
   return files;
 }
 
@@ -18,9 +17,6 @@ export function getArticleBySlug(slug: string, fields: string[] = []) {
   const fullPath = join(articlesDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  console.log(data);
-  console.log(content);
-  console.log({ fields });
 
   type Items = {
     [key: string]: string;

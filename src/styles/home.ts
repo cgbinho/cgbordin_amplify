@@ -14,8 +14,8 @@ export const Container = styled.div`
     justify-items: center;
     align-items: center;
     gap: 3rem;
-    max-width: 950px;
     padding: 2rem 0;
+    /* max-width: 950px; */
   }
 
   hr {

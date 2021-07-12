@@ -11,8 +11,6 @@ import { Container } from '../../styles/home';
 import { ArticleContainer } from './styles';
 
 export default function ArticlePage({ article }) {
-  console.log(article);
-
   return (
     <Layout>
       <Container>
@@ -22,9 +20,10 @@ export default function ArticlePage({ article }) {
         <ArticleContainer>
           <main>
             <div>
-              <h2>{article.title}</h2>
-              <p>{article.excerpt}</p>
               <DateFormatter dateString={article.date} />
+              <h2>
+                {article.title} - {article.excerpt}
+              </h2>
             </div>
             <div>
               <div dangerouslySetInnerHTML={{ __html: article.content }} />
@@ -42,8 +41,8 @@ export async function getStaticProps({ params }) {
     'date',
     'slug',
     'author',
+    'excerpt',
     'content',
-    'ogImage',
     'coverImage',
   ]);
 

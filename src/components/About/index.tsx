@@ -6,7 +6,7 @@ import { FaNodeJs } from 'react-icons/fa';
 export function AboutComponent() {
   return (
     <section className="content">
-      <h3>Sobre</h3>
+      <h3 id="about">Sobre</h3>
       <AboutCard
         {...{
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam, nisi non senectus sagittis, tortor et euismod.',

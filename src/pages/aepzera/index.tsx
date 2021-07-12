@@ -118,7 +118,7 @@ const Aepzera = () => {
             forma mais rápida, sozinho ou em equipe.
           </p>
           <img
-            src="/images/aepzera_interface_home.png"
+            src="/images/aepzera/aepzera_interface_home.png"
             alt="Aepzera Home Interface"
           />
           <div>
@@ -140,13 +140,13 @@ const Aepzera = () => {
                 </ol>
               </aside>
               <img
-                src="/images/aepzera_create_master_aep.png"
+                src="/images/aepzera/aepzera_create_master_aep.png"
                 alt="Create Master Aep"
               />
             </section>
             <section>
               <img
-                src="/images/aepzera_save_aep_file.png"
+                src="/images/aepzera/aepzera_save_aep_file.png"
                 alt="Save Aep File"
               />
               <aside>
@@ -167,13 +167,13 @@ const Aepzera = () => {
                 </p>
               </aside>
               <img
-                src="/images/aepzera_remove_metadata_from_aep.png"
+                src="/images/aepzera/aepzera_remove_metadata_from_aep.png"
                 alt="Remove Aep Metadata"
               />
             </section>
             <section>
               <img
-                src="/images/aepzera_create_comment_thread.png"
+                src="/images/aepzera/aepzera_create_comment_thread.png"
                 alt="Create Comment Thread"
               />
               <aside>
@@ -184,7 +184,10 @@ const Aepzera = () => {
                   integrantes da equipe.
                 </p>
               </aside>
-              <img src="/images/aepzera_comments.png" alt="Create Comment" />
+              <img
+                src="/images/aepzera/aepzera_comments.png"
+                alt="Create Comment"
+              />
               <p>
                 Você também pode especificar uma prioridade para cada mensagem
                 enviada com 'low', 'medium', 'high'.
@@ -205,7 +208,7 @@ const Aepzera = () => {
                 </p>
               </aside>
               <img
-                src="/images/aepzera_create_render.png"
+                src="/images/aepzera/aepzera_create_render.png"
                 alt="Create Render"
               />
               <p>
@@ -219,13 +222,13 @@ const Aepzera = () => {
                 pastas em seus projetos.
               </p>
               <img
-                src="/images/aepzera_create_render_select.png"
+                src="/images/aepzera/aepzera_create_render_select.png"
                 alt="Create Render Select"
               />
             </section>
             <section>
               <img
-                src="/images/aepzera_set_custom_folders_aep.png"
+                src="/images/aepzera/aepzera_set_custom_folders_aep.png"
                 alt="Set Custom Project Folders"
               />
               <aside>
@@ -247,11 +250,14 @@ const Aepzera = () => {
                   vídeos e comentários criados para o seu projeto.
                 </p>
               </aside>
-              <img src="/images/aepzera_projects.png" alt="Create Render" />
+              <img
+                src="/images/aepzera/aepzera_projects.png"
+                alt="Create Render"
+              />
             </section>
             <section>
               <img
-                src="/images/aepzera_set_custom_folders_aep.png"
+                src="/images/aepzera/aepzera_set_custom_folders_aep.png"
                 alt="Set Custom Folders Aep"
               />
               <aside>
@@ -264,7 +270,7 @@ const Aepzera = () => {
                 </p>
               </aside>
               <img
-                src="/images/aepzera_set_custom_folders_renders.png"
+                src="/images/aepzera/aepzera_set_custom_folders_renders.png"
                 alt="Set Custom Folders Renders"
               />
               <p>

@@ -5,8 +5,8 @@ export const ArticlesContent = styled.div`
   grid-auto-flow: row;
   justify-content: center;
   align-items: center;
-  margin: 2rem;
-  gap: 1rem;
+  margin-top: 2rem;
+  /* gap: 1rem; */
 
   > h3 {
     text-align: center;
@@ -14,7 +14,7 @@ export const ArticlesContent = styled.div`
 
   section {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-auto-flow: row;
     align-items: center;
     justify-items: flex-start;
     align-items: flex-start;
@@ -23,6 +23,16 @@ export const ArticlesContent = styled.div`
     padding: 2rem;
     background-color: var(--gray-170);
     border-radius: 4px;
+  }
+
+  .article_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    align-items: center;
+    justify-items: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
   }
 `;
 
@@ -48,12 +58,59 @@ export const ArticleContainer = styled.div`
     height: 100%;
   }
 
+  h2 {
+    line-height: 1.4;
+  }
+
+  p {
+    margin: 1rem 0;
+    line-height: 1.4;
+  }
+
+  pre {
+    background-color: var(--gray-100);
+    border-radius: 4px;
+    padding: 1rem;
+  }
+
+  a {
+    color: var(--scent-450);
+
+    &:hover {
+      color: var(--scent-550);
+    }
+  }
+
   img {
     width: 100%;
-    padding-top: 1rem;
+    display: block;
+    margin: 1rem auto;
+    border: 2px solid var(--gray-100);
+    box-shadow: 4px 4px 16px var(--gray-100);
   }
-  em {
-    text-align: justify;
-    text-justify: inter-word;
+
+  img[src*='width_auto'] {
+    text-align: center;
+    width: auto;
+  }
+
+  img[src*='width_80'] {
+    text-align: center;
+    width: 80%;
+  }
+
+  img[src*='width_100'] {
+    text-align: center;
+    width: 100%;
+  }
+
+  img[src~='bordered'] {
+    border: 2px solid var(--gray-100);
+  }
+
+  img + em {
+    padding-bottom: 0.5rem;
+    display: block;
+    text-align: center;
   }
 `;

@@ -31,6 +31,7 @@ export default createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   outline: 0;
+  scroll-behavior: smooth;
 }
 
 body {

@@ -66,7 +66,6 @@ export const AuthProvider: React.FC = ({ children }) => {
         setData(user);
       })
       .catch(() => {
-        console.log('not authenticated.');
         setData(null);
       });
   });

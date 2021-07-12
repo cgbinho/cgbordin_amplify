@@ -15,23 +15,25 @@ export default function Articles({ allArticles }) {
       </Head>
       <ArticlesContent>
         <h3>Artigos</h3>
-        {allArticles.map(
-          ({ slug, date, title, excerpt, coverImage }, index) => (
-            <section key={index}>
-              <img src={coverImage} alt={title} width="100%" />
-              <aside>
-                <Link href={`/articles/${slug}`}>
-                  <a>
-                    <h4>{title}</h4>
-                  </a>
-                </Link>
-                <p>{excerpt}</p>
-                <br />
-                <DateFormatter dateString={date} />
-              </aside>
-            </section>
-          )
-        )}
+        <div className="article_list">
+          {allArticles.map(
+            ({ slug, date, title, excerpt, coverImage }, index) => (
+              <section key={index}>
+                <img src={coverImage} alt={title} width="100%" />
+                <aside>
+                  <Link href={`/articles/${slug}`}>
+                    <a>
+                      <h4>{title}</h4>
+                    </a>
+                  </Link>
+                  <p>{excerpt}</p>
+                  <br />
+                  <DateFormatter dateString={date} />
+                </aside>
+              </section>
+            )
+          )}
+        </div>
       </ArticlesContent>
     </Layout>
   );
