@@ -5,7 +5,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Head from 'next/head';
 
-import { ArticlesContent } from './styles';
+import { ArticlesContent } from '../../styles/articles';
 
 export default function Articles({ allArticles }) {
   return (

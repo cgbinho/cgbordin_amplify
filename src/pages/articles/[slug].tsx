@@ -8,7 +8,7 @@ import {
 } from '../../helpers/articles/api_articles';
 import markdownToHtml from '../../helpers/markdownToHtml';
 import { Container } from '../../styles/home';
-import { ArticleContainer } from './styles';
+import { ArticleContainer } from '../../styles/articles';
 
 export default function ArticlePage({ article }) {
   return (
