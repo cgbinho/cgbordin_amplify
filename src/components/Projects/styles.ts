@@ -38,5 +38,6 @@ export const ProjectsContent = styled.div`
     gap: 2rem;
     padding: 2rem;
     border-radius: 4px;
+    /* max-width: 980px; */
   }
 `;

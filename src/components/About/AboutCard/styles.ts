@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const AboutCardContainer = styled.div`
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: auto auto;
   justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.5rem;
 `;

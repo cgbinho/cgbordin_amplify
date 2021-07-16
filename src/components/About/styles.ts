@@ -14,4 +14,12 @@ export const AboutContainer = styled.div`
   h3 {
     text-align: center;
   }
+
+  .about_tecnologies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    justify-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
 `;

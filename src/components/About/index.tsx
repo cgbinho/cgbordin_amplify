@@ -1,7 +1,13 @@
 import React from 'react';
 import { AboutCard } from './AboutCard';
-import { SiJavascript, SiReact, SiAdobeaftereffects } from 'react-icons/si';
-import { FaNodeJs } from 'react-icons/fa';
+import {
+  SiJavascript,
+  SiReact,
+  SiAdobeaftereffects,
+  SiHtml5,
+  SiCss3,
+  SiAdobeillustrator,
+} from 'react-icons/si';
 import { ExtendScriptLogo } from '../Logos/extendscript_logo';
 import { AboutContainer } from './styles';
 
@@ -10,65 +16,80 @@ export function AboutComponent() {
     <AboutContainer>
       <h3 id="about">Sobre</h3>
       <p>
-        Meu nome é Cleber Galves Bordin, sou de São Paulo, Capital – Brasil.
-        <br />
-        Sou formado em Desenho Industrial com especialização em Programação
-        Visual pela Universidade Presbiteriana Mackenzie. <br />
+        Meu nome é Cleber Galves Bordin, sou de São Paulo, Capital – Brasil. Sou
+        formado em Desenho Industrial com especialização em Programação Visual
+        pela Universidade Presbiteriana Mackenzie. <br />
+      </p>
+      <h4>Experiência</h4>
+      <p>
         Trabalho com computação gráfica desde 2003, diretamente com criação de
         personagens, cenários e animação para o mercado publicitário brasileiro.
         No Mercado Publicitário tive o prazer de trabalhar com diversas
-        produtoras, usando minhas ferramentas principais: o Adobe After Effects
-        e o Autodesk 3dsMax. <br />
-        Durante a pré-produção e a produção dos projetos, eu faço uma pesquisa e
-        desenvolvimento de algumas idéias que podem acelerar a produção. <br />
-        Esta prática me levou ao primeiro contato com programação em
-        ExtendScript / Javascript , com o intuito de automatizar tarefas e
-        acelerar a entrega do trabalho. <br />
+        produtoras, usando primariamente o pacote de softwares da Adobe
+        Photoshop, Illustrator, Adobe After Effects e também o Autodesk 3dsMax.
+      </p>
+      <p>
         Em 2011, criei a Pictovalley Studio, uma empresa de vídeos animados
         explicativos e institucionais direcionada a empresas que queiram
-        explicar suas idéias e compartilha-las na internet e por meio da
-        Pictovalley Studio. Desde então esta base de conhecimento de Javascript
-        me abriu maiores possibilidades de aprendizado em Node.js e React,
-        quando resolvi expandir meu conhecimento para desenvolvimento web.
-        <br />
-        Este website é um reflexo do meu estudo em desenvolvimento web, onde
-        criei sua base em React com o framework Next.js. <br />
-        Compartilharei aqui algumas dessas idéias e scripts para quem sabe,
-        inspirar e também trocar experiências entre nós artistas de computação
-        gráfica.
+        explicar suas idéias e compartilha-las na internet. Durante a
+        pré-produção e a produção dos projetos, eu faço uma pesquisa e
+        desenvolvimento de algumas idéias que podem acelerar a produção. Esta
+        prática me levou ao primeiro contato com programação em ExtendScript /
+        Javascript, com a criação de ferramentas que auxiliam abrir, salvar
+        arquivos, enviar renders para o Adobe Media Encoder, criar rigs de
+        personagens, cenários, luzes e acelerar o fluxo de trabalho em geral.
       </p>
-      <h4>ExtendScript</h4>
+      <p>
+        Desde então esta base de conhecimento de Javascript me abriu maiores
+        possibilidades de aprendizado em Node.js e React, quando resolvi
+        expandir meu conhecimento para desenvolvimento web.
+      </p>
 
-      <AboutCard
-        {...{
-          text: 'Javascript',
-          icon: SiJavascript,
-        }}
-      />
-      <AboutCard
-        {...{
-          text: 'Adobe After Effects',
-          icon: SiAdobeaftereffects,
-        }}
-      />
-      <AboutCard
-        {...{
-          text: 'Adobe ExtendScript',
-          icon: ExtendScriptLogo,
-        }}
-      />
-      <AboutCard
-        {...{
-          text: 'Node.js - ',
-          icon: FaNodeJs,
-        }}
-      />
-      <AboutCard
-        {...{
-          text: 'React',
-          icon: SiReact,
-        }}
-      />
+      <p>
+        Este website é um reflexo do meu estudo em desenvolvimento web, onde
+        criei sua base em React com o framework Next.js, com uso do Aws Amplify,
+        Aws Cognito.
+      </p>
+
+      <h4>Tecnologias</h4>
+      <div className="about_tecnologies">
+        <AboutCard
+          {...{
+            text: 'Html',
+            icon: SiHtml5,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Css',
+            icon: SiCss3,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Javascript',
+            icon: SiJavascript,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Adobe After Effects',
+            icon: SiAdobeaftereffects,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Adobe Illustrator',
+            icon: SiAdobeillustrator,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Adobe ExtendScript',
+            icon: ExtendScriptLogo,
+          }}
+        />
+      </div>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat diam,
         nisi non senectus sagittis, tortor et euismod.

@@ -59,7 +59,7 @@ const NavBar = () => {
               <a>Sobre</a>
             </Link>
           </li>
-          {/* <div className="vertical_line" /> */}
+          <div className="vertical_line" />
           {!user ? (
             <>
               <li>
@@ -84,7 +84,6 @@ const NavBar = () => {
             </>
           ) : (
             <SignedContainer>
-              <div className="vertical_line"></div>
               <li>
                 <DropdownUserMenu />
               </li>
