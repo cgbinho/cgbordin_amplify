@@ -5,7 +5,7 @@ import { AboutCardContainer } from './styles';
 export function AboutCard({ text, icon: Icon }) {
   return (
     <AboutCardContainer>
-      <Icon size={40} />
+      <Icon size={28} />
       <p>{text}</p>
     </AboutCardContainer>
   );

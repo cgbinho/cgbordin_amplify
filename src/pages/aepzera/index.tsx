@@ -20,7 +20,7 @@ import { fetchPostJSON } from '../../helpers/api';
 import { VideoCard } from '../../components/Projects/VideoCard';
 import { AepzeraLogo } from '../../components/Logos/aepzera_logo';
 import { VideoPlyr } from '../../components/VideoPlyr';
-import { AepzeraCard, AepzeraContent } from './styles';
+import { AepzeraCard, AepzeraContent } from '../../styles/aepzera';
 
 interface IPrice extends Stripe.Price {
   product: Stripe.Product;

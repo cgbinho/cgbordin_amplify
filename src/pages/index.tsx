@@ -20,6 +20,7 @@ import { AboutCard } from '../components/About/AboutCard';
 import { AboutComponent } from '../components/About';
 import { ProjectsComponent } from '../components/Projects';
 import { AepzeraComponent } from '../components/Aepzera';
+import { WelcomeCard } from '../components/WelcomeCard';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -105,6 +106,8 @@ export default function Home({ text }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
+        <WelcomeCard />
+
         <AepzeraComponent />
         <hr />
         <ProjectsComponent />

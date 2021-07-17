@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { AepzeraCard } from '../../pages/aepzera/styles';
+import { AepzeraCard } from '../../styles/aepzera';
 import { AepzeraLogo } from '../Logos/aepzera_logo';
 import { VideoPlyr } from '../VideoPlyr';
 import Button from '../Form/Button';
