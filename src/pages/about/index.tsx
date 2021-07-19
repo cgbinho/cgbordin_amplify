@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import { useAuth } from '../../contexts/auth';
 import { Container } from '../../styles/home';
 
-const About = () => {
+const About = ({ content }) => {
   const { user, isLoading, isError, signUp } = useAuth();
 
   const router = useRouter();
@@ -17,7 +17,7 @@ const About = () => {
         <title>CGBORDIN - Cleber Galves Bordin - Sobre</title>
       </Head>
       <Container>
-        <AboutComponent />
+        <AboutComponent {...{ content }} />
       </Container>
     </Layout>
   );

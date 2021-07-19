@@ -14,6 +14,18 @@ import { DropdownUserMenu } from '../Form/DropdownUserMenu';
 const NavBar = () => {
   const router = useRouter();
 
+  const { locale } = router;
+
+  // const contentNavbar = {
+  //   en: {
+  //     home: 'Home',
+  //   },
+  //   'pt-BR': { home: 'Início' },
+  // };
+
+  // const content = contentNavbar[locale];
+  // console.log({ content });
+
   const [openBurguer, setOpenBurguer] = useState<boolean>(false);
   const { user, signOut } = useAuth();
   const email = user?.email;

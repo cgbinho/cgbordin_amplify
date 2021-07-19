@@ -49,6 +49,5 @@ export function getAllArticles(fields: string[] = []) {
     // sort articles by date in descending order
     .sort((article1, article2) => (article1.date > article2.date ? -1 : 1));
 
-  console.log({ articles });
   return articles;
 }

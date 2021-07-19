@@ -6,6 +6,7 @@ export const ProjectsContent = styled.div`
   margin: 2rem 0;
   gap: 1rem;
   width: 100%;
+  max-width: 650px;
 
   > h3 {
     text-align: center;
@@ -38,6 +39,5 @@ export const ProjectsContent = styled.div`
     gap: 2rem;
     padding: 2rem;
     border-radius: 4px;
-    /* max-width: 980px; */
   }
 `;

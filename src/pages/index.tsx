@@ -21,10 +21,11 @@ import { AboutComponent } from '../components/About';
 import { ProjectsComponent } from '../components/Projects';
 import { AepzeraComponent } from '../components/Aepzera';
 import { WelcomeCard } from '../components/WelcomeCard';
+import { getSectionByLocale } from '../helpers/api_locale/api_locales';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
-export default function Home({ text }) {
+export default function Home({ contentProjects, contentAbout }) {
   const { user, isLoading, isError, signUp, signIn, signOut } = useAuth();
   const trabalhosRef = useRef(null);
   const router = useRouter();
@@ -107,12 +108,9 @@ export default function Home({ text }) {
       </Head>
       <Container>
         <WelcomeCard />
-
         <AepzeraComponent />
-        <hr />
-        <ProjectsComponent />
-        <hr />
-        <AboutComponent />
+        <ProjectsComponent {...{ content: contentProjects }} />
+        <AboutComponent {...{ content: contentAbout }} />
       </Container>
     </Layout>
   );
@@ -120,11 +118,15 @@ export default function Home({ text }) {
 
 export async function getStaticProps({ locale }) {
   // get the locale text for the selected language:
-  const text = (await import(`../locales/${locale}/home.js`)).default;
-
+  const contentProjects = (await import(`../locales/${locale}/projects.js`))
+    .default;
+  const contentAbout = (await import(`../locales/${locale}/about.js`)).default;
+  // const contentAbout = await getSectionByLocale('about', locale);
+  console.log(contentAbout);
   return {
     props: {
-      text,
+      contentProjects,
+      contentAbout,
     },
   };
 }
