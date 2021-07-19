@@ -16,7 +16,7 @@ import { Container } from '../../styles/home';
 import { ModalContainer } from '../../styles/modal';
 import { FormContainer } from '../../styles/form';
 
-const SignIn = () => {
+const SignIn = ({ content }) => {
   const { user, isLoading, isError, signIn } = useAuth();
 
   const router = useRouter();
@@ -46,7 +46,7 @@ const SignIn = () => {
         <title>CGBORDIN.com - Entrar</title>
       </Head>
       <Container>
-        <h1>Entrar</h1>
+        <h1>{content.title}</h1>
         <form onSubmit={onSubmit} method="post">
           <FormContainer>
             <Input
@@ -68,7 +68,7 @@ const SignIn = () => {
               errors={errors?.password}
             />
             <Link href="/forgot-password">
-              <a>Esqueci a senha</a>
+              <a>{content.forgot_password}</a>
             </Link>
             <Button
               type="submit"
@@ -78,7 +78,7 @@ const SignIn = () => {
               height="40px"
               padding="1em"
             >
-              Entrar
+              {content.action_button}
             </Button>
             {isError && <p className="error_message">{isError}</p>}
           </FormContainer>
@@ -92,7 +92,7 @@ const SignIn = () => {
 };
 
 // We are getting the project with an authenticated user, serverside. Beautiful:
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res, locale }) {
   const user = await getCurrentAuthenticatedUser(req);
   if (user) {
     return {
@@ -102,7 +102,10 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   }
-  return { props: { user } };
+
+  const content = (await import(`../../locales/${locale}/sign_in.js`)).default;
+
+  return { props: { content } };
 }
 
 export default SignIn;

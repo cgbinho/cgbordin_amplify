@@ -16,7 +16,7 @@ import { Container } from '../../styles/home';
 import { ModalContainer } from '../../styles/modal';
 import { FormContainer } from '../../styles/form';
 
-const SignUp = () => {
+const SignUp = ({ content }) => {
   const { user, isLoading, isError, signUp } = useAuth();
 
   const router = useRouter();
@@ -47,7 +47,7 @@ const SignUp = () => {
         <title>CGBORDIN.com - Cadastrar</title>
       </Head>
       <Container>
-        <h1>Cadastrar</h1>
+        <h1>{content.title}</h1>
         <form onSubmit={onSubmit} method="post">
           <FormContainer>
             <Input
@@ -61,7 +61,7 @@ const SignUp = () => {
             />
             <Input
               name="password"
-              label="Password"
+              label={`${content.password}`}
               type="password"
               placeholder="********"
               icon={FiLock}
@@ -70,7 +70,7 @@ const SignUp = () => {
             />
             <Input
               name="password_confirmation"
-              label="Confirm Password"
+              label={`${content.password_confirmation}`}
               type="password"
               placeholder="********"
               icon={FiLock}
@@ -85,7 +85,7 @@ const SignUp = () => {
               height="40px"
               padding="1em"
             >
-              Entrar
+              {content.action_button}
             </Button>
             {isError && <p className="error_message">{isError}</p>}
           </FormContainer>
@@ -99,7 +99,7 @@ const SignUp = () => {
 };
 
 // We are getting the project with an authenticated user, serverside. Beautiful:
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res, locale }) {
   const user = await getCurrentAuthenticatedUser(req);
   if (user) {
     return {
@@ -109,6 +109,9 @@ export async function getServerSideProps({ req, res }) {
       },
     };
   }
-  return { props: { user } };
+  const content = (await import(`../../locales/${locale}/sign_up.js`)).default;
+
+  return { props: { content } };
 }
+
 export default SignUp;

@@ -6,7 +6,7 @@ export const ProjectsContent = styled.div`
   margin: 2rem 0;
   gap: 1rem;
   width: 100%;
-  max-width: 650px;
+  max-width: 850px;
 
   > h3 {
     text-align: center;

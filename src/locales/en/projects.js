@@ -1,37 +1,31 @@
 export default {
   title: 'Projects',
   bayer: {
-    description: `Projeto realizado pelo Motion Hand para a Huawei, meu papel na produção
-    foi criar o setup das composições de cada cena: criando os planos 3D dos
-    cenários, rig de todos os personagens, luzes e granulados.`,
-    tools: `Softwares: Adobe After Effects, Adobe Photoshop e Adobe Illustrator.
-    Ferramentas / Scripts: Duik, puppet pin e scripts autorais para acelerar
-    o processo de setup de braços, pernas, dedos e luzes das cenas.`,
+    description: `Project made by Motion Hand for Bayer, my role in production
+    was to create the setup of the compositions for each scene: creating 3D planes for scenarios, rig all characters, lights and grains.`,
+    tools: `Softwares: Adobe After Effects, Adobe Photoshop and Adobe Illustrator.
+    Tools / Scripts: Duik, puppet pin and custom scripts I created to speed up
+    the process of setting up arms, legs, fingers and scene lights.`,
   },
   huawei: {
-    description: `Projeto realizado pelo Motion Hand para a Huawei, meu papel na
-    produção foi bem parecido com o do projeto da Bayer: criar o setup
-    das composições de cada cena, montando os planos 3D dos cenários,
-    rig de todos os personagens, luzes e granulados.`,
-    tools: `Softwares: Adobe After Effects, Adobe Photoshop e Adobe
-    Illustrator.
-    Ferramentas / Scripts: Duik, puppet pin e scripts autorais para
-    acelerar o processo de setup de braços, pernas, dedos e luzes das
-    cenas.`,
+    description: `Project made by MotionHand for Huawei, my role in
+    production was very similar to the Bayer project: creating the setup
+    of the compositions of each scene, creating 3D planes for scenarios, rig all characters, lights and grains.`,
+    tools: `Softwares: Adobe After Effects, Adobe Photoshop and Adobe Illustrator.
+    Tools / Scripts: Duik, puppet pin and custom scripts I created to speed up
+    the process of setting up arms, legs, fingers and scene lights.`,
   },
   skoland: {
-    description: `Projeto realizado pela F/Nazca, onde fui responsável pelo setup e animação do personagem, microfone, criação do 3D e animação das latas fantasiadas.`,
-    tools: `Softwares: Adobe After Effects, Adobe Photoshop e Adobe
-    Illustrator.
-    Ferramentas / Scripts: Duik, puppet pin e scripts autorais para
-    acelerar o processo de setup de braços, pernas, dedos e luzes das
-    cenas.`,
+    description: `Project made by F/Nazca, where I was responsible for the setup and animation of the stick 2D character, microphone, 3D creation, setup and animation of all cans.`,
+    tools: `Softwares: Autodesk 3DsMax, Adobe After Effects, Adobe Photoshop and Adobe Illustrator.
+    Tools / Scripts: Duik, puppet pin and custom scripts I created to speed up
+    the process.`,
   },
   hostfiber: {
-    description: `Projeto realizado pela Pictovalley Studio, com o roteiro enviado pelo cliente, fui responsável pela criação de toda direção de arte, animação e finalização de todo o vídeo.`,
+    description: `Project made by Pictovalley Studio, with the script sent by the client, I was responsible for creating the entire art direction, animation and finishing touches of the video.`,
     tools: `Softwares: Adobe After Effects, Adobe Photoshop e Adobe
     Illustrator.
-    Ferramentas / Scripts: Duik, puppet pin, scripts autorais para
-    acelerar o processo de setup de personagens e linhas que formam os elementos 2D.`,
+    Tools / Scripts: Duik, puppet pin, custom scripts I created to speed up
+    the creation of 2D lines.`,
   },
 };

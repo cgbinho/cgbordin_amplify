@@ -17,12 +17,20 @@ export function AboutComponent({ content }) {
   return (
     <AboutContainer>
       <h3 id="about">{content.title}</h3>
-      <p>
-        {content.description}
-        <br />
-      </p>
+      <p>{content.description}</p>
+
+      <img
+        className="img_rounded"
+        src="/images/profile.jpg"
+        alt="Cleber Galves Bordin"
+        width="100%"
+      />
       <h4>{content.experience.title}</h4>
-      <p>{content.experience.description}</p>
+      <p>{content.experience.description_01}</p>
+      <p>{content.experience.description_02}</p>
+      <p>{content.experience.description_03}</p>
+      <p>{content.experience.description_04}</p>
+      <p>{content.experience.description_05}</p>
       <h4>{content.technologies.title}</h4>
       <div className="about_tecnologies">
         <AboutCard

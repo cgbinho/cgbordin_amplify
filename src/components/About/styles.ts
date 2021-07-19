@@ -22,4 +22,7 @@ export const AboutContainer = styled.div`
     gap: 1rem;
     width: 100%;
   }
+  .img_rounded {
+    border-radius: 8px;
+  }
 `;

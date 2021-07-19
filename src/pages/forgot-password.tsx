@@ -16,7 +16,7 @@ import { Container } from '../styles/home';
 import { ModalContainer } from '../styles/modal';
 import { FormContainer } from '../styles/form';
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ content }) => {
   const { user, forgotPassword, isLoading, isError, signIn } = useAuth();
 
   const router = useRouter();
@@ -45,11 +45,8 @@ const ForgotPassword = () => {
         <title>CGBORDIN.com - Entrar</title>
       </Head>
       <Container>
-        <h1>Esqueceu a senha?</h1>
-        <p>
-          Insira abaixo o seu email, assim enviaremos instruções para gerar uma
-          senha nova.
-        </p>
+        <h1>{content.title}</h1>
+        <p>{content.description}</p>
         <form onSubmit={onSubmit} method="post">
           <FormContainer>
             <Input
@@ -69,7 +66,7 @@ const ForgotPassword = () => {
               height="40px"
               padding="1em"
             >
-              Enviar
+              {content.action_button}
             </Button>
             {isError && <p className="error_message">{isError}</p>}
           </FormContainer>
@@ -82,18 +79,16 @@ const ForgotPassword = () => {
   );
 };
 
-// We are getting the project with an authenticated user, serverside. Beautiful:
-// export async function getServerSideProps({ req, res }) {
-//   const user = await getCurrentAuthenticatedUser(req);
-//   if (!user) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return { props: { user } };
-// }
+export async function getStaticProps({ locale }) {
+  // get the locale text for the selected language:
+  const content = (await import(`../locales/${locale}/forgot_password.js`))
+    .default;
+
+  return {
+    props: {
+      content,
+    },
+  };
+}
 
 export default ForgotPassword;

@@ -30,32 +30,18 @@ interface IProps {
   prices: IPrice[];
 }
 
-const Aepzera = () => {
-  const router = useRouter();
-
+const Aepzera = ({ content, currency }) => {
   const { user } = useAuth();
   // get list of products from api:
   const {
     data: prices,
     isLoading,
     isError,
-  } = useProducts({ currency: 'brl', product: 'Aepzera' });
+  } = useProducts({ currency, product: 'Aepzera' });
 
   const handleClick = async (price) => {
     console.log(price);
     const stripe = await getStripe();
-
-    // const response = await fetch('/api/checkout_session', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     price_id: price.id,
-    //     customer_email: user.email,
-    //   }),
-    // });
 
     // const session = await response.json();
     const response = await fetchPostJSON('/api/checkout_session', {
@@ -93,10 +79,7 @@ const Aepzera = () => {
             <AepzeraLogo />
             <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
             <aside>
-              <p>
-                Aepzera ajuda a manter sua pipeline de produção organizada no
-                After Effects e agiliza o seu workflow.
-              </p>
+              <p>{content.description}</p>
               <Button
                 primary
                 width="100%"
@@ -104,19 +87,16 @@ const Aepzera = () => {
                 padding=".8rem 2rem"
                 onClick={() => handleClick(prices)}
               >
-                Comprar R$ {((prices?.unit_amount as number) / 100).toFixed(2)}
+                {content.action_button}
+                {((prices?.unit_amount as number) / 100).toFixed(2)}
               </Button>
             </aside>
           </AepzeraCard>
         )}
 
         <AepzeraContent>
-          <h3>Como funciona</h3>
-          <p>
-            Configure a estrutura de pastas que você está acostumado a utilizar
-            em seus projetos e deixe que o Aepzera irá ajudá-lo a trabalhar de
-            forma mais rápida, sozinho ou em equipe.
-          </p>
+          <h3>{content.how_it_works.title}</h3>
+          <p>{content.how_it_works.description}</p>
           <img
             src="/images/aepzera/aepzera_interface_home.png"
             alt="Aepzera Home Interface"
@@ -124,19 +104,11 @@ const Aepzera = () => {
           <div>
             <section>
               <aside>
-                <h3>New Master Aep</h3>
-                <p> Crie um novo arquivo aep em 2 opções customizadas:</p>
+                <h3>{content.new_master_aep.title}</h3>
+                <p> {content.new_master_aep.description_01}</p>
                 <ol>
-                  <li>
-                    1. Utilizando como base o arquivo que está aberto, porém já
-                    criando uma subpasta para este arquivo. Útil para organizar
-                    arquivos aep de cenas diferentes em estruturas de pastas
-                    próprias.
-                  </li>
-                  <li>
-                    2. Cria o arquivo aep utilizando um arquivo template que
-                    você tenha criado.
-                  </li>
+                  <li>{content.new_master_aep.description_02}</li>
+                  <li>{content.new_master_aep.description_03}</li>
                 </ol>
               </aside>
               <img
@@ -150,21 +122,14 @@ const Aepzera = () => {
                 alt="Save Aep File"
               />
               <aside>
-                <h3>Save Aep File</h3>
-                <p>
-                  Salve o arquivo aep aberto com metadata adicionais ( como
-                  username e email). Útil na identificação de quem foi o último
-                  usuário da equipe a modificar este aep.
-                </p>
+                <h3>{content.save_aep_file.title}</h3>
+                <p>{content.save_aep_file.description_01}</p>
               </aside>
             </section>
             <section>
               <aside>
-                <h3>Remove Aep Metadata</h3>
-                <p>
-                  Como o título diz, remove a metadata ( username e email ) do
-                  arquivo aep aberto.
-                </p>
+                <h3>{content.remove_aep_metadata.title}</h3>
+                <p>{content.remove_aep_metadata.description_01}</p>
               </aside>
               <img
                 src="/images/aepzera/aepzera_remove_metadata_from_aep.png"
@@ -177,50 +142,33 @@ const Aepzera = () => {
                 alt="Create Comment Thread"
               />
               <aside>
-                <h3>New Comment Thread</h3>
-                <p>
-                  Cria um novo arquivo com o seu comentário, em uma pasta de
-                  comentários em seu projeto. Útil na comunicação entre os
-                  integrantes da equipe.
-                </p>
+                <h3>{content.new_comment_thread.title}</h3>
+                <p>{content.new_comment_thread.description_01}</p>
               </aside>
               <img
                 src="/images/aepzera/aepzera_comments.png"
                 alt="Create Comment"
               />
-              <p>
-                Você também pode especificar uma prioridade para cada mensagem
-                enviada com 'low', 'medium', 'high'.
-              </p>
+              <p>{content.new_comment_thread.description_02}</p>
             </section>
             <section>
               <aside>
-                <h3>Create Render</h3>
-                <p>
-                  Esta opção facilita o seu envio de renders para o Adobe Media
-                  Encoder. <br />
-                  Você especifica um nome do arquivo ( por padrão o Aepzera
-                  sugere o nome do aep aberto como nome ) e também escolhe entre
-                  as pastas de render comuns de seu projeto. <br />
-                  Você também pode optar por incluir no caminho do arquivo uma
-                  subpasta com o formato de data 'DD/MM/AA', para melhorar a
-                  organização de seus renders.
-                </p>
+                <h3>{content.new_aep_render.title}</h3>
+                <p>{content.new_aep_render.description_01}</p>
+                <br />
+                <p>{content.new_aep_render.description_02}</p>
+                <br />
+                <p>{content.new_aep_render.description_03}</p>
               </aside>
               <img
                 src="/images/aepzera/aepzera_create_render.png"
                 alt="Create Render"
               />
-              <p>
-                Por padrão, o Aepzera sugere duas pastas: 'previews' e
-                'deliverables', mas você pode configurar o Aepzera com as pastas
-                que costuma utilizar. <br />
-                Você pode adicionar, modificar e excluir estas configurações de
-                pastas em 'Settings {'>'} Render Folders' e também criar
-                configurações personalizadas por projeto em 'Home {'>'} Set
-                Custom Project Settings'. O Apezera sempre irá procurar estas
-                pastas em seus projetos.
-              </p>
+              <aside>
+                <p>{content.new_aep_render.description_04}</p>
+                <br />
+                <p>{content.new_aep_render.description_05}</p>
+              </aside>
               <img
                 src="/images/aepzera/aepzera_create_render_select.png"
                 alt="Create Render Select"
@@ -232,27 +180,18 @@ const Aepzera = () => {
                 alt="Set Custom Project Folders"
               />
               <aside>
-                <h3>Set Custom Project Settings</h3>
-                <p>
-                  Caso um projeto tenha uma estrutura de pastas diferente da
-                  configurada no Aepzera, você pode criar uma configuração nova
-                  que será atrelada a apenas este projeto.
-                </p>
+                <h3>{content.set_custom_project_settings.title}</h3>
+                <p>{content.set_custom_project_settings.description_01}</p>
               </aside>
             </section>
             <section>
               <aside>
-                <h3>Projects Navigator</h3>
-                <p>
-                  Nesta aba você consegue explorar as pastas dos seus projetos
-                  de forma mais rápida, sem sair do After Effects. Com ele você
-                  pode abrir pastas no Windows Explorer / Finder, abrir aeps,
-                  vídeos e comentários criados para o seu projeto.
-                </p>
+                <h3>{content.projects_navigator.title}</h3>
+                <p>{content.projects_navigator.description_01}</p>
               </aside>
               <img
                 src="/images/aepzera/aepzera_projects.png"
-                alt="Create Render"
+                alt="Projects Navigator"
               />
             </section>
             <section>
@@ -261,28 +200,23 @@ const Aepzera = () => {
                 alt="Set Custom Folders Aep"
               />
               <aside>
-                <h3>Settings</h3>
-                <p>
-                  Aqui você configura o Aepzera com o caminho de pastas da sua
-                  estrutura de projetos. Indique o caminho para a pasta aep,
-                  template (opcional), comentários (opcional) e as pastas de
-                  renders que seus projetos utiliza.
-                </p>
+                <h3>{content.settings.title}</h3>
+                <p>{content.settings.description_01}</p>
               </aside>
               <img
                 src="/images/aepzera/aepzera_set_custom_folders_renders.png"
                 alt="Set Custom Folders Renders"
               />
-              <p>
-                Construa caminhos dinâmicos utilizando o nome do usuário e
-                também o nome do projeto como variáveis, caso necessário. Útil
-                para estruturas de pastas que levam o nome do usuário em seu
-                caminho. <br />
-                Por exemplo: <code>'/previews/[username]'</code>. Para o
-                usuario01, o Aepzera automaticamente identificaria o caminho
-                como: <code>'/previews/usuario01/'</code>, para o usuario02:
-                <code>'/previews/usuario02/'</code>, etc.
-              </p>
+              <aside>
+                <p>{content.settings.description_02}</p>
+                <br />
+                <p>
+                  Ex: <code>'/previews/[username]'</code>.
+                  <p>{content.settings.description_03}</p>
+                  <code>'/previews/john/'</code>,<code>'/previews/mary/'</code>,
+                  etc.
+                </p>
+              </aside>
             </section>
           </div>
         </AepzeraContent>
@@ -290,5 +224,20 @@ const Aepzera = () => {
     </Layout>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  // get the locale text for the selected language:
+  const contentAepzera = (await import(`../../locales/${locale}/aepzera.js`))
+    .default;
+
+  const currency = locale !== 'pt-BR' ? 'usd' : 'brl';
+
+  return {
+    props: {
+      content: contentAepzera,
+      currency,
+    },
+  };
+}
 
 export default Aepzera;

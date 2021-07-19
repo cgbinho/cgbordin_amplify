@@ -17,7 +17,7 @@ import { Container } from '../styles/home';
 import { ModalContainer } from '../styles/modal';
 import { FormContainer } from '../styles/form';
 
-const ResetPassword = () => {
+const ResetPassword = ({ content }) => {
   const { user, resetPassword, isLoading, isError, signIn } = useAuth();
 
   const router = useRouter();
@@ -52,11 +52,8 @@ const ResetPassword = () => {
         <title>CGBORDIN.com - Entrar</title>
       </Head>
       <Container>
-        <h1>Resetar sua senha</h1>
-        <p>
-          Preencha abaixo com o seu email, código enviado pelo email e a senha
-          nova.
-        </p>
+        <h1>{content.title}</h1>
+        <p>{content.description}</p>
         <form onSubmit={onSubmit} method="post">
           <FormContainer>
             <Input
@@ -70,7 +67,7 @@ const ResetPassword = () => {
             />
             <Input
               name="code"
-              label="Código (Code)"
+              label={content.code}
               type="text"
               placeholder=""
               icon={FaBarcode}
@@ -79,7 +76,7 @@ const ResetPassword = () => {
             />
             <Input
               name="new_password"
-              label="Senha Nova"
+              label={content.new_password}
               type="text"
               placeholder="seu@email.com"
               icon={FiLock}
@@ -88,7 +85,7 @@ const ResetPassword = () => {
             />
             <Input
               name="new_password_confirmation"
-              label="Confirmação da Senha Nova"
+              label={content.new_password_confirmation}
               type="text"
               placeholder="seu@email.com"
               icon={FiLock}
@@ -103,7 +100,7 @@ const ResetPassword = () => {
               height="40px"
               padding="1em"
             >
-              Enviar
+              {content.action_button}
             </Button>
             {isError && <p className="error_message">{isError}</p>}
           </FormContainer>
@@ -116,18 +113,16 @@ const ResetPassword = () => {
   );
 };
 
-// We are getting the project with an authenticated user, serverside. Beautiful:
-// export async function getServerSideProps({ req, res }) {
-//   const user = await getCurrentAuthenticatedUser(req);
-//   if (!user) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return { props: { user } };
-// }
+export async function getStaticProps({ locale }) {
+  // get the locale text for the selected language:
+  const content = (await import(`../locales/${locale}/reset_password.js`))
+    .default;
+
+  return {
+    props: {
+      content,
+    },
+  };
+}
 
 export default ResetPassword;
