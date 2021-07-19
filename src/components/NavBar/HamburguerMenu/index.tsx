@@ -6,7 +6,7 @@ import HamburgerButton from '../HamburguerButton';
 import { StyledButton, StyledLink, StyledMenu } from './styles';
 import { useRouter } from 'next/router';
 
-export function HamburguerMenu() {
+export function HamburguerMenu({ content }) {
   const router = useRouter();
   const { user, signOut } = useAuth();
 
@@ -32,11 +32,11 @@ export function HamburguerMenu() {
   const GuestMenu = () => {
     return (
       <>
-        <MenuItem {...{ label: 'Entrar', path: '/sign-in' }} />
+        <MenuItem {...{ label: `${content.sign_in}`, path: '/sign-in' }} />
         <Link href="/sign-up" passHref>
           <StyledLink onClick={close}>
             <StyledButton primary width="100%">
-              Cadastrar
+              {content.sign_up}
             </StyledButton>
           </StyledLink>
         </Link>
@@ -47,8 +47,8 @@ export function HamburguerMenu() {
   const LoggedMenu = () => {
     return (
       <>
-        <MenuItem {...{ label: 'Pedidos', path: '/orders' }} />
-        <StyledLink onClick={handleSignOut}>Sair</StyledLink>
+        <MenuItem {...{ label: `${content.orders}`, path: '/orders' }} />
+        <StyledLink onClick={handleSignOut}>{content.sign_out}</StyledLink>
       </>
     );
   };
@@ -56,12 +56,12 @@ export function HamburguerMenu() {
   return (
     <div ref={node}>
       <StyledMenu open={openBurguer}>
-        <MenuItem {...{ label: 'Início', path: '/' }} />
+        <MenuItem {...{ label: `${content.home}`, path: '/' }} />
         {!user && <GuestMenu />}
-        <MenuItem {...{ label: 'Sobre', path: '/about' }} />
-        <MenuItem {...{ label: 'Artigos', path: '/articles' }} />
-        <MenuItem {...{ label: 'Projetos', path: '/projects' }} />
-        <MenuItem {...{ label: 'Aepzera', path: '/aepzera' }} />
+        <MenuItem {...{ label: `${content.about}`, path: '/about' }} />
+        <MenuItem {...{ label: `${content.articles}`, path: '/articles' }} />
+        <MenuItem {...{ label: `${content.projects}`, path: '/projects' }} />
+        <MenuItem {...{ label: `${content.aepzera}`, path: '/aepzera' }} />
         {user && <LoggedMenu />}
       </StyledMenu>
       <HamburgerButton {...{ openBurguer, setOpenBurguer }} />

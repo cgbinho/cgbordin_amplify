@@ -16,15 +16,34 @@ const NavBar = () => {
 
   const { locale } = router;
 
-  // const contentNavbar = {
-  //   en: {
-  //     home: 'Home',
-  //   },
-  //   'pt-BR': { home: 'Início' },
-  // };
+  console.log({ locale });
 
-  // const content = contentNavbar[locale];
-  // console.log({ content });
+  const contentNavbar = {
+    en: {
+      home: 'Home',
+      articles: 'Articles',
+      projects: 'Projects',
+      aepzera: 'Aepzera',
+      about: 'About',
+      sign_in: 'Sign In',
+      sign_up: 'Sign Up',
+      orders: 'Orders',
+      sign_out: 'Sign Out',
+    },
+    'pt-BR': {
+      home: 'Início',
+      articles: 'Artigos',
+      projects: 'Projetos',
+      aepzera: 'Aepzera',
+      about: 'Sobre',
+      sign_in: 'Entrar',
+      sign_up: 'Cadastrar',
+      orders: 'Pedidos',
+      sign_out: 'Sair',
+    },
+  };
+
+  const content = contentNavbar[locale];
 
   const [openBurguer, setOpenBurguer] = useState<boolean>(false);
   const { user, signOut } = useAuth();
@@ -48,27 +67,27 @@ const NavBar = () => {
         <ul className="navbar_desktop">
           <li>
             <Link href="/">
-              <a>Início</a>
+              <a>{content.home}</a>
             </Link>
           </li>
           <li>
             <Link href="/articles">
-              <a>Artigos</a>
+              <a>{content.articles}</a>
             </Link>
           </li>
           <li>
             <Link href="/#projects">
-              <a>Projetos</a>
+              <a>{content.projects}</a>
             </Link>
           </li>
           <li>
             <Link href="/aepzera">
-              <a>Aepzera</a>
+              <a>{content.aepzera}</a>
             </Link>
           </li>
           <li>
             <Link href="/#about">
-              <a>Sobre</a>
+              <a>{content.about}</a>
             </Link>
           </li>
           <div className="vertical_line" />
@@ -76,7 +95,7 @@ const NavBar = () => {
             <>
               <li>
                 <Link href="/sign-in">
-                  <a>Entrar</a>
+                  <a>{content.sign_in}</a>
                 </Link>
               </li>
               <li>
@@ -88,7 +107,7 @@ const NavBar = () => {
                       height="1rem"
                       padding="0.5rem 2rem"
                     >
-                      Cadastrar
+                      {content.sign_up}
                     </Button>
                   </a>
                 </Link>
@@ -97,7 +116,7 @@ const NavBar = () => {
           ) : (
             <SignedContainer>
               <li>
-                <DropdownUserMenu />
+                <DropdownUserMenu {...{ content }} />
               </li>
             </SignedContainer>
           )}
@@ -105,7 +124,7 @@ const NavBar = () => {
       </nav>
       <BurguerContainer>
         <HamburgerButton {...{ openBurguer, setOpenBurguer }} />
-        <HamburguerMenu />
+        <HamburguerMenu {...{ content }} />
       </BurguerContainer>
     </Container>
   );

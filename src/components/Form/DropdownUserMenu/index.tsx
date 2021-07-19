@@ -8,10 +8,10 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../../contexts/auth';
 import { HiChevronDown } from 'react-icons/hi';
 
-export function DropdownUserMenu() {
+export function DropdownUserMenu({ content }) {
   const router = useRouter();
 
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
 
   const handleOrderPage = () => {
     router.push('/orders');
@@ -26,20 +26,19 @@ export function DropdownUserMenu() {
     <DropdownContainer>
       <Menu
         menuButton={
-          // <button className="btn-primary">Open menu</button>
           <a className="dropdown_button">
-            <p>cgbinho@gmail.com</p>
+            <p>{user.email}</p>
             <HiChevronDown />
           </a>
         }
         theming="dark"
       >
         <MenuItem onClick={handleOrderPage} value="orders">
-          Pedidos
+          {content.orders}
         </MenuItem>
         <MenuDivider />
         <MenuItem onClick={handleSignOut} value="SignOut">
-          Sair
+          {content.sign_out}
         </MenuItem>
       </Menu>
     </DropdownContainer>
