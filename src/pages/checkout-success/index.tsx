@@ -13,6 +13,7 @@ import Head from 'next/head';
 import { Container } from '../../styles/home';
 import { SuccessCard } from '../../components/Orders/SuccessCard';
 import { EmptyCard } from '../../components/Orders/EmptyCard';
+import { getCurrentAuthenticatedUser } from '../../helpers/users';
 
 interface PropsData {
   session: any;
@@ -37,10 +38,18 @@ const ResultPage: NextPage<PropsData> = ({ session, content }: PropsData) => {
 
 export default ResultPage;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  locale,
-}) => {
+export async function getServerSideProps({ req, query, locale = 'pt-BR' }) {
+  // const user = await getCurrentAuthenticatedUser(req);
+
+  // if (!user) {
+  //   return {
+  //     redirect: {
+  //       destination: '/',
+  //       permanent: false,
+  //     },
+  //   };
+  // }
+
   const session_id = query?.session_id;
 
   if (!session_id) {
@@ -58,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       content,
     },
   };
-};
+}
 
 /* 
 {

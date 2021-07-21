@@ -42,7 +42,7 @@ export default function Home({ contentProjects, contentAbout }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale = 'pt-BR' }) {
   // get the locale text for the selected language:
   const contentProjects = (await import(`../locales/${locale}/projects.js`))
     .default;

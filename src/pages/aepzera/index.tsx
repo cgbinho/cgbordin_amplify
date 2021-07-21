@@ -73,7 +73,7 @@ const Aepzera = ({ content, currency }) => {
               <Button
                 primary
                 width="100%"
-                height="1rem"
+                height="40px"
                 padding=".8rem 2rem"
                 onClick={() => handleClick(prices)}
               >
@@ -218,7 +218,7 @@ const Aepzera = ({ content, currency }) => {
   );
 };
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale = 'pt-BR' }) {
   // get the locale text for the selected language:
   const contentAepzera = (await import(`../../locales/${locale}/aepzera.js`))
     .default;

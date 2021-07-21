@@ -113,7 +113,7 @@ const ResetPassword = ({ content }) => {
   );
 };
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale = 'pt-BR' }) {
   // get the locale text for the selected language:
   const content = (await import(`../locales/${locale}/reset_password.js`))
     .default;

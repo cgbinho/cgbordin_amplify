@@ -18,19 +18,19 @@ export default function Articles({ allArticles, content }) {
         <div className="article_list">
           {allArticles.map(
             ({ slug, date, title, excerpt, coverImage }, index) => (
-              <section key={index}>
-                <img src={coverImage} alt={title} width="100%" />
-                <aside>
-                  <Link href={`/articles/${slug}`}>
-                    <a>
+              <Link href={`/articles/${slug}`} key={index}>
+                <a>
+                  <section>
+                    <img src={coverImage} alt={title} width="100%" />
+                    <aside>
                       <h4>{title}</h4>
-                    </a>
-                  </Link>
-                  <p>{excerpt}</p>
-                  <br />
-                  <DateFormatter dateString={date} />
-                </aside>
-              </section>
+                      <p>{excerpt}</p>
+                      <br />
+                      <DateFormatter dateString={date} />
+                    </aside>
+                  </section>
+                </a>
+              </Link>
             )
           )}
         </div>
@@ -39,7 +39,7 @@ export default function Articles({ allArticles, content }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale = 'pt-BR' }) {
   const allArticles = getAllArticles([
     'title',
     'date',

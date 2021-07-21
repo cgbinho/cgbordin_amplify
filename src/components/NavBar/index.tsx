@@ -14,7 +14,7 @@ import { DropdownUserMenu } from '../Form/DropdownUserMenu';
 const NavBar = () => {
   const router = useRouter();
 
-  const { locale } = router;
+  const { locale = 'pt-BR' } = router;
 
   const contentNavbar = {
     en: {
@@ -42,6 +42,7 @@ const NavBar = () => {
   };
 
   const content = contentNavbar[locale];
+  // console.log(content);
 
   const [openBurguer, setOpenBurguer] = useState<boolean>(false);
   const { user, signOut } = useAuth();
@@ -101,7 +102,7 @@ const NavBar = () => {
                     <Button
                       primary
                       width="100%"
-                      height="1rem"
+                      height="40px"
                       padding="0.5rem 2rem"
                     >
                       {content.sign_up}

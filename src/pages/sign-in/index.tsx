@@ -92,7 +92,7 @@ const SignIn = ({ content }) => {
 };
 
 // We are getting the project with an authenticated user, serverside. Beautiful:
-export async function getServerSideProps({ req, res, locale }) {
+export async function getServerSideProps({ req, res, locale = 'pt-BR' }) {
   const user = await getCurrentAuthenticatedUser(req);
   if (user) {
     return {

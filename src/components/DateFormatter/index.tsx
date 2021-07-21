@@ -4,7 +4,7 @@ import enUS from 'date-fns/locale/en-US';
 import { useRouter } from 'next/router';
 
 const DateFormatter = ({ dateString }) => {
-  const { locale: userLocale } = useRouter();
+  const { locale: userLocale = 'pt-BR' } = useRouter();
 
   const locale = userLocale !== 'pt-BR' ? enUS : ptBR;
 

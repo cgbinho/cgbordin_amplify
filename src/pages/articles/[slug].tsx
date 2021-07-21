@@ -7,8 +7,8 @@ import {
   getArticleBySlug,
 } from '../../helpers/articles/api_articles';
 import markdownToHtml from '../../helpers/markdownToHtml';
-import { Container } from '../../styles/home';
 import { ArticleContainer } from '../../styles/articles';
+import { Container } from '../../styles/home';
 
 export default function ArticlePage({ article }) {
   return (
@@ -46,6 +46,7 @@ export async function getStaticProps({ params }) {
     'coverImage',
   ]);
 
+  console.log(article);
   // const content = await serialize(article.content);
   const content = await markdownToHtml(article.content || '');
 

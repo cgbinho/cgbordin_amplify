@@ -5,7 +5,7 @@ import { WelcomeCardContainer } from './styles';
 export function WelcomeCard() {
   const router = useRouter();
 
-  const { locale } = router;
+  const { locale = 'pt-BR' } = router;
 
   const title =
     locale !== 'en'

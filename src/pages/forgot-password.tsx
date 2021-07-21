@@ -79,7 +79,7 @@ const ForgotPassword = ({ content }) => {
   );
 };
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale = 'pt-BR' }) {
   // get the locale text for the selected language:
   const content = (await import(`../locales/${locale}/forgot_password.js`))
     .default;
