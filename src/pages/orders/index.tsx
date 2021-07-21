@@ -16,7 +16,7 @@ const Orders = ({ content, orders }) => {
   const { user, isLoading, isError, signUp } = useAuth();
 
   const hasItems = orders?.items?.[0];
-  console.log(hasItems);
+  // console.log(hasItems);
   /* 
 amount: 10
 code: "ae28ea19-a367-4365-86c9-ceb014bce9b0"
@@ -84,7 +84,7 @@ export async function getServerSideProps({ req, res, locale }) {
     },
   })) as { data: GetOrdersByUserIDQuery };
 
-  console.log(orders.data.getOrdersByUserID);
+  // console.log(orders.data.getOrdersByUserID);
 
   return {
     props: {

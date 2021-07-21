@@ -8,7 +8,7 @@ export const ProjectsContent = styled.div`
   width: 100%;
   max-width: 850px;
 
-  > h3 {
+  > h1 {
     text-align: center;
   }
 
@@ -19,6 +19,7 @@ export const ProjectsContent = styled.div`
     justify-items: flex-start;
     align-items: flex-start;
     width: 100%;
+    height: 100%;
     gap: 2rem;
     padding: 2rem;
     background-color: var(--gray-170);

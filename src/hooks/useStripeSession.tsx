@@ -6,7 +6,7 @@ interface IQuery {
 }
 
 export const getStripeSession = async (session_id: any) => {
-  console.log({ session_id });
+  // console.log({ session_id });
   const { data } = await axios.get(
     `/api/checkout_session/cs_test_a1Hw4ZFtupInZU1YzNspPASaGkkTcx8CNueIhODERIOdIkDPajjUtU14KJ`
   );

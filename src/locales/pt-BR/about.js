@@ -1,5 +1,5 @@
 export default {
-  title: 'Sobre mim',
+  title: 'Sobre',
   description: `Meu nome é Cleber Galves Bordin, sou de São Paulo, Capital – Brasil. Sou
   formado em Desenho Industrial com especialização em Programação Visual
   pela Universidade Presbiteriana Mackenzie.`,

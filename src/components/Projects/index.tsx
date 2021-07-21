@@ -8,7 +8,7 @@ import { VideoCard } from './VideoCard';
 export function ProjectsComponent({ content }) {
   return (
     <ProjectsContent>
-      <h3 id="projects">{content.title}</h3>
+      <h1 id="projects">{content.title}</h1>
       <div className="projects_list">
         <section>
           <VideoPlyr {...{ src: 'deIBIR3sxcU' }} />

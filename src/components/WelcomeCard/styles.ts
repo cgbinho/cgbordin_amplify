@@ -5,5 +5,11 @@ export const WelcomeCardContainer = styled.div`
   grid-auto-flow: row;
   justify-items: center;
   max-width: 650px;
-  margin-bottom: 3rem;
+  margin: 3rem 2rem;
+
+  h1 {
+    letter-spacing: 2px;
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+  }
 `;

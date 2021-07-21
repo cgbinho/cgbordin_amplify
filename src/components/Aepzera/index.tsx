@@ -27,7 +27,7 @@ export function AepzeraComponent() {
           <Button
             primary
             width="100%"
-            height="1rem"
+            height="40px"
             padding=".8rem 2rem"
             onClick={() => router.push('/aepzera')}
           >

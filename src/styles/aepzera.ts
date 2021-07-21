@@ -9,6 +9,7 @@ export const AepzeraCard = styled.div`
   gap: 2rem;
   padding: 3rem;
   max-width: 650px;
+  margin: 2rem;
 
   background-color: var(--gray-170);
   border-radius: 8px;

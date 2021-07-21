@@ -1,26 +1,16 @@
-import { loadStripe } from '@stripe/stripe-js';
-import { useRouter } from 'next/router';
+import Head from 'next/head';
 import React from 'react';
 import Stripe from 'stripe';
-// import { API, graphqlOperation, withSSRContext } from 'aws-amplify';
-// import { listProducts } from '../../graphql/queries';
-import { useProducts } from '../../hooks/useProducts';
-import getStripe from '../../helpers/stripe/stripe-stripejs';
-import { useAuth } from '../../contexts/auth';
-
-import Head from 'next/head';
-
-import { AboutComponent } from '../../components/About';
-import Layout from '../../components/Layout';
-import { ProjectsComponent } from '../../components/Projects';
-
-import { Container } from '../../styles/home';
 import Button from '../../components/Form/Button';
-import { fetchPostJSON } from '../../helpers/api';
-import { VideoCard } from '../../components/Projects/VideoCard';
+import Layout from '../../components/Layout';
 import { AepzeraLogo } from '../../components/Logos/aepzera_logo';
 import { VideoPlyr } from '../../components/VideoPlyr';
+import { useAuth } from '../../contexts/auth';
+import { fetchPostJSON } from '../../helpers/api';
+import getStripe from '../../helpers/stripe/stripe-stripejs';
+import { useProducts } from '../../hooks/useProducts';
 import { AepzeraCard, AepzeraContent } from '../../styles/aepzera';
+import { Container } from '../../styles/home';
 
 interface IPrice extends Stripe.Price {
   product: Stripe.Product;

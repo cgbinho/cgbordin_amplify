@@ -23,7 +23,7 @@ export function WelcomeCard() {
 
   return (
     <WelcomeCardContainer>
-      <h2>{title}</h2>
+      <h1>{title}</h1>
       <p>{excerpt}</p>
     </WelcomeCardContainer>
   );

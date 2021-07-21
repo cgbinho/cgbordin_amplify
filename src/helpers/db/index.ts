@@ -64,7 +64,7 @@ export const updateOrder = async ({ id, code, order_status }) => {
   // return the promise resolved.
   return updateOrder
     .then((data) => {
-      console.log('UpdateItem succeeded:', JSON.stringify(data, null, 2));
+      // console.log('UpdateItem succeeded:', JSON.stringify(data, null, 2));
       return [data, null];
     })
     .catch((err) => {
