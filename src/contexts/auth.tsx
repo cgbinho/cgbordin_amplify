@@ -33,16 +33,6 @@ interface AuthData {
   token?: string;
 }
 
-// Helper function to set Cookies:
-// const setCookie = (user: any): void => {
-//   // set cookies:
-//   cookie.set('cgbordinUser', JSON.stringify(user), {
-//     secure: process.env.NODE_ENV === 'production',
-//     expires: 7,
-//     sameSite: 'strict',
-//   });
-// };
-
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
@@ -71,14 +61,11 @@ export const AuthProvider: React.FC = ({ children }) => {
   });
 
   async function signUp({ email, password }: EmailPasswordData) {
-    console.log({ email, password });
     setError(null);
     setLoading('Loading data...');
     try {
       const { user } = await Auth.signUp({ username: email, password });
-      console.log(user);
     } catch (error) {
-      console.log('error signing up:', error);
       setError(`${error.message}`);
     } finally {
       setLoading(null);
@@ -97,7 +84,6 @@ export const AuthProvider: React.FC = ({ children }) => {
       // setCookie(user);
       setData(user);
     } catch (error) {
-      console.log(error);
       setError(`${error.message}`);
     } finally {
       setLoading(null);
@@ -109,9 +95,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     setLoading('Loading data...');
     try {
       await Auth.resendSignUp(username);
-      console.log('code resent successfully');
     } catch (err) {
-      console.log('error resending code: ', err);
       setError(err.message);
     } finally {
       setLoading(null);

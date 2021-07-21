@@ -43,7 +43,7 @@ const SignIn = ({ content }) => {
   return (
     <Layout>
       <Head>
-        <title>CGBORDIN.com - Entrar</title>
+        <title>CGBORDIN.com - {content.title}</title>
       </Head>
       <Container>
         <h1>{content.title}</h1>

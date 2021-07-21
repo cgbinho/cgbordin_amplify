@@ -16,7 +16,6 @@ export default {
   },
   technologies: {
     title: 'Technologies',
-    description: `I'm always looking for work proposals and projects, learning, studying and seeking to evolve my knowledge, being inspired, perhaps inspiring other professionals and promoting the exchange of experiences.
-    If my work interested you, please contact me.`,
+    description: `I'm always looking for new projects and challenges, learning, studying and seeking to evolve my knowledge, being inspired, perhaps inspiring other professionals and promoting the exchange of experiences. If my work interested you, please contact me.`,
   },
 };

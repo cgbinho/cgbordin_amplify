@@ -2,22 +2,27 @@ import styled from 'styled-components';
 
 export const OrderCardContainer = styled.div`
   display: grid;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  margin-top: 1rem;
   gap: 1rem;
-  max-width: 450px;
-  /* background-color: var(--gray-100); */
+  width: 100%;
+  max-width: 950px;
+  background-color: var(--gray-170);
   padding: 2rem;
   border-radius: 8px;
-  width: 350px;
+  justify-content: space-between;
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
 
   code {
-    background: var(--scent-350);
+    background: var(--gray-100);
     border-radius: 4px;
-    padding: 0.4rem;
+    padding: 0.2rem 0.4rem;
     font-size: 0.8rem;
+  }
+
+  svg {
+    margin: 0 4px;
   }
 `;

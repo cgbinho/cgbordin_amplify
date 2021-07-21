@@ -72,9 +72,7 @@ export default function Home({ contentProjects, contentAbout }) {
           },
         },
       });
-      console.log({ order });
     } catch ({ errors }) {
-      console.error(...errors);
       throw new Error(errors[0].message);
     }
   }
@@ -121,8 +119,7 @@ export async function getStaticProps({ locale }) {
   const contentProjects = (await import(`../locales/${locale}/projects.js`))
     .default;
   const contentAbout = (await import(`../locales/${locale}/about.js`)).default;
-  // const contentAbout = await getSectionByLocale('about', locale);
-  console.log(contentAbout);
+
   return {
     props: {
       contentProjects,

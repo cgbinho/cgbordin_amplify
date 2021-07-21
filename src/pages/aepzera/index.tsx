@@ -40,13 +40,13 @@ const Aepzera = ({ content, currency }) => {
   } = useProducts({ currency, product: 'Aepzera' });
 
   const handleClick = async (price) => {
-    console.log(price);
     const stripe = await getStripe();
 
     // const session = await response.json();
     const response = await fetchPostJSON('/api/checkout_session', {
       price_id: price.id,
       customer_email: user.email,
+      product_name: 'Aepzera',
     });
     if (response.statusCode === 500) {
       console.error(response.message);
@@ -105,7 +105,7 @@ const Aepzera = ({ content, currency }) => {
             <section>
               <aside>
                 <h3>{content.new_master_aep.title}</h3>
-                <p> {content.new_master_aep.description_01}</p>
+                <p>{content.new_master_aep.description_01}</p>
                 <ol>
                   <li>{content.new_master_aep.description_02}</li>
                   <li>{content.new_master_aep.description_03}</li>
@@ -212,7 +212,10 @@ const Aepzera = ({ content, currency }) => {
                 <br />
                 <p>
                   Ex: <code>'/previews/[username]'</code>.
-                  <p>{content.settings.description_03}</p>
+                </p>
+                <p>
+                  {content.settings.description_03}
+                  <br />
                   <code>'/previews/john/'</code>,<code>'/previews/mary/'</code>,
                   etc.
                 </p>

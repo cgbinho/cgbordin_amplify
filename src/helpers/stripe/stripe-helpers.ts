@@ -1,20 +1,10 @@
-// import Stripe from 'stripe';
-
-// interface IPrice extends Stripe.Price {
-//   product: Stripe.Product;
-// }
-
-// interface IProps {
-//   prices: IPrice[];
-// }
-
 export function formatAmountForDisplay(
   amount: number,
-  currency: string
+  currency: string = 'usd'
 ): string {
   const numberFormat = new Intl.NumberFormat(['en-US'], {
     style: 'currency',
-    currency: currency,
+    currency,
     currencyDisplay: 'symbol',
   });
   return numberFormat.format(amount);
@@ -26,7 +16,7 @@ export function formatAmountForStripe(
 ): number {
   const numberFormat = new Intl.NumberFormat(['en-US'], {
     style: 'currency',
-    currency: currency,
+    currency,
     currencyDisplay: 'symbol',
   });
   const parts = numberFormat.formatToParts(amount);

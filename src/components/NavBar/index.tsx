@@ -16,8 +16,6 @@ const NavBar = () => {
 
   const { locale } = router;
 
-  console.log({ locale });
-
   const contentNavbar = {
     en: {
       home: 'Home',
@@ -48,7 +46,6 @@ const NavBar = () => {
   const [openBurguer, setOpenBurguer] = useState<boolean>(false);
   const { user, signOut } = useAuth();
   const email = user?.email;
-  console.log(user);
 
   const node = useRef<HTMLDivElement>(null);
   useOnClickOutside(node, () => setOpenBurguer(false));

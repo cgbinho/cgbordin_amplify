@@ -56,14 +56,23 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
       console.log(`💰 PaymentIntent id: ${paymentIntent.id}`);
       console.log(`💰 PAYMENTINTENT_id: ${paymentIntent.id}`);
+      console.log(
+        `💰 PAYMENTINTENT_billing_details: ${paymentIntent?.charges?.data[0]?.billing_details}`
+      );
+
+      const { email } = paymentIntent?.charges?.data[0]?.billing_details;
+
+      console.log({ paymentIntent });
+      // const product = session.line_items[0].description;
       // create Order:
       const [dataIntent, errIntent] = await postOrder({
         id: paymentIntent.id,
         userID: paymentIntent.customer,
-        userEmail: 'cgbordin@gmail.com',
-        product: 'Aepzera',
+        userEmail: email,
+        product: paymentIntent.metadata.product_name,
         code: null,
         amount: paymentIntent.amount_received,
+        currency: paymentIntent.currency,
         order_status: 'pending',
       });
 
@@ -82,7 +91,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log(`💵 Charge id: ${charge.id}`);
       // console.log(JSON.stringify(charge, null, 2));
       const { name, email } = charge.billing_details;
-      console.log({ name, email });
       // Create an Aepzera key
       const code = await generateProductCode();
 

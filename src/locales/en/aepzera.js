@@ -4,62 +4,61 @@ export default {
   learn_more: 'Learn More',
   action_button: 'Buy now $',
   how_it_works: {
-    title: 'Como funciona',
+    title: 'How it Works',
     description:
-      'Configure a estrutura de pastas que você está acostumado a utilizar em seus projetos e deixe que o  aepzera irá ajudá-lo a trabalhar de forma mais rápida, sozinho ou em equipe.',
+      'Set up your personal project folder structure in your projects and let aepzera help you work faster, alone or in a team.',
   },
   new_master_aep: {
     title: 'New Master Aep',
-    description_01: 'Crie um novo arquivo aep em 2 opções customizadas:',
+    description_01: 'Create a new aep file in 2 custom options:',
     description_02:
-      '1. Utilizando como base o arquivo que está aberto, porém já criando uma subpasta para este arquivo. Útil para organizar arquivos aep de cenas diferentes em estruturas de pastas próprias.',
+      '1. Using the currently opened file as a template, with a named subfolder. Useful for organizing aep files of different scenes into their own folder structures.',
     description_03:
-      '2. Cria o arquivo aep utilizando um arquivo template que você tenha criado.',
+      '2. Using a custom aep file you created previously as template.',
   },
   save_aep_file: {
     title: 'Save Aep File',
     description_01:
-      'Salve o arquivo aep aberto com metadata adicionais ( como username e email). Útil na identificação de quem foi o último usuário da equipe a modificar este aep.',
+      'Save the currently opened aep file with additional metadata (such as username and email). Useful in identifying the last user from the team to work on this aep.',
   },
   remove_aep_metadata: {
     title: 'Remove Aep Metadata',
     description_01:
-      'Como o título diz, remove a metadata ( username e email ) do arquivo aep aberto.',
+      'As the title says, this option removes the metadata ( username and email ) from the currently opened aep file.',
   },
   new_comment_thread: {
     title: 'New Comment Thread',
     description_01:
-      'Cria um novo arquivo com o seu comentário, em uma pasta de comentários em seu projeto. Útil na comunicação entre os integrantes da equipe.',
-    description_02: `Você também pode especificar uma prioridade para cada mensagem enviada com 'low', 'medium', 'high'.`,
+      'Creates a new file with your comment, in a comments folder inside your project. Useful in communication between team members.',
+    description_02: `You can also specify a priority for each message with 'low', 'medium', 'high'.`,
   },
   new_aep_render: {
     title: 'New Aep Render',
     description_01:
-      'Esta opção facilita o seu envio de renders para o Adobe Media Encoder.',
+      'This option makes it easy to send your renders to Adobe Media Encoder.',
     description_02:
-      'Você especifica um nome do arquivo ( por padrão o Aepzera sugere o nome do aep aberto como nome ) e também escolhe entre as pastas de render comuns de seu projeto.',
-    description_03: `Você também pode optar por incluir no caminho do arquivo uma subpasta com o formato de data 'DD/MM/AA', para melhorar a organização de seus renders.`,
-    description_04: `Por padrão, o Aepzera sugere duas pastas: 'previews' e 'deliverables', mas você pode configurar o Aepzera com as pastas
-    que costuma utilizar.`,
-    description_05: `Você pode adicionar, modificar e excluir estas configurações de pastas em 'Settings {'>'} Render Folders' e também criar configurações personalizadas por projeto em 'Home {'>'} Set Custom Project Settings'. O Apezera sempre irá procurar estas pastas em seus projetos.`,
+      'You specify a file name ( by default Aepzera suggests the name of the currently opened aep file as name ) and also choose between common render folders of your project.',
+    description_03: `You can also choose to include a folder named with the date format 'DD/MM/YY' to improve the organization of your renders.`,
+    description_04: `By default, Aepzera suggests two folders: 'previews' and 'deliverables', but you can configure Aepzera with the folders you usually use.`,
+    description_05: `You can add, modify and delete these folder settings in 'Settings > Render Folders' and also create custom settings per project in 'Home > Set Custom Project Settings'. Apezera will always look for these folders in your projects.`,
   },
   set_custom_project_settings: {
     title: 'Set Custom Project Settings',
     description_01:
-      'Caso um projeto tenha uma estrutura de pastas diferente da configurada no Aepzera, você pode criar uma configuração nova que será atrelada a apenas este projeto.',
+      'If a project has a different folder structure than the one configured in Aepzera, you can create a new configuration that will be linked to this specific project.',
   },
   projects_navigator: {
     title: 'Projects Navigator',
     description_01:
-      'Nesta aba você consegue explorar as pastas dos seus projetos de forma mais rápida, sem sair do After Effects. Com ele você pode abrir pastas no Windows Explorer / Finder, abrir aeps,vídeos e comentários criados para o seu projeto.',
+      'In this tab you can explore your projects folders faster, without leaving After Effects. From there, you can open folders in Windows Explorer / Finder, open aeps, videos and view comments created for your project.',
   },
   settings: {
     title: 'Settings',
     description_01:
-      ' Aqui você configura o Aepzera com o caminho de pastas da sua estrutura de projetos. Indique o caminho para a pasta aep, template (opcional), comentários (opcional) e as pastas de renders que seus projetos utiliza.',
+      'Here you configure Aepzera with your custom folder settings. You can set the path to the aep folder, template (optional), comments (optional) and the render folders your projects use.',
     description_02:
-      'Construa caminhos dinâmicos utilizando o nome do usuário e também o nome do projeto como variáveis, caso necessário. Útil para estruturas de pastas que levam o nome do usuário em seu caminho.',
+      'Build dynamic paths using the username and also the project name as variables, if necessary. Useful for folder structures that have the username in their path.',
     description_03:
-      ' Para o John e Mary, o Aepzera automaticamente identificaria o caminho como:',
+      'For users John and Mary, Aepzera would automatically identify the path as:',
   },
 };

@@ -10,6 +10,7 @@ export const postOrder = async ({
   product,
   code,
   amount,
+  currency,
   order_status,
 }) => {
   const docClient = new aws.DynamoDB.DocumentClient({
@@ -25,6 +26,7 @@ export const postOrder = async ({
       product,
       code,
       amount,
+      currency,
       order_status,
     },
   };
@@ -57,7 +59,6 @@ export const updateOrder = async ({ id, code, order_status }) => {
     ReturnValues: 'UPDATED_NEW',
   };
 
-  console.log('Updating Order!');
   // create a promise:
   const updateOrder = docClient.update(params).promise();
   // return the promise resolved.

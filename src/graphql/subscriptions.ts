@@ -3,14 +3,15 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateOrder = /* GraphQL */ `
-  subscription OnCreateOrder {
-    onCreateOrder {
+  subscription OnCreateOrder($userID: String) {
+    onCreateOrder(userID: $userID) {
       id
       userID
       userEmail
       product
       code
       amount
+      currency
       order_status
       createdAt
       updatedAt
@@ -18,14 +19,15 @@ export const onCreateOrder = /* GraphQL */ `
   }
 `;
 export const onUpdateOrder = /* GraphQL */ `
-  subscription OnUpdateOrder {
-    onUpdateOrder {
+  subscription OnUpdateOrder($userID: String) {
+    onUpdateOrder(userID: $userID) {
       id
       userID
       userEmail
       product
       code
       amount
+      currency
       order_status
       createdAt
       updatedAt
@@ -33,14 +35,15 @@ export const onUpdateOrder = /* GraphQL */ `
   }
 `;
 export const onDeleteOrder = /* GraphQL */ `
-  subscription OnDeleteOrder {
-    onDeleteOrder {
+  subscription OnDeleteOrder($userID: String) {
+    onDeleteOrder(userID: $userID) {
       id
       userID
       userEmail
       product
       code
       amount
+      currency
       order_status
       createdAt
       updatedAt

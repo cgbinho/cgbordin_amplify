@@ -9,22 +9,23 @@ export type CreateOrderInput = {
   product?: string | null,
   code?: string | null,
   amount?: number | null,
+  currency?: string | null,
   order_status?: string | null,
 };
 
 export type ModelOrderConditionInput = {
-  userID?: ModelIDInput | null,
   userEmail?: ModelStringInput | null,
   product?: ModelStringInput | null,
   code?: ModelStringInput | null,
   amount?: ModelIntInput | null,
+  currency?: ModelStringInput | null,
   order_status?: ModelStringInput | null,
   and?: Array< ModelOrderConditionInput | null > | null,
   or?: Array< ModelOrderConditionInput | null > | null,
   not?: ModelOrderConditionInput | null,
 };
 
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -64,22 +65,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelStringInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
-};
-
 export type ModelIntInput = {
   ne?: number | null,
   eq?: number | null,
@@ -100,6 +85,7 @@ export type Order = {
   product?: string | null,
   code?: string | null,
   amount?: number | null,
+  currency?: string | null,
   order_status?: string | null,
   createdAt: string,
   updatedAt: string,
@@ -112,6 +98,7 @@ export type UpdateOrderInput = {
   product?: string | null,
   code?: string | null,
   amount?: number | null,
+  currency?: string | null,
   order_status?: string | null,
 };
 
@@ -126,10 +113,27 @@ export type ModelOrderFilterInput = {
   product?: ModelStringInput | null,
   code?: ModelStringInput | null,
   amount?: ModelIntInput | null,
+  currency?: ModelStringInput | null,
   order_status?: ModelStringInput | null,
   and?: Array< ModelOrderFilterInput | null > | null,
   or?: Array< ModelOrderFilterInput | null > | null,
   not?: ModelOrderFilterInput | null,
+};
+
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export type ModelOrderConnection = {
@@ -137,6 +141,12 @@ export type ModelOrderConnection = {
   items?:  Array<Order | null > | null,
   nextToken?: string | null,
 };
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
 
 export type CreateOrderMutationVariables = {
   input: CreateOrderInput,
@@ -152,6 +162,7 @@ export type CreateOrderMutation = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -172,6 +183,7 @@ export type UpdateOrderMutation = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -192,6 +204,7 @@ export type DeleteOrderMutation = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -211,6 +224,7 @@ export type GetOrderQuery = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -234,12 +248,45 @@ export type ListOrdersQuery = {
       product?: string | null,
       code?: string | null,
       amount?: number | null,
+      currency?: string | null,
       order_status?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
     nextToken?: string | null,
   } | null,
+};
+
+export type GetOrdersByUserIDQueryVariables = {
+  userID?: string | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelOrderFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type GetOrdersByUserIDQuery = {
+  getOrdersByUserID?:  {
+    __typename: "ModelOrderConnection",
+    items?:  Array< {
+      __typename: "Order",
+      id: string,
+      userID?: string | null,
+      userEmail?: string | null,
+      product?: string | null,
+      code?: string | null,
+      amount?: number | null,
+      currency?: string | null,
+      order_status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type OnCreateOrderSubscriptionVariables = {
+  userID?: string | null,
 };
 
 export type OnCreateOrderSubscription = {
@@ -251,10 +298,15 @@ export type OnCreateOrderSubscription = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
+};
+
+export type OnUpdateOrderSubscriptionVariables = {
+  userID?: string | null,
 };
 
 export type OnUpdateOrderSubscription = {
@@ -266,10 +318,15 @@ export type OnUpdateOrderSubscription = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
+};
+
+export type OnDeleteOrderSubscriptionVariables = {
+  userID?: string | null,
 };
 
 export type OnDeleteOrderSubscription = {
@@ -281,6 +338,7 @@ export type OnDeleteOrderSubscription = {
     product?: string | null,
     code?: string | null,
     amount?: number | null,
+    currency?: string | null,
     order_status?: string | null,
     createdAt: string,
     updatedAt: string,

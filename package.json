@@ -34,6 +34,7 @@
     "react-hook-form": "^7.9.0",
     "react-icons": "^4.2.0",
     "react-query": "^3.17.2",
+    "react-use-clipboard": "^1.0.7",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
     "stripe": "^8.156.0",

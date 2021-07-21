@@ -35,24 +35,6 @@ export function AboutComponent({ content }) {
       <div className="about_tecnologies">
         <AboutCard
           {...{
-            text: 'Html',
-            icon: SiHtml5,
-          }}
-        />
-        <AboutCard
-          {...{
-            text: 'Css',
-            icon: SiCss3,
-          }}
-        />
-        <AboutCard
-          {...{
-            text: 'Javascript',
-            icon: SiJavascript,
-          }}
-        />
-        <AboutCard
-          {...{
             text: 'Adobe After Effects',
             icon: SiAdobeaftereffects,
           }}
@@ -71,6 +53,12 @@ export function AboutComponent({ content }) {
         />
         <AboutCard
           {...{
+            text: 'Javascript',
+            icon: SiJavascript,
+          }}
+        />
+        <AboutCard
+          {...{
             text: 'React',
             icon: SiReact,
           }}
@@ -79,6 +67,18 @@ export function AboutComponent({ content }) {
           {...{
             text: 'Node.js',
             icon: FaNodeJs,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Html',
+            icon: SiHtml5,
+          }}
+        />
+        <AboutCard
+          {...{
+            text: 'Css',
+            icon: SiCss3,
           }}
         />
       </div>

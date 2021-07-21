@@ -15,6 +15,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 3rem;
     padding: 2rem 0;
+    margin: 0 1rem;
     /* max-width: 950px; */
   }
 

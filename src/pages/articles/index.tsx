@@ -7,14 +7,14 @@ import Head from 'next/head';
 
 import { ArticlesContent } from '../../styles/articles';
 
-export default function Articles({ allArticles }) {
+export default function Articles({ allArticles, content }) {
   return (
     <Layout>
       <Head>
-        <title>CGBORDIN.com - Artigos</title>
+        <title>CGBORDIN.com - {content.title}</title>
       </Head>
       <ArticlesContent>
-        <h3>Artigos</h3>
+        <h3>{content.title}</h3>
         <div className="article_list">
           {allArticles.map(
             ({ slug, date, title, excerpt, coverImage }, index) => (
@@ -39,7 +39,7 @@ export default function Articles({ allArticles }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const allArticles = getAllArticles([
     'title',
     'date',
@@ -48,8 +48,9 @@ export async function getStaticProps() {
     'coverImage',
     'excerpt',
   ]);
+  const content = (await import(`../../locales/${locale}/articles.js`)).default;
 
   return {
-    props: { allArticles },
+    props: { allArticles, content },
   };
 }

@@ -1,25 +1,76 @@
 import React, { useState } from 'react';
+import Button from '../../Form/Button';
 import { OrderCardContainer } from './styles';
+import useClipboard from 'react-use-clipboard';
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import { FiCopy } from 'react-icons/fi';
+import DateFormatter from '../../DateFormatter';
+import { formatAmountForDisplay } from '../../../helpers/stripe/stripe-helpers';
 
-export function OrderCard({ name, code }) {
-  const [showCode, setShowCode] = useState(true);
+export function OrderCard({ content, order }) {
+  /* 
+amount: 10
+code: "ae28ea19-a367-4365-86c9-ceb014bce9b0"
+createdAt: "2021-07-20T13:24:05.690Z"
+currency: null
+id: "121212"
+order_status: "pending"
+product: "Aepzera"
+updatedAt: "2021-07-20T13:24:05.690Z"
+userEmail: "cgbordin@gmail.com"
+userID: "3da452be-ee78-4954-b1a0-fbcff9c3619a"
+*/
 
-  const handleShowCode = () => {
-    setShowCode(!showCode);
-    console.log(showCode);
-  };
+  console.log(order);
+
+  const [isCopied, setCopied] = useClipboard(order.code, {
+    // `isCopied` will go back to `false` after 1000ms.
+    successDuration: 2000,
+  });
+
+  const order_status =
+    order.order_status !== 'pending'
+      ? content.status_paid
+      : content.status_pending;
+
+  const amount = formatAmountForDisplay(order.amount, order.currency);
+
   return (
     <OrderCardContainer>
-      <h4>{name}</h4>
-      <a onClick={handleShowCode}>
-        {showCode ? (
-          <p>
-            <code>{code}</code>
-          </p>
+      <section>
+        <p>
+          {content.order}: {order.id}
+        </p>
+        <p>
+          {content.date}:{' '}
+          <DateFormatter dateString={order.createdAt.toString()} />
+        </p>
+      </section>
+      <p>
+        {content.product}: {order.product}
+      </p>
+      <p>
+        {content.amount}: {amount}
+      </p>
+      <p>
+        {content.code}: <code>{order.code}</code>
+      </p>
+      <p>
+        {content.status}: <code>{order_status}</code>
+      </p>
+      <Button primary width="100%" padding="0.4rem 0" onClick={setCopied}>
+        {isCopied ? (
+          <>
+            <IoMdCheckmarkCircleOutline size={18} />
+            <span>{content.copy_code_confirm}</span>
+          </>
         ) : (
-          <code>Revelar o Código</code>
+          <>
+            <FiCopy size={18} />
+            <span>{content.copy_code}</span>
+          </>
         )}
-      </a>
+      </Button>
     </OrderCardContainer>
   );
 }

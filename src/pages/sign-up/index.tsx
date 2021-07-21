@@ -44,7 +44,7 @@ const SignUp = ({ content }) => {
   return (
     <Layout>
       <Head>
-        <title>CGBORDIN.com - Cadastrar</title>
+        <title>CGBORDIN.com - {content.title}</title>
       </Head>
       <Container>
         <h1>{content.title}</h1>
@@ -109,6 +109,7 @@ export async function getServerSideProps({ req, res, locale }) {
       },
     };
   }
+
   const content = (await import(`../../locales/${locale}/sign_up.js`)).default;
 
   return { props: { content } };

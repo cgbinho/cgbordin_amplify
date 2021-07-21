@@ -17,7 +17,6 @@ const getProducts = async ({ currency = null, product = null }: IQuery) => {
     const pricesData = data.filter(
       (price) => price.product.name === product
     )[0];
-    console.log(pricesData);
     return pricesData;
   }
   return data;

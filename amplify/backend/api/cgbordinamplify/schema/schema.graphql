@@ -27,15 +27,17 @@
 # }
 
 # Order:
-type Order @model
-#  @aws_iamy
-#  @aws_cognito_user_pools
-  # @auth(
-  #   rules: [ 
-  #     { allow: owner },
-  #     # { allow: groups, groups: ["Admin"] }
-  #     ]
-  # )
+type Order
+@model
+@auth(
+    rules: [
+      # only owner can see his orders
+      { allow: owner, ownerField: "userID", operations: [read] }
+      # allow admins to view orders
+      { allow: groups, groups: ["Admin"] }
+    ]
+  )
+  @key(name: "byUser", fields: ["userID"], queryField: "getOrdersByUserID")
   {
   id: ID!
   userID: ID
@@ -43,6 +45,7 @@ type Order @model
   product: String
   code: String
   amount: Int
+  currency: String
   order_status: String
 }
 
