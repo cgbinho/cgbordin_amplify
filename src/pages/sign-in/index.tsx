@@ -82,9 +82,9 @@ const SignIn = ({ content }) => {
             </Button>
             {isError && <p className="error_message">{isError}</p>}
           </FormContainer>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
+          {/* <pre>{JSON.stringify(user, null, 2)}</pre>
           <pre>{JSON.stringify(isLoading, null, 2)}</pre>
-          <pre>{JSON.stringify(isError, null, 2)}</pre>
+          <pre>{JSON.stringify(isError, null, 2)}</pre> */}
         </form>
       </Container>
     </Layout>

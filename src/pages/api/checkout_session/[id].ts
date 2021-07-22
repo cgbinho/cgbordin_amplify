@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: null,
 });
 
-// this endpoint retrieves the sessio by it's id, in case user returns to the result page.
+// this endpoint retrieves the session by it's id, in case user returns to the result page.
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
