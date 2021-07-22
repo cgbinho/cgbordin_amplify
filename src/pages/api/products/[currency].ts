@@ -3,25 +3,25 @@ import Stripe from 'stripe';
 import { formatCheckoutItem } from '../../../helpers/stripe/stripe-helpers';
 import { getParameterFromSystemManager } from '../../../helpers/awsParameterStore';
 
-import aws from 'aws-sdk';
+// import aws from 'aws-sdk';
 
 // aws.config.update({ region: 'us-east-1' });
 
-const ssm = new aws.SSM({ region: 'us-east-1' });
+// const ssm = new aws.SSM({ region: 'us-east-1' });
 
-const stripePromise = async () => {
-  // get secret:
-  const stripeSecretKeyValue = await ssm
-    .getParameter({
-      Name: 'STRIPE_SECRET_KEY',
-      WithDecryption: true,
-    })
-    .promise();
-  // return stripe
-  return new Stripe(stripeSecretKeyValue?.Parameter?.Value, {
-    apiVersion: null,
-  });
-};
+// const stripePromise = async () => {
+//   // get secret:
+//   const stripeSecretKeyValue = await ssm
+//     .getParameter({
+//       Name: 'STRIPE_SECRET_KEY',
+//       WithDecryption: true,
+//     })
+//     .promise();
+//   // return stripe
+//   return new Stripe(stripeSecretKeyValue?.Parameter?.Value, {
+//     apiVersion: null,
+//   });
+// };
 
 // const stripeSecretKeyValue = await ssm
 //   .getParameter({
@@ -35,9 +35,9 @@ const stripePromise = async () => {
 // console.log(stripe_secret_key);
 // https://github.com/stripe/stripe-node#configuration
 // process.env.STRIPE_SECRET_KEY!
-// const stripe = new Stripe(stripeSecretKeyValue?.Parameter?.value, {
-//   apiVersion: null,
-// });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: null,
+});
 
 export default async function handler(
   req: NextApiRequest,
@@ -49,7 +49,7 @@ export default async function handler(
   //   'STRIPE_SECRET_KEY'
   // );
   // console.log({ stripe_secret_key });
-  const stripe = await stripePromise();
+  // const stripe = await stripePromise();
 
   if (req.method === 'GET') {
     // get selected currency ( 'brl' or 'usd'):
