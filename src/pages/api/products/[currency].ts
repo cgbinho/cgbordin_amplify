@@ -5,7 +5,7 @@ import { getParameterFromSystemManager } from '../../../helpers/awsParameterStor
 
 import aws from 'aws-sdk';
 
-aws.config.update({ region: 'us-east-1' });
+// aws.config.update({ region: 'us-east-1' });
 
 const ssm = new aws.SSM({ region: 'us-east-1' });
 
