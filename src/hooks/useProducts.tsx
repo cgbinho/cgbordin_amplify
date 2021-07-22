@@ -23,7 +23,9 @@ const getProducts = async ({ currency = null, product = null }: IQuery) => {
 };
 
 export function useProducts({ currency, product }: IQuery) {
-  return useQuery(['products', currency], () =>
-    getProducts({ currency, product })
+  return useQuery(
+    ['products', currency],
+    () => getProducts({ currency, product }),
+    { refetchOnWindowFocus: false }
   );
 }

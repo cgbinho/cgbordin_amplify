@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import React from 'react';
+import Link from 'next/link';
+import React, { useState } from 'react';
 import Stripe from 'stripe';
 import Button from '../../components/Form/Button';
 import Layout from '../../components/Layout';
@@ -29,7 +30,9 @@ const Aepzera = ({ content, currency }) => {
     isError,
   } = useProducts({ currency, product: 'Aepzera' });
 
-  const handleClick = async (price) => {
+  const [showRedirect, setShowRedirect] = useState(false);
+
+  const handleBuyProduct = async (price) => {
     const stripe = await getStripe();
 
     // const session = await response.json();
@@ -56,6 +59,25 @@ const Aepzera = ({ content, currency }) => {
     }
   };
 
+  const handleSubmit = async (price) => {
+    // if no user is logged, show alert message
+    if (!user) {
+      setShowRedirect(true);
+      return null;
+    }
+    await handleBuyProduct(price);
+  };
+
+  function RedirectComponent() {
+    return (
+      <>
+        <p style={{ color: 'orange' }}>
+          Register / Login to purchase this product.
+        </p>
+      </>
+    );
+  }
+
   return (
     <Layout>
       <Head>
@@ -75,11 +97,12 @@ const Aepzera = ({ content, currency }) => {
                 width="100%"
                 height="40px"
                 padding=".8rem 2rem"
-                onClick={() => handleClick(prices)}
+                onClick={() => handleSubmit(prices)}
               >
                 {content.action_button}
                 {((prices?.unit_amount as number) / 100).toFixed(2)}
               </Button>
+              {showRedirect && <RedirectComponent />}
             </aside>
           </AepzeraCard>
         )}

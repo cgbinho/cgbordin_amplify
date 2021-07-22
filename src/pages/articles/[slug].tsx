@@ -46,8 +46,6 @@ export async function getStaticProps({ params }) {
     'coverImage',
   ]);
 
-  console.log(article);
-  // const content = await serialize(article.content);
   const content = await markdownToHtml(article.content || '');
 
   return {

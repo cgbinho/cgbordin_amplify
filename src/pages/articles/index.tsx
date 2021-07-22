@@ -18,7 +18,7 @@ export default function Articles({ allArticles, content }) {
         <div className="article_list">
           {allArticles.map(
             ({ slug, date, title, excerpt, coverImage }, index) => (
-              <Link href={`/articles/${slug}`} key={index}>
+              <Link href={`/articles/${slug}`} key={index} locale="pt-BR">
                 <a>
                   <section>
                     <img src={coverImage} alt={title} width="100%" />
