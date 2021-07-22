@@ -12,4 +12,5 @@ module.exports = {
     locales: ['pt-BR', 'en'],
     defaultLocale: 'pt-BR',
   },
+  webpack5: false,
 };
