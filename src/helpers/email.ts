@@ -3,7 +3,9 @@ import nodemailer from 'nodemailer';
 export const sendMail = async ({
   name,
   email,
-  code,
+  subject,
+  text,
+  html,
 }): Promise<[data: any, error: any]> => {
   const transporter = nodemailer.createTransport({
     host: 'email-smtp.us-east-1.amazonaws.com',
@@ -19,9 +21,9 @@ export const sendMail = async ({
       from: 'cleber@cgbordin.com',
       to: email,
       cc: 'cleber@cgbordin.com',
-      subject: '[cgbordin.com] Test Message!',
-      text: `Hello, ${name}! 'I hope this message gets sent! Your code is ${code}'`,
-      html: `<b>Hello, ${name}! <br/>I hope this message gets sent! Your code is ${code}</b>`,
+      subject,
+      text,
+      html,
       ses: {
         // optional extra arguments for SendRawEmail
         Tags: [

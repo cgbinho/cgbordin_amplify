@@ -60,7 +60,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         `💰 PAYMENTINTENT_billing_details: ${paymentIntent?.charges?.data[0]?.billing_details}`
       );
 
-      const { email } = paymentIntent?.charges?.data[0]?.billing_details;
+      const { name, email } = paymentIntent?.charges?.data[0]?.billing_details;
 
       console.log({ paymentIntent });
       // const product = session.line_items[0].description;
@@ -79,6 +79,23 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       if (errIntent) {
         res.status(500).json({ statusCode: 500, message: errIntent.message });
         res.end();
+        return;
+      }
+      // Inform user about the successfull purchase:
+      const mailData = {
+        name,
+        email,
+        subject: '[cgbordin.com] Purchase confirmation!',
+        text: `Hello, ${name}! Congratulations, you purchased successfully '${paymentIntent.metadata.product_name}' from cgbordin.com!`,
+        html: `<p>Hello, ${name}! <br/> Congratulations, you purchased successfully '${paymentIntent.metadata.product_name}' from cgbordin.com!</p>`,
+      };
+      const [dataEmail, errEmail] = await sendMail(mailData);
+      // if error delivering email:
+      if (errEmail) {
+        console.log(errEmail.message);
+        res.status(500).json({ statusCode: 500, message: errEmail.message });
+        res.end();
+        return;
       }
       console.log(dataIntent);
     } else if (event.type === 'payment_intent.payment_failed') {
@@ -108,7 +125,14 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         return;
       }
       // Deliver the goods to customer:
-      const [dataEmail, errEmail] = await sendMail({ name, email, code });
+      const mailData = {
+        name,
+        email,
+        subject: '[cgbordin.com] Test Message!',
+        text: `Hello, ${name}! 'I hope this message gets sent! Your code is ${code}'`,
+        html: `<b>Hello, ${name}! <br/>I hope this message gets sent! Your code is ${code}</b>`,
+      };
+      const [dataEmail, errEmail] = await sendMail(mailData);
       // if error delivering email:
       if (errEmail) {
         console.log(errEmail.message);
