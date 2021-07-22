@@ -3,6 +3,7 @@ export default {
     'Aepzera ajuda a manter sua pipeline de produção organizada no After Effects e agiliza seu workflow.',
   action_button: 'Comprar R$',
   learn_more: 'Saiba mais',
+  alert_to_register: `Cadastre-se / Entre para comprar este produto.`,
   how_it_works: {
     title: 'Como funciona',
     description:

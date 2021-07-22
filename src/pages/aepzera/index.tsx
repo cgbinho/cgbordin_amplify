@@ -68,12 +68,12 @@ const Aepzera = ({ content, currency }) => {
     await handleBuyProduct(price);
   };
 
-  function RedirectComponent() {
+  function AlertComponent({ title }) {
     return (
       <>
-        <p style={{ color: 'orange' }}>
-          Register / Login to purchase this product.
-        </p>
+        <Link href="/sign-up">
+          <a>{title}</a>
+        </Link>
       </>
     );
   }
@@ -102,7 +102,9 @@ const Aepzera = ({ content, currency }) => {
                 {content.action_button}
                 {((prices?.unit_amount as number) / 100).toFixed(2)}
               </Button>
-              {showRedirect && <RedirectComponent />}
+              {showRedirect && (
+                <AlertComponent title={content.alert_to_register} />
+              )}
             </aside>
           </AepzeraCard>
         )}

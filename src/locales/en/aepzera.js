@@ -3,6 +3,7 @@ export default {
     'Aepzera helps you to keep your After Effects pipeline organized while boosting your workflow.',
   learn_more: 'Learn More',
   action_button: 'Buy now $',
+  alert_to_register: `Sign up / Sign in to purchase this product.`,
   how_it_works: {
     title: 'How it Works',
     description:
