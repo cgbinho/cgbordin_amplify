@@ -21,7 +21,7 @@ userEmail: "cgbordin@gmail.com"
 userID: "3da452be-ee78-4954-b1a0-fbcff9c3619a"
 */
 
-  // console.log(order);
+  console.log(order);
 
   const [isCopied, setCopied] = useClipboard(order.code, {
     // `isCopied` will go back to `false` after 1000ms.
@@ -42,8 +42,8 @@ userID: "3da452be-ee78-4954-b1a0-fbcff9c3619a"
         {content.order}: {order.id}
       </p>
       <p>
-        {content.date}:{' '}
-        <DateFormatter dateString={order.createdAt.toString()} />
+        {content.date}:
+        <DateFormatter dateString={order?.createdOn?.toString()} />
       </p>
       <p>
         {content.status}: <code>{order_status}</code>
