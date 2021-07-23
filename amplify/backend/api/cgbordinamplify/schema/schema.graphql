@@ -47,6 +47,8 @@ type Order
   amount: Int
   currency: String
   order_status: String
+  createdAt: AWSDateTime
+  updatedAt:AWSDateTime
 }
 
 # # order item:

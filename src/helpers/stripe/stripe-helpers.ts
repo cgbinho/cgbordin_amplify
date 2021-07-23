@@ -2,7 +2,6 @@ export function formatAmountForDisplay(
   amount: number,
   currency: string = 'brl'
 ): string {
-  console.log(currency);
   const currencyFormat = currency === 'brl' ? 'pt-BR' : 'en-US';
 
   const numberFormat = new Intl.NumberFormat([currencyFormat], {

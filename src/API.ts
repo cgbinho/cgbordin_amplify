@@ -11,6 +11,8 @@ export type CreateOrderInput = {
   amount?: number | null,
   currency?: string | null,
   order_status?: string | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type ModelOrderConditionInput = {
@@ -20,6 +22,8 @@ export type ModelOrderConditionInput = {
   amount?: ModelIntInput | null,
   currency?: ModelStringInput | null,
   order_status?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelOrderConditionInput | null > | null,
   or?: Array< ModelOrderConditionInput | null > | null,
   not?: ModelOrderConditionInput | null,
@@ -87,8 +91,8 @@ export type Order = {
   amount?: number | null,
   currency?: string | null,
   order_status?: string | null,
-  createdAt: string,
-  updatedAt: string,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type UpdateOrderInput = {
@@ -100,6 +104,8 @@ export type UpdateOrderInput = {
   amount?: number | null,
   currency?: string | null,
   order_status?: string | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type DeleteOrderInput = {
@@ -115,6 +121,8 @@ export type ModelOrderFilterInput = {
   amount?: ModelIntInput | null,
   currency?: ModelStringInput | null,
   order_status?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelOrderFilterInput | null > | null,
   or?: Array< ModelOrderFilterInput | null > | null,
   not?: ModelOrderFilterInput | null,
@@ -164,8 +172,8 @@ export type CreateOrderMutation = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -185,8 +193,8 @@ export type UpdateOrderMutation = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -206,8 +214,8 @@ export type DeleteOrderMutation = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -226,8 +234,8 @@ export type GetOrderQuery = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -250,8 +258,8 @@ export type ListOrdersQuery = {
       amount?: number | null,
       currency?: string | null,
       order_status?: string | null,
-      createdAt: string,
-      updatedAt: string,
+      createdAt?: string | null,
+      updatedAt?: string | null,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -278,8 +286,8 @@ export type GetOrdersByUserIDQuery = {
       amount?: number | null,
       currency?: string | null,
       order_status?: string | null,
-      createdAt: string,
-      updatedAt: string,
+      createdAt?: string | null,
+      updatedAt?: string | null,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -300,8 +308,8 @@ export type OnCreateOrderSubscription = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -320,8 +328,8 @@ export type OnUpdateOrderSubscription = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };
 
@@ -340,7 +348,7 @@ export type OnDeleteOrderSubscription = {
     amount?: number | null,
     currency?: string | null,
     order_status?: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string | null,
+    updatedAt?: string | null,
   } | null,
 };

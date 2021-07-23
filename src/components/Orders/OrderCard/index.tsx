@@ -33,7 +33,7 @@ userID: "3da452be-ee78-4954-b1a0-fbcff9c3619a"
       ? content.status_paid
       : content.status_pending;
 
-  console.log(order.amount);
+  // console.log(order.amount);
   const amount = formatAmountForDisplay(order.amount, order.currency);
 
   return (

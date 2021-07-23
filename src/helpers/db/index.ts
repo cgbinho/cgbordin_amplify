@@ -28,6 +28,8 @@ export const postOrder = async ({
       amount,
       currency,
       order_status,
+      // createdAt: Date.now(),
+      // updatedAt: Date.now(),
     },
   };
 
