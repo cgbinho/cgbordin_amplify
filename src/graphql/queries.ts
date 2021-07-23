@@ -13,6 +13,8 @@ export const getOrder = /* GraphQL */ `
       amount
       currency
       orderStatus
+      createdOn
+      updatedOn
       createdAt
       updatedAt
     }
@@ -34,6 +36,8 @@ export const listOrders = /* GraphQL */ `
         amount
         currency
         orderStatus
+        createdOn
+        updatedOn
         createdAt
         updatedAt
       }
@@ -65,6 +69,8 @@ export const getOrdersByUserID = /* GraphQL */ `
         amount
         currency
         orderStatus
+        createdOn
+        updatedOn
         createdAt
         updatedAt
       }

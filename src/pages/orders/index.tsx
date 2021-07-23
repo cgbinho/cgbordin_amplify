@@ -12,11 +12,12 @@ import { Container } from '../../styles/home';
 import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api';
 import { EmptyCard } from '../../components/Orders/EmptyCard';
 
-const Orders = ({ content, orders }) => {
+const Orders = ({ content, orders, err }) => {
   const { user, isLoading, isError, signUp } = useAuth();
 
   const hasItems = orders?.items?.[0];
-  // console.log(hasItems);
+  console.log({ orders });
+  console.log({ err });
   /* 
 amount: 10
 code: "ae28ea19-a367-4365-86c9-ceb014bce9b0"
@@ -76,20 +77,31 @@ export async function getServerSideProps({ req, res, locale = 'pt-BR' }) {
   // get orders:
   const SSR = withSSRContext({ req });
 
-  const orders = (await SSR.API.graphql({
-    query: getOrdersByUserID,
-    authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
-    variables: {
-      userID: user.id,
-    },
-  })) as { data: GetOrdersByUserIDQuery };
+  try {
+    const orders = (await SSR.API.graphql({
+      query: getOrdersByUserID,
+      authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+      variables: {
+        userID: user.id,
+      },
+    })) as { data: GetOrdersByUserIDQuery };
 
-  return {
-    props: {
-      orders: orders.data.getOrdersByUserID,
-      content,
-    },
-  };
+    return {
+      props: {
+        orders: orders.data.getOrdersByUserID,
+        content,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      props: {
+        orders: null,
+        err,
+        content,
+      },
+    };
+  }
 }
 
 export default Orders;

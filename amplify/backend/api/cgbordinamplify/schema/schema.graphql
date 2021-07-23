@@ -47,8 +47,8 @@ type Order
   amount: Int
   currency: String
   orderStatus: String
-  # createdOn: Int
-  # updatedOn: Int
+  createdOn: Int
+  updatedOn: Int
 }
 
 # # order item:

@@ -65,7 +65,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log({ paymentIntent });
       // const product = session.line_items[0].description;
       // set create date ( can't read createdAt / updatedAt from AWS):
-      // const createdOn = Date.now();
+      const createdOn = Date.now();
       // create Order:
       const [dataIntent, errIntent] = await postOrder({
         id: paymentIntent.id,
@@ -76,8 +76,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         amount: paymentIntent.amount_received,
         currency: paymentIntent.currency,
         orderStatus: 'pending',
-        // createdOn,
-        // updatedOn: createdOn,
+        createdOn,
+        updatedOn: createdOn,
       });
 
       if (errIntent) {
@@ -118,13 +118,13 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log(`💰 PAYMENTINTENT_id: ${charge.payment_intent}`);
 
       // set updatedOn value:
-      // const updatedOn = Date.now();
+      const updatedOn = Date.now();
 
       const [dataCharge, errCharge] = await updateOrder({
         id: charge.payment_intent,
         code,
         orderStatus: 'paid',
-        // updatedOn,
+        updatedOn,
       });
 
       if (errCharge) {
