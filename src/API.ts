@@ -10,9 +10,7 @@ export type CreateOrderInput = {
   code?: string | null,
   amount?: number | null,
   currency?: string | null,
-  order_status?: string | null,
-  createdAt?: string | null,
-  updatedAt?: string | null,
+  orderStatus?: string | null,
 };
 
 export type ModelOrderConditionInput = {
@@ -21,9 +19,7 @@ export type ModelOrderConditionInput = {
   code?: ModelStringInput | null,
   amount?: ModelIntInput | null,
   currency?: ModelStringInput | null,
-  order_status?: ModelStringInput | null,
-  createdAt?: ModelStringInput | null,
-  updatedAt?: ModelStringInput | null,
+  orderStatus?: ModelStringInput | null,
   and?: Array< ModelOrderConditionInput | null > | null,
   or?: Array< ModelOrderConditionInput | null > | null,
   not?: ModelOrderConditionInput | null,
@@ -90,9 +86,9 @@ export type Order = {
   code?: string | null,
   amount?: number | null,
   currency?: string | null,
-  order_status?: string | null,
-  createdAt?: string | null,
-  updatedAt?: string | null,
+  orderStatus?: string | null,
+  createdAt: string,
+  updatedAt: string,
 };
 
 export type UpdateOrderInput = {
@@ -103,9 +99,7 @@ export type UpdateOrderInput = {
   code?: string | null,
   amount?: number | null,
   currency?: string | null,
-  order_status?: string | null,
-  createdAt?: string | null,
-  updatedAt?: string | null,
+  orderStatus?: string | null,
 };
 
 export type DeleteOrderInput = {
@@ -120,9 +114,7 @@ export type ModelOrderFilterInput = {
   code?: ModelStringInput | null,
   amount?: ModelIntInput | null,
   currency?: ModelStringInput | null,
-  order_status?: ModelStringInput | null,
-  createdAt?: ModelStringInput | null,
-  updatedAt?: ModelStringInput | null,
+  orderStatus?: ModelStringInput | null,
   and?: Array< ModelOrderFilterInput | null > | null,
   or?: Array< ModelOrderFilterInput | null > | null,
   not?: ModelOrderFilterInput | null,
@@ -171,9 +163,9 @@ export type CreateOrderMutation = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -192,9 +184,9 @@ export type UpdateOrderMutation = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -213,9 +205,9 @@ export type DeleteOrderMutation = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -233,9 +225,9 @@ export type GetOrderQuery = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -257,9 +249,9 @@ export type ListOrdersQuery = {
       code?: string | null,
       amount?: number | null,
       currency?: string | null,
-      order_status?: string | null,
-      createdAt?: string | null,
-      updatedAt?: string | null,
+      orderStatus?: string | null,
+      createdAt: string,
+      updatedAt: string,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -285,9 +277,9 @@ export type GetOrdersByUserIDQuery = {
       code?: string | null,
       amount?: number | null,
       currency?: string | null,
-      order_status?: string | null,
-      createdAt?: string | null,
-      updatedAt?: string | null,
+      orderStatus?: string | null,
+      createdAt: string,
+      updatedAt: string,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -307,9 +299,9 @@ export type OnCreateOrderSubscription = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -327,9 +319,9 @@ export type OnUpdateOrderSubscription = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -347,8 +339,8 @@ export type OnDeleteOrderSubscription = {
     code?: string | null,
     amount?: number | null,
     currency?: string | null,
-    order_status?: string | null,
-    createdAt?: string | null,
-    updatedAt?: string | null,
+    orderStatus?: string | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };

@@ -23,7 +23,7 @@ code: "ae28ea19-a367-4365-86c9-ceb014bce9b0"
 createdAt: "2021-07-20T13:24:05.690Z"
 currency: null
 id: "121212"
-order_status: "pending"
+orderStatus: "pending"
 product: "Aepzera"
 updatedAt: "2021-07-20T13:24:05.690Z"
 userEmail: "cgbordin@gmail.com"

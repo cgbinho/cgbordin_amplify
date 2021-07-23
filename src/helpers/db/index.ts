@@ -11,9 +11,9 @@ export const postOrder = async ({
   code,
   amount,
   currency,
-  order_status,
-  createdOn,
-  updatedOn,
+  orderStatus,
+  // createdOn,
+  // updatedOn,
 }) => {
   const docClient = new aws.DynamoDB.DocumentClient({
     apiVersion: '2012-08-10',
@@ -29,9 +29,9 @@ export const postOrder = async ({
       code,
       amount,
       currency,
-      order_status,
-      createdOn,
-      updatedOn,
+      orderStatus,
+      // createdOn,
+      // updatedOn,
       // createdAt: Date.now(),
       // updatedAt: Date.now(),
     },
@@ -49,7 +49,7 @@ export const postOrder = async ({
     });
 };
 
-export const updateOrder = async ({ id, code, order_status, updatedOn }) => {
+export const updateOrder = async ({ id, code, orderStatus }) => {
   const docClient = new aws.DynamoDB.DocumentClient();
 
   const params = {
@@ -57,10 +57,10 @@ export const updateOrder = async ({ id, code, order_status, updatedOn }) => {
     Key: {
       id,
     },
-    UpdateExpression: 'set code = :r, order_status=:p',
+    UpdateExpression: 'set code = :r, orderStatus=:p',
     ExpressionAttributeValues: {
       ':r': code,
-      ':p': order_status,
+      ':p': orderStatus,
     },
     ReturnValues: 'UPDATED_NEW',
   };

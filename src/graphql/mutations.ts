@@ -15,7 +15,7 @@ export const createOrder = /* GraphQL */ `
       code
       amount
       currency
-      order_status
+      orderStatus
       createdAt
       updatedAt
     }
@@ -34,7 +34,7 @@ export const updateOrder = /* GraphQL */ `
       code
       amount
       currency
-      order_status
+      orderStatus
       createdAt
       updatedAt
     }
@@ -53,7 +53,7 @@ export const deleteOrder = /* GraphQL */ `
       code
       amount
       currency
-      order_status
+      orderStatus
       createdAt
       updatedAt
     }

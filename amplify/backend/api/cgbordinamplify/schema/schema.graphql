@@ -46,9 +46,9 @@ type Order
   code: String
   amount: Int
   currency: String
-  order_status: String
-  createdOn: Int
-  updatedOn: Int
+  orderStatus: String
+  # createdOn: Int
+  # updatedOn: Int
 }
 
 # # order item:
