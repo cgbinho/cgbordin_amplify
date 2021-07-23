@@ -18,7 +18,7 @@ export const postOrder = async ({
   });
 
   const params = {
-    TableName: 'Order-vzenpfsamzdmhorbdv5pqeguwm-dev',
+    TableName: process.env.DYNAMODB_ORDER_TABLE,
     Item: {
       id,
       userID,
@@ -47,7 +47,7 @@ export const updateOrder = async ({ id, code, order_status }) => {
   const docClient = new aws.DynamoDB.DocumentClient();
 
   const params = {
-    TableName: 'Order-vzenpfsamzdmhorbdv5pqeguwm-dev',
+    TableName: process.env.DYNAMODB_ORDER_TABLE,
     Key: {
       id,
     },
