@@ -84,7 +84,7 @@ export async function getServerSideProps({ req, res, locale = 'pt-BR' }) {
     },
   })) as { data: GetOrdersByUserIDQuery };
 
-  // console.log(orders.data.getOrdersByUserID);
+  console.log(orders.data.getOrdersByUserID);
 
   return {
     props: {

@@ -67,7 +67,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       // create Order:
       const [dataIntent, errIntent] = await postOrder({
         id: paymentIntent.id,
-        userID: paymentIntent.customer,
+        userID: paymentIntent.metadata.user_id,
         userEmail: email,
         product: paymentIntent.metadata.product_name,
         code: null,

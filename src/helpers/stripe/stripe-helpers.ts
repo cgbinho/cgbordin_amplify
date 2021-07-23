@@ -1,13 +1,16 @@
 export function formatAmountForDisplay(
   amount: number,
-  currency: string = 'usd'
+  currency: string = 'brl'
 ): string {
-  const numberFormat = new Intl.NumberFormat(['en-US'], {
+  console.log(currency);
+  const currencyFormat = currency === 'brl' ? 'pt-BR' : 'en-US';
+
+  const numberFormat = new Intl.NumberFormat([currencyFormat], {
     style: 'currency',
     currency,
     currencyDisplay: 'symbol',
   });
-  return numberFormat.format(amount);
+  return numberFormat.format(amount / 100);
 }
 
 export function formatAmountForStripe(

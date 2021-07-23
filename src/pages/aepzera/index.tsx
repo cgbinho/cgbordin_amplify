@@ -23,6 +23,8 @@ interface IProps {
 
 const Aepzera = ({ content, currency }) => {
   const { user } = useAuth();
+
+  console.log({ id: user?.id });
   // get list of products from api:
   const {
     data: prices,
@@ -40,6 +42,7 @@ const Aepzera = ({ content, currency }) => {
       price_id: price.id,
       customer_email: user.email,
       product_name: 'Aepzera',
+      user_id: user.id,
     });
     if (response.statusCode === 500) {
       console.error(response.message);
@@ -84,14 +87,14 @@ const Aepzera = ({ content, currency }) => {
         <title>CGBORDIN - Aepzera</title>
       </Head>
       <Container>
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>Error loading products.</p>}
-        {prices && (
-          <AepzeraCard>
-            <AepzeraLogo />
-            <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
-            <aside>
-              <p>{content.description}</p>
+        <AepzeraCard>
+          <AepzeraLogo />
+          <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
+          <aside>
+            <p>{content.description}</p>
+            {isLoading && <p>Loading...</p>}
+            {isError && <p>Error loading products.</p>}
+            {prices && (
               <Button
                 primary
                 width="100%"
@@ -102,12 +105,12 @@ const Aepzera = ({ content, currency }) => {
                 {content.action_button}
                 {((prices?.unit_amount as number) / 100).toFixed(2)}
               </Button>
-              {showRedirect && (
-                <AlertComponent title={content.alert_to_register} />
-              )}
-            </aside>
-          </AepzeraCard>
-        )}
+            )}
+            {showRedirect && (
+              <AlertComponent title={content.alert_to_register} />
+            )}
+          </aside>
+        </AepzeraCard>
 
         <AepzeraContent>
           <h3>{content.how_it_works.title}</h3>

@@ -33,44 +33,47 @@ userID: "3da452be-ee78-4954-b1a0-fbcff9c3619a"
       ? content.status_paid
       : content.status_pending;
 
+  console.log(order.amount);
   const amount = formatAmountForDisplay(order.amount, order.currency);
 
   return (
     <OrderCardContainer>
-      <section>
-        <p>
-          {content.order}: {order.id}
-        </p>
-        <p>
-          {content.date}:{' '}
-          <DateFormatter dateString={order.createdAt.toString()} />
-        </p>
-      </section>
+      <p>
+        {content.order}: {order.id}
+      </p>
+      <p>
+        {content.date}:{' '}
+        <DateFormatter dateString={order.createdAt.toString()} />
+      </p>
+      <p>
+        {content.status}: <code>{order_status}</code>
+      </p>
       <p>
         {content.product}: {order.product}
       </p>
       <p>
         {content.amount}: {amount}
       </p>
-      <p>
-        {content.code}: <code>{order.code}</code>
-      </p>
-      <p>
-        {content.status}: <code>{order_status}</code>
-      </p>
-      <Button primary width="100%" padding="0.4rem 0" onClick={setCopied}>
-        {isCopied ? (
-          <>
-            <IoMdCheckmarkCircleOutline size={18} />
-            <span>{content.copy_code_confirm}</span>
-          </>
-        ) : (
-          <>
-            <FiCopy size={18} />
-            <span>{content.copy_code}</span>
-          </>
-        )}
-      </Button>
+      {order?.code && (
+        <>
+          <p>
+            {content.code}: <code>{order.code}</code>
+          </p>
+          <Button primary width="100%" padding="0.4rem 0" onClick={setCopied}>
+            {isCopied ? (
+              <>
+                <IoMdCheckmarkCircleOutline size={18} />
+                <span>{content.copy_code_confirm}</span>
+              </>
+            ) : (
+              <>
+                <FiCopy size={18} />
+                <span>{content.copy_code}</span>
+              </>
+            )}
+          </Button>
+        </>
+      )}
     </OrderCardContainer>
   );
 }
