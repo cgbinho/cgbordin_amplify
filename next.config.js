@@ -20,6 +20,7 @@ module.exports = {
     COGNITO_CLIENT_ID: process.env.COGNITO_CLIENT_ID,
     COGNITO_CLIENT_SECRET: process.env.COGNITO_CLIENT_SECRET,
     COGNITO_DOMAIN: process.env.COGNITO_DOMAIN,
+    DYNAMODB_ORDER_TABLE: process.env.DYNAMODB_ORDER_TABLE,
   },
   webpack5: false,
 };
