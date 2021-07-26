@@ -89,12 +89,13 @@ const Aepzera = ({ content, currency }) => {
       <Container>
         <AepzeraCard>
           <AepzeraLogo />
-          <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
+          {/* <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} /> */}
+          <VideoPlyr {...{ src: '7ks2E_FAjhE' }} />
           <aside>
             <p>{content.description}</p>
             {isLoading && <p>Loading...</p>}
             {isError && <p>Error loading products.</p>}
-            {prices && (
+            {/* {prices && (
               <Button
                 primary
                 width="100%"
@@ -108,7 +109,7 @@ const Aepzera = ({ content, currency }) => {
             )}
             {showRedirect && (
               <AlertComponent title={content.alert_to_register} />
-            )}
+            )} */}
           </aside>
         </AepzeraCard>
 

@@ -57,12 +57,12 @@ export function HamburguerMenu({ content }) {
     <div ref={node}>
       <StyledMenu open={openBurguer}>
         <MenuItem {...{ label: `${content.home}`, path: '/' }} />
-        {!user && <GuestMenu />}
+        {/* {!user && <GuestMenu />} */}
         <MenuItem {...{ label: `${content.about}`, path: '/about' }} />
         <MenuItem {...{ label: `${content.articles}`, path: '/articles' }} />
         <MenuItem {...{ label: `${content.projects}`, path: '/projects' }} />
         <MenuItem {...{ label: `${content.aepzera}`, path: '/aepzera' }} />
-        {user && <LoggedMenu />}
+        {/* {user && <LoggedMenu />} */}
       </StyledMenu>
       <HamburgerButton {...{ openBurguer, setOpenBurguer }} />
     </div>

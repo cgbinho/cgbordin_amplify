@@ -88,8 +88,8 @@ const NavBar = () => {
               <a>{content.about}</a>
             </Link>
           </li>
-          <div className="vertical_line" />
-          {!user ? (
+          {/* <div className="vertical_line" /> */}
+          {/* {!user ? (
             <>
               <li>
                 <Link href="/sign-in">
@@ -117,7 +117,7 @@ const NavBar = () => {
                 <DropdownUserMenu {...{ content }} />
               </li>
             </SignedContainer>
-          )}
+          )} */}
         </ul>
       </nav>
       <BurguerContainer>
