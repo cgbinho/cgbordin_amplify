@@ -6,8 +6,8 @@ export const AboutContainer = styled.div`
   align-items: center;
   justify-items: flex-start;
   align-items: flex-start;
-  width: 100%;
-  max-width: 650px;
+  width: 90%;
+  max-width: 950px;
   gap: 1rem;
   padding: 2rem;
 

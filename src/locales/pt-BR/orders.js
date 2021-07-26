@@ -11,6 +11,6 @@ export default {
   status_pending: 'Pendente',
   status_paid: 'Pago',
   empty_card: {
-    title: 'Você não tem pedidos!',
+    title: 'Nenhum pedido encontrado.',
   },
 };

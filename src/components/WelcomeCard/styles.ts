@@ -6,6 +6,7 @@ export const WelcomeCardContainer = styled.div`
   justify-items: center;
   max-width: 650px;
   margin: 3rem 2rem;
+  width: 60%;
 
   h1 {
     letter-spacing: 2px;
