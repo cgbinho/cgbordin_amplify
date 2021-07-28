@@ -21,7 +21,8 @@ export function AepzeraComponent() {
     <>
       <AepzeraCard>
         <AepzeraLogo />
-        <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} />
+        {/* <VideoPlyr {...{ src: 'ysz5S6PUM-U' }} /> */}
+        <VideoPlyr {...{ src: '7ks2E_FAjhE' }} />
         <aside>
           <p>{description}</p>
           <Button
