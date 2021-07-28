@@ -1,6 +1,6 @@
 # CGBORDIN.COM Personal Website - with AWS Amplify and Typescript with NextJS
 
-[![cgbordin.com](Cgbordin.com)](https://www.cgbordin.com)
+[cgbordin.com](https://www.cgbordin.com)
 
 This is the repository for my personal website to showcase my latest projects.
 
