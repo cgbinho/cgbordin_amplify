@@ -38,7 +38,9 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Cabin&display=swap"
             rel="stylesheet"
           />
-          <link rel="icon" href="/favicon.ico" />
+          <meta name="theme-color" content="hsl(200, 100%, 25%)" />
+          <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+          <link rel="icon" type="image/png" href="images/favicon.png" />
         </Head>
         <body>
           <Main />
