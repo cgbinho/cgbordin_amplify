@@ -6,39 +6,32 @@ import awsExports from '../aws-exports';
 import { formatUser } from '../helpers/users';
 Amplify.configure({ ...awsExports, ssr: true });
 
+interface ResetPasswordData {
+  email: string;
+  code: string;
+  new_password: string;
+}
+
 interface AuthContextData {
   user: any;
   isLoading: any;
   isError: any;
   signUp({ email, password }: EmailPasswordData): Promise<any>;
   signIn({ email, password }: EmailPasswordData): Promise<any>;
-  updateProfile({ email, password }: ProfileData): Promise<void>;
-  resetPassword(email: string): Promise<any>;
+  forgotPassword(email: string): Promise<any>;
+  resetPassword({ email, code, new_password }: ResetPasswordData): Promise<any>;
   signOut(): Promise<void>;
 }
 
-interface ProfileData {
-  email: string;
-  password?: string;
-}
 interface EmailPasswordData {
   email: string;
   password: string;
 }
+
 interface AuthData {
   user: any;
   token?: string;
 }
-
-// Helper function to set Cookies:
-// const setCookie = (user: any): void => {
-//   // set cookies:
-//   cookie.set('cgbordinUser', JSON.stringify(user), {
-//     secure: process.env.NODE_ENV === 'production',
-//     expires: 7,
-//     sameSite: 'strict',
-//   });
-// };
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
@@ -63,21 +56,17 @@ export const AuthProvider: React.FC = ({ children }) => {
         setData(user);
       })
       .catch(() => {
-        console.log('not authenticated.');
         setData(null);
       });
   });
 
   async function signUp({ email, password }: EmailPasswordData) {
-    console.log({ email, password });
     setError(null);
     setLoading('Loading data...');
     try {
       const { user } = await Auth.signUp({ username: email, password });
-      console.log(user);
     } catch (error) {
-      console.log('error signing up:', error);
-      setError('Error signing up user.');
+      setError(`${error.message}`);
     } finally {
       setLoading(null);
     }
@@ -95,8 +84,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       // setCookie(user);
       setData(user);
     } catch (error) {
-      console.log(error);
-      setError('Error signing up user.');
+      setError(`${error.message}`);
     } finally {
       setLoading(null);
     }
@@ -107,10 +95,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     setLoading('Loading data...');
     try {
       await Auth.resendSignUp(username);
-      console.log('code resent successfully');
     } catch (err) {
-      console.log('error resending code: ', err);
-      setError('Error resending code.');
+      setError(err.message);
     } finally {
       setLoading(null);
     }
@@ -121,7 +107,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     setLoading('Loading data...');
     try {
       await Auth.signOut();
-      setData({});
+      setData(null);
     } catch (error) {
       console.log('error signing out: ', error);
       setError('Error signing out.');
@@ -130,12 +116,30 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
   }
 
-  function resetPassword(email: string) {
-    return null;
+  async function forgotPassword(email: string) {
+    setError(null);
+    setLoading('Loading data...');
+    try {
+      await Auth.forgotPassword(email);
+      setData(null);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(null);
+    }
   }
 
-  async function updateProfile({ email, password }) {
-    return null;
+  async function resetPassword({ email, code, new_password }) {
+    setError(null);
+    setLoading('Loading data...');
+    try {
+      await Auth.forgotPasswordSubmit(email, code, new_password);
+      setData(null);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(null);
+    }
   }
 
   return (
@@ -147,8 +151,8 @@ export const AuthProvider: React.FC = ({ children }) => {
         signIn,
         signUp,
         signOut,
+        forgotPassword,
         resetPassword,
-        updateProfile,
       }}
     >
       {children}

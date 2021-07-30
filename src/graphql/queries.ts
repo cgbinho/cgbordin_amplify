@@ -11,7 +11,10 @@ export const getOrder = /* GraphQL */ `
       product
       code
       amount
-      status
+      currency
+      orderStatus
+      createdOn
+      updatedOn
       createdAt
       updatedAt
     }
@@ -31,7 +34,43 @@ export const listOrders = /* GraphQL */ `
         product
         code
         amount
-        status
+        currency
+        orderStatus
+        createdOn
+        updatedOn
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getOrdersByUserID = /* GraphQL */ `
+  query GetOrdersByUserID(
+    $userID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    getOrdersByUserID(
+      userID: $userID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        userID
+        userEmail
+        product
+        code
+        amount
+        currency
+        orderStatus
+        createdOn
+        updatedOn
         createdAt
         updatedAt
       }

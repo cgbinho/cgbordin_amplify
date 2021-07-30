@@ -9,12 +9,20 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // customer details:
-  const { name, email, code } = req.body;
+  const { name, email, subject, text, html } = req.body;
+
+  const mailData = {
+    name,
+    email,
+    subject,
+    text,
+    html,
+  };
 
   if (req.method === 'POST') {
     try {
       // send email:
-      const [data, err] = await sendMail({ name, email, code: '123' });
+      const [data, err] = await sendMail(mailData);
       // if error:
       if (err) {
         console.log(err.message);

@@ -14,12 +14,12 @@ export const Container = styled.div`
 
 export const Content = styled.main`
   grid-area: main;
-  /* padding: var(--main-spacing); */
   overflow: auto;
 
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr minmax(0, 600px) 1fr;
+  background-image: url('images/background-annie-spratt-sE6lmWCsf_Q-unsplash.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
 
   background-color: var(--gray-200);
 `;

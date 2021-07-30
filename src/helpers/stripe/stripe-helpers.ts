@@ -1,23 +1,15 @@
-// import Stripe from 'stripe';
-
-// interface IPrice extends Stripe.Price {
-//   product: Stripe.Product;
-// }
-
-// interface IProps {
-//   prices: IPrice[];
-// }
-
 export function formatAmountForDisplay(
   amount: number,
-  currency: string
+  currency: string = 'brl'
 ): string {
-  const numberFormat = new Intl.NumberFormat(['en-US'], {
+  const currencyFormat = currency === 'brl' ? 'pt-BR' : 'en-US';
+
+  const numberFormat = new Intl.NumberFormat([currencyFormat], {
     style: 'currency',
-    currency: currency,
+    currency,
     currencyDisplay: 'symbol',
   });
-  return numberFormat.format(amount);
+  return numberFormat.format(amount / 100);
 }
 
 export function formatAmountForStripe(
@@ -26,7 +18,7 @@ export function formatAmountForStripe(
 ): number {
   const numberFormat = new Intl.NumberFormat(['en-US'], {
     style: 'currency',
-    currency: currency,
+    currency,
     currencyDisplay: 'symbol',
   });
   const parts = numberFormat.formatToParts(amount);

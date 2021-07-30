@@ -29,6 +29,7 @@ module.exports = {
     'react/display-name': ['off', { ignoreTranspilerName: 'false' }],
     camelcase: 'off',
     '@next/next/no-img-element': 'off',
+    'import/no-anonymous-default-export': ['off', { allowObject: true }],
     'prettier/prettier': [
       'error',
       {

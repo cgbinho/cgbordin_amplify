@@ -11,7 +11,20 @@ export const getCurrentAuthenticatedUser = async (req) => {
 
   try {
     const userData = await Auth.currentAuthenticatedUser();
-    const user = formatUser(userData);
+    if (!userData) {
+      return null;
+    }
+
+    const {
+      signInUserSession: {
+        idToken: { payload },
+      },
+    } = userData;
+    // check if user isAdmin:
+    const isAdmin =
+      payload['cognito:groups'] && payload['cognito:groups'].includes('Admin');
+
+    const user = formatUser({ isAdmin, ...userData });
     return user;
   } catch (error) {
     return null;
