@@ -6,9 +6,8 @@ export const ArticlesContent = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  /* gap: 1rem; */
 
-  > h3 {
+  > h1 {
     text-align: center;
   }
 

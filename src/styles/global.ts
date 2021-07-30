@@ -17,7 +17,7 @@ export default createGlobalStyle`
   --gray-50: hsl(0, 0%, 5%);
   --gray-100: hsl(0, 0%, 10%);
   --gray-150: hsl(0, 0%, 15%);
-  --gray-170: hsl(0, 0%, 17%);
+  --gray-170: hsl(0,0%,0%,0.3);
   --gray-200: hsl(0, 0%, 20%);
   --gray-300: hsl(0, 0%, 30%);
   --gray-400: hsl(0, 0%, 40%);

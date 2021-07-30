@@ -14,7 +14,7 @@ export default function Articles({ allArticles, content }) {
         <title>CGBORDIN.com - {content.title}</title>
       </Head>
       <ArticlesContent>
-        <h3>{content.title}</h3>
+        <h1>{content.title}</h1>
         <div className="article_list">
           {allArticles.map(
             ({ slug, date, title, excerpt, coverImage }, index) => (

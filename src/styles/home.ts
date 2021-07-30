@@ -8,6 +8,11 @@ export const Container = styled.div`
   align-items: flex-start;
   padding-top: 2rem;
 
+  /* background-image: url('images/background-annie-spratt-sE6lmWCsf_Q-unsplash.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed; */
+
   .content {
     display: grid;
     grid-auto-flow: row;

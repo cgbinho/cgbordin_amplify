@@ -16,5 +16,10 @@ export const Content = styled.main`
   grid-area: main;
   overflow: auto;
 
+  background-image: url('images/background-annie-spratt-sE6lmWCsf_Q-unsplash.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+
   background-color: var(--gray-200);
 `;
