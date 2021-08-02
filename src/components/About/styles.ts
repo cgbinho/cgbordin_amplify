@@ -4,14 +4,14 @@ export const AboutContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
   align-items: center;
-  justify-items: flex-start;
+  /* justify-items: flex-start; */
   align-items: flex-start;
   width: 90%;
   max-width: 950px;
   gap: 1rem;
   padding: 2rem;
 
-  h3 {
+  h1 {
     text-align: center;
   }
 
@@ -22,7 +22,29 @@ export const AboutContainer = styled.div`
     gap: 1rem;
     width: 100%;
   }
-  .img_rounded {
-    border-radius: 8px;
+
+  .about_description {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr 200px;
+    align-items: center;
+    gap: 2rem;
+
+    @media only screen and (max-width: 600px) {
+      display: grid;
+      grid-auto-flow: row;
+      justify-items: center;
+      align-items: center;
+
+      img {
+        grid-column: 1;
+        grid-row: 1 / 2;
+      }
+    }
+  }
+
+  .about_img {
+    width: 200px;
+    border-radius: 50%;
   }
 `;

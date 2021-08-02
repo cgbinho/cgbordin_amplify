@@ -16,15 +16,15 @@ import { AboutContainer } from './styles';
 export function AboutComponent({ content }) {
   return (
     <AboutContainer>
-      <h3 id="about">{content.title}</h3>
-      <p>{content.description}</p>
-
-      <img
-        className="img_rounded"
-        src="/images/profile.jpg"
-        alt="Cleber Galves Bordin"
-        width="100%"
-      />
+      <h1 id="about">{content.title}</h1>
+      <section className="about_description">
+        <p>{content.description}</p>
+        <img
+          className="about_img"
+          src="/images/profile.jpg"
+          alt="Cleber Galves Bordin"
+        />
+      </section>
       <h4>{content.experience.title}</h4>
       <p>{content.experience.description_01}</p>
       <p>{content.experience.description_02}</p>

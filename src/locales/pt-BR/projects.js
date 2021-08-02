@@ -1,5 +1,5 @@
 export default {
-  title: 'Projects',
+  title: 'Projetos',
   bayer: {
     description: `Projeto realizado pelo Motion Hand para a Huawei, meu papel na produção
     foi criar o setup das composições de cada cena: criando os planos 3D dos
