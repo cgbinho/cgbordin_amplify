@@ -17,7 +17,7 @@ export default {
       'Desde então meu trabalho envolve uma mistura de lógica de programação e criatividade artística. Este website é um reflexo do meu estudo em desenvolvimento web, onde criei sua base em React com o framework Next.js, com uso do Aws Amplify e o Aws Cognito.',
   },
   technologies: {
-    title: 'Technologies',
+    title: 'Tecnologias',
     description: `Estou sempre em busca de novas propostas e projetos, aprendendo, estudando e buscando evoluir meus conhecimentos, sendo inspirado e quem sabe inspirar outros profissionais promovendo a troca de experiências.
     Se o meu trabalho te interessou, entre em contato comigo.`,
   },

@@ -25,12 +25,12 @@ const Aepzera = ({ content, currency }) => {
   const { user } = useAuth();
 
   console.log({ id: user?.id });
-  // get list of products from api:
+  // get list of products from api ( disabled until product is on sale):
   const {
     data: prices,
     isLoading,
     isError,
-  } = useProducts({ currency, product: 'Aepzera' });
+  } = useProducts({ currency, product: 'Aepzera', enabled: false });
 
   const [showRedirect, setShowRedirect] = useState(false);
 
@@ -93,8 +93,8 @@ const Aepzera = ({ content, currency }) => {
           <VideoPlyr {...{ src: '7ks2E_FAjhE' }} />
           <aside>
             <p>{content.description}</p>
-            {isLoading && <p>Loading...</p>}
-            {isError && <p>Error loading products.</p>}
+            {/* {isLoading && <p>Loading...</p>} */}
+            {/* {isError && <p>Error loading products.</p>} */}
             {/* {prices && (
               <Button
                 primary

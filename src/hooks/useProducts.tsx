@@ -4,6 +4,7 @@ import axios from '../helpers/axios';
 interface IQuery {
   currency: string;
   product?: string;
+  enabled?: boolean;
 }
 
 const getProducts = async ({ currency = null, product = null }: IQuery) => {
@@ -22,10 +23,10 @@ const getProducts = async ({ currency = null, product = null }: IQuery) => {
   return data;
 };
 
-export function useProducts({ currency, product }: IQuery) {
+export function useProducts({ currency, product, enabled }: IQuery) {
   return useQuery(
     ['products', currency],
     () => getProducts({ currency, product }),
-    { refetchOnWindowFocus: false }
+    { refetchOnWindowFocus: false, enabled }
   );
 }
