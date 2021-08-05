@@ -14,12 +14,8 @@ export function WelcomeCard() {
 
   const excerpt =
     locale !== 'en'
-      ? `Formado em desenho industrial com foco em programação visual, meu
-  trabalho se divide entre criatividade e lógica: programação dentro de
-  softwares criativos como por exemplo o Adobe After Effects.`
-      : `Graduated in industrial design with a focus on visual programming, my
-      work is divided between creativity and logic: programming within
-      creative software such as Adobe After Effects.`;
+      ? `Minha paixão e trabalho se dividem entre criatividade e lógica: Código e Motion Design.`
+      : `My passion and work lives between creativity and logic: Code & Motion Design_`;
 
   return (
     <WelcomeCardContainer>
