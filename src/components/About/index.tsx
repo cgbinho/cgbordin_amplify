@@ -21,7 +21,7 @@ export function AboutComponent({ content }) {
         <p>{content.description}</p>
         <img
           className="about_img"
-          src="/images/cgbordin_profile_01.jpg"
+          src="/images/cgbordin_profile_02.jpg"
           alt="Cleber Galves Bordin"
         />
       </section>
