@@ -42,7 +42,7 @@ export default {
     description_03: `Você também pode optar por incluir no caminho do arquivo uma subpasta com o formato de data 'DD/MM/AA', para melhorar a organização de seus renders.`,
     description_04: `Por padrão, o Aepzera sugere duas pastas: 'previews' e 'deliverables', mas você pode configurar o Aepzera com as pastas
     que costuma utilizar.`,
-    description_05: `Você pode adicionar, modificar e excluir estas configurações de pastas em 'Settings {'>'} Render Folders' e também criar configurações personalizadas por projeto em 'Home {'>'} Set Custom Project Settings'. O Apezera sempre irá procurar estas pastas em seus projetos.`,
+    description_05: `Você pode adicionar, modificar e excluir estas configurações de pastas em 'Settings > Render Folders' e também criar configurações personalizadas por projeto em 'Home > Set Custom Project Settings'. O Apezera sempre irá procurar estas pastas em seus projetos.`,
   },
   set_custom_project_settings: {
     title: 'Set Custom Project Settings',
