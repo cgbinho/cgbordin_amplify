@@ -8,6 +8,8 @@ export default createGlobalStyle`
   --base-font-size:1rem;
   --base-line-height: 1.25 * --base-font-size;
   --maxWidth: 1200px;
+  --scent-850: hsl(200, 100%, 85%);
+  --scent-750: hsl(200, 100%, 75%);
   --scent-650: hsl(200, 100%, 65%);
   --scent-550: hsl(200, 100%, 55%);
   --scent-450: hsl(200, 100%, 45%);
@@ -56,6 +58,7 @@ a {
 text-decoration: none;
 transition: all 0.3s ease 0s;
 color: var(--primary);
+/* color: var(--scent-750); */
 font-weight: normal;
 cursor: pointer;
 

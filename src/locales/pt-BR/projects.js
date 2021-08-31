@@ -1,5 +1,13 @@
 export default {
   title: 'Projetos',
+  chocoanimato: {
+    description: `Projeto conceito de uma Plataforma de criação de vídeos customizados.`,
+    tools: `Back-end em Node.js com Express, PostgreSQL, TypeORM, envio de emails e transcodificação de vídeos com fila em Redis e BullQueue. Front-end com Next.js, React Hooks e Context, autenticação JWT, Lottie, e pagamento via Pagar.me.`,
+  },
+  aepzera: {
+    description: `Aplicação de pipeline de produção para o Adobe After Effects.`,
+    tools: `Desenvolvimento utilizando no backend a API do Adobe After Effects com Typescript. No Front-end utilizei React, React-Hook-Form, Yup, React-Query, CSS, Adobe-React-Spectrum (Adobe Design System), Markdown, Parcel e outros.`,
+  },
   bayer: {
     description: `Projeto realizado pelo Motion Hand para a Huawei, meu papel na produção
     foi criar o setup das composições de cada cena: criando os planos 3D dos

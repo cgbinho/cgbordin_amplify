@@ -1,5 +1,17 @@
 export default {
   title: 'Projects',
+  aepzera: {
+    description: `Pipeline production tool for Adobe After Effects.`,
+    tools: `Development using the Adobe After Effects API with Typescript in the backend.
+    Front-end with React, React-Hook-Form, Yup, React-Query, CSS, Adobe-React-Spectrum (Adobe Design System), Markdown, Parcel and others`,
+  },
+  chocoanimato: {
+    description: `Online platform to create custom videos.`,
+    tools: `Back-end in Node.js with Express, PostgreSQL, TypeORM,
+    sending emails and transcoding videos with queue in Redis and BullQueue.
+    Front-end with Next.js, React Hooks and Context, JWT authentication, Lottie, and
+    payment via Pagar.me`,
+  },
   bayer: {
     description: `Project made by Motion Hand for Bayer, my role in production
     was to create the setup of the compositions for each scene: creating 3D planes for scenarios, rig all characters, lights and grains.`,

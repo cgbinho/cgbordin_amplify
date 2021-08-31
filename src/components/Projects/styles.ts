@@ -30,6 +30,10 @@ export const ProjectsContent = styled.div`
     margin: 1rem 0;
   }
 
+  img {
+    border-radius: 8px;
+  }
+
   .projects_list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
