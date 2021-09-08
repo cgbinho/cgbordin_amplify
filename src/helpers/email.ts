@@ -18,9 +18,9 @@ export const sendMail = async ({
 
   try {
     const response = await transporter.sendMail({
-      from: 'cleber@cgbordin.com',
+      from: 'cgbordin@gmail.com',
       to: email,
-      cc: 'cleber@cgbordin.com',
+      cc: 'cgbordin@gmail.com',
       subject,
       text,
       html,

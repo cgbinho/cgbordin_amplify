@@ -84,7 +84,7 @@ export function AboutComponent({ content }) {
       </div>
       <p>{content.technologies.description}</p>
       <p>
-        Cleber Galves Bordin - <i>cleber@cgbordin.com</i> -
+        Cleber Galves Bordin - <i>cgbordin@gmail.com</i> -
         <a href="https://github.com/cgbinho" target="_blank" rel="noreferrer">
           <i> github.com/cgbinho</i>
         </a>
