@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ProjectsContent = styled.div`
   display: grid;
   grid-auto-flow: row;
-  margin: 2rem 0;
+  margin: 1rem 0;
   gap: 1rem;
   width: 100%;
   max-width: 850px;

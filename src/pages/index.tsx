@@ -34,8 +34,8 @@ export default function Home({ contentProjects, contentAbout }) {
       </Head>
       <Container>
         <WelcomeCard />
-        <AepzeraComponent />
         <ProjectsComponent {...{ content: contentProjects }} />
+        <AepzeraComponent />
         <AboutComponent {...{ content: contentAbout }} />
       </Container>
     </Layout>
